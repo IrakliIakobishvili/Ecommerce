@@ -19,7 +19,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 
 // Routes
-// app.use("/api/users", require("./routes/users"));
+app.use("/api/users", require("./routes/users"));
 
 app.get("/", (req, res) => {
   res.send("Ecommerce Website API");
