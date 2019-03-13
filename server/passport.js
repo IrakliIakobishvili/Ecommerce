@@ -51,7 +51,6 @@ passport.use(
         if (!user || user.isAdmin !== true) {
           return done(null, false);
         }
-        // console.log(user.isAdmin);
         // Otherwise, return the user
         done(null, user);
       } catch (error) {
