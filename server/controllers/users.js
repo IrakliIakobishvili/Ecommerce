@@ -1,4 +1,6 @@
 const JWT = require("jsonwebtoken");
+const jwtDecode = require("jwt-decode");
+const { sendMail } = require("../nodemailer");
 const User = require("../models/user");
 const { JWT_SECRET } = require("../configuration");
 
@@ -33,8 +35,23 @@ module.exports = {
 
     // Generate the token
     const token = signToken(newUser);
-    // Respond with token
-    res.status(200).json({ token });
+
+    sendMail(
+      req.protocol + "://" + req.headers.host + req.baseUrl,
+      req.value.body.email,
+      req.value.body.firstName,
+      token
+    )
+      .then(function(response) {
+        console.info(response);
+        res.status(200).json({ message: "Please Verify your Email" });
+      })
+      .catch(function(error) {
+        console.info(error);
+        res
+          .status(400)
+          .json({ error: "Email could not be sent, try to login" });
+      });
   },
 
   signIn: async (req, res, next) => {
@@ -65,9 +82,41 @@ module.exports = {
   secret: async (req, res, next) => {
     console.log("I managed to get here!");
     let loggedUser = await User.findOne({ _id: req.user.id });
+    // console.log(req.user);
     loggedUser = loggedUser[loggedUser.method];
 
     console.log(loggedUser);
-    res.json({ secret: "resource" });
+    res.json({ secter_page: "resource" });
+  },
+
+  verify: async (req, res, next) => {
+    try {
+      const decoded = jwtDecode(req.params.token);
+      let unverified_user = await User.findOne({ _id: decoded.sub });
+      if (!unverified_user) {
+        return res.status(403).json({ message: "Wrong URL" });
+      } else if (unverified_user.local.verified) {
+        return res.status(200).json({ message: "Already Verified" });
+      }
+      await User.updateOne({ _id: decoded.sub }, { "local.verified": true });
+      return res.json({ message: "Successfully Verified" }); // Or send Token
+    } catch (err) {
+      return res.status(400).json({ message: "Wrong URL (catch)" });
+    }
+  },
+  recover: async (req, res, next) => {
+    try {
+      // const decoded = jwtDecode(req.params.token);
+      // let unverified_user = await User.findOne({ _id: decoded.sub });
+      // if (!unverified_user) {
+      //   return res.status(403).json({ message: "Wrong URL" });
+      // } else if (unverified_user.local.verified) {
+      //   return res.status(200).json({ message: "Already Verified" });
+      // }
+      // await User.updateOne({ _id: decoded.sub }, { "local.verified": true });
+      // return res.json({ message: "Successfully Verified" }); // Or send Token
+    } catch (err) {
+      // return res.status(400).json({ message: "Wrong URL (catch)" });
+    }
   }
 };

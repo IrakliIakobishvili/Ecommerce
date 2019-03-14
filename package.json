@@ -21,6 +21,7 @@
     "express-promise-router": "^2.0.0",
     "joi": "^10.6.0",
     "jsonwebtoken": "^7.4.1",
+    "jwt-decode": "^2.2.0",
     "mongoose": "^5.4.17",
     "morgan": "^1.8.2",
     "nodemailer": "^5.1.1",
