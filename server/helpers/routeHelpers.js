@@ -123,6 +123,16 @@ module.exports = {
     }),
     loginSchema: Joi.object().keys({
       ...emailAndPassword
+    }),
+    categorySchema: Joi.object().keys({
+      categoryID: Joi.string()
+        .min(1)
+        .max(20)
+        .required(),
+      title: Joi.string()
+        .min(1)
+        .max(20)
+        .required()
     })
   }
 };
