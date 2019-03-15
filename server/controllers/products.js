@@ -19,7 +19,7 @@ module.exports = {
       .catch(() => res.status(422).json({ message: "Can't Find Product" }));
   },
   update: (req, res, next) => {
-    Products.findOneAndUpdate({ _id: req.params.id }, req.body)
+    Products.findOneAndUpdate({ _id: req.params.id }, req.body) //req.value.body
       .then(product => res.json(product))
       .catch(() => res.status(422).json({ message: "Can't Update Product" }));
   },
