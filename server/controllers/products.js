@@ -2,7 +2,7 @@ const Products = require("../models/product");
 
 module.exports = {
   create: (req, res, next) => {
-    Products.create(req.body)
+    Products.create(req.value.body)
       .then(product => res.json(product))
       .catch(() => res.status(422).json({ message: "Can't create" }));
   },

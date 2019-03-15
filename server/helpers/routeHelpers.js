@@ -133,6 +133,68 @@ module.exports = {
         .min(1)
         .max(20)
         .required()
+    }),
+    productSchema: Joi.object().keys({
+      name: Joi.string()
+        .min(1)
+        .max(20)
+        .required(),
+      category: Joi.string()
+        .min(1)
+        .max(20)
+        .required(),
+      quantity: Joi.number().required(),
+      details: Joi.object().keys({
+        dimensions: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        weight: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        displayType: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        displaySize: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        displayResolution: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        cpu: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        internalMemory: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        ram: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        os: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        camera: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        color: Joi.string()
+          .min(1)
+          .max(20)
+          .required(),
+        price: Joi.number().required(),
+        photo: Joi.string()
+          .min(1)
+          .max(20)
+          .required()
+      })
     })
   }
 };

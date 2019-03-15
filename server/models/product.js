@@ -27,7 +27,6 @@ const productSchema = new Schema(
       internalMemory: String,
       ram: String,
       camera: String,
-      batery: String,
       color: String,
       price: Number,
       photo: String
