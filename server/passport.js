@@ -88,7 +88,7 @@ passport.use(
             firstName: profile.name.givenName,
             lastName: profile.name.familyName,
             balance: 0,
-            verified: false
+            verified: true
           }
         });
 
@@ -127,7 +127,7 @@ passport.use(
             firstName: profile.name.givenName,
             lastName: profile.name.familyName,
             balance: 0,
-            verified: false
+            verified: true
           }
         });
 
@@ -173,3 +173,49 @@ passport.use(
     }
   )
 );
+
+// passport.use(
+//   new LocalStrategy(
+//     {
+//       usernameField: "email"
+//     },
+//     async (email, password, done) => {
+//       await User.findOne({ "local.email": email }, function(err, user) {
+//         if (err) {
+//           return done(err);
+//         }
+//         if (!user) {
+//           return done(err, false, { message: "Incorrect username." });
+//         }
+//         if (!user.validPassword(password)) {
+//           return done(null, false, { message: "Incorrect password." });
+//         }
+//         return done(null, user);
+//       });
+//     }
+//   )
+// );
+
+// passport.use(
+//   new LocalStrategy(
+//     {
+//       usernameField: "email"
+//     },
+//     function(email, password, done) {
+//       User.findOne({ "local.email": email }, function(err, user) {
+//         if (err) {
+//           return done(err);
+//         }
+//         if (!user) {
+//           var error = new Error("User not found or wrong Credentials");
+//           return done(error, false, { message: error.message });
+//         }
+//         if (user.isValidPassword(password)) {
+//           return done(null, user);
+//         }
+//         var error = new Error("Invalid password");
+//         return done(null, false, { message: error.message });
+//       });
+//     }
+//   )
+// );
