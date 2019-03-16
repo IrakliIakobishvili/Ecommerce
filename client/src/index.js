@@ -1,23 +1,23 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import { BrowserRouter, Route, Switch } from "react-router-dom";
-// import { createStore, applyMiddleware, compose } from "redux";
-// import { Provider } from "react-redux";
-// import reduxThunk from "redux-thunk";
-// import axios from "axios";
-// import "./index.css";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
+import axios from "axios";
+import "./index.css";
 
-// import registerServiceWorker from "./registerServiceWorker";
-// import App from "./components/App";
+import registerServiceWorker from "./registerServiceWorker";
+import App from "./components/App";
 // import Home from "./components/Home";
-// import SignUp from "./components/SignUp";
-// import SignIn from "./components/SignIn";
-// import Profile from "./components/Profile";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
+import Profile from "./components/Profile";
 // import ProductDetails from "./components/ProductDetails";
 // import Cart from "./components/Cart";
-// import reducers from "./reducers";
+import reducers from "./reducers";
 
-// import authGuard from "./components/HOCs/authGuard";
+import authGuard from "./components/HOCs/authGuard";
 
 const jwtToken = localStorage.getItem("JWT_TOKEN");
 axios.defaults.headers.common["Authorization"] = jwtToken;
