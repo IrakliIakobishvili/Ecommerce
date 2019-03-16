@@ -1,12 +1,60 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import { BrowserRouter, Route, Switch } from "react-router-dom";
+// import { createStore, applyMiddleware, compose } from "redux";
+// import { Provider } from "react-redux";
+// import reduxThunk from "redux-thunk";
+// import axios from "axios";
+// import "./index.css";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// import registerServiceWorker from "./registerServiceWorker";
+// import App from "./components/App";
+// import Home from "./components/Home";
+// import SignUp from "./components/SignUp";
+// import SignIn from "./components/SignIn";
+// import Profile from "./components/Profile";
+// import ProductDetails from "./components/ProductDetails";
+// import Cart from "./components/Cart";
+// import reducers from "./reducers";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// import authGuard from "./components/HOCs/authGuard";
+
+const jwtToken = localStorage.getItem("JWT_TOKEN");
+axios.defaults.headers.common["Authorization"] = jwtToken;
+
+const initialState = {
+  auth: {
+    token: jwtToken,
+    isAuthenticated: jwtToken ? true : false
+  }
+};
+const middleware = [reduxThunk];
+
+ReactDOM.render(
+  <Provider
+    store={createStore(
+      reducers,
+      initialState,
+      compose(
+        applyMiddleware(...middleware),
+        window.__REDUX_DEVTOOLS_EXTENSION__ &&
+          window.__REDUX_DEVTOOLS_EXTENSION__()
+      )
+    )}
+  >
+    <BrowserRouter>
+      <App>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route exact path="/cart" component={authGuard(Cart)} />
+          <Route exact path="/profile" component={authGuard(Profile)} />
+          <Route exact path="/product/:id" component={ProductDetails} />
+        </Switch>
+      </App>
+    </BrowserRouter>
+  </Provider>,
+  document.querySelector("#root")
+);
+registerServiceWorker();

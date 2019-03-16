@@ -52,7 +52,7 @@ module.exports = {
     return (req, res, next) => {
       const result = Joi.validate(req.body, schema);
       if (result.error) {
-        return res.status(400).json(result.error.details[0].message);
+        return res.status(409).json(result.error.details[0].message);
         // return res.status(400).json({error: result.error.details[0].message});
       }
 

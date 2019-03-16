@@ -33,9 +33,9 @@ function passportSignInChecker(req, res, next) {
   passport.authenticate("local", function(err, user, info) {
     if (err) return next(err);
     if (!user) {
-      return res.status(401).json({ message: "Email or Password is wrong!" });
+      return res.status(401).json("Email or Password is wrong!");
     } else if (!user.local.verified) {
-      return res.status(401).json({ message: "Unverified Account!" });
+      return res.status(401).json("Unverified Account!");
     } else {
       req.user = user;
       next();
@@ -69,7 +69,7 @@ router.route("/oauth/google").post(passportGoogle, UsersController.googleOAuth);
 router.route("/oauth/facebook").post(passportFB, UsersController.facebookOAuth);
 
 router.route("/").get(passportJWT_Admin, UsersController.findAll);
-router.route("/secret").get(passportJWT_User, UsersController.secret);
+router.route("/profile").get(passportJWT_User, UsersController.profile);
 
 router.route("/verify/:token").get(UsersController.verify);
 router.route("/recover").get(UsersController.recover);

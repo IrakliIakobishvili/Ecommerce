@@ -22,7 +22,7 @@ module.exports = {
       "local.email": req.value.body.email
     });
     if (foundUser) {
-      return res.status(403).json({ error: "Email is already in use" });
+      return res.status(409).json("Email is already in use");
     }
 
     // Create a new user
@@ -44,13 +44,15 @@ module.exports = {
     )
       .then(function(response) {
         console.info(response);
-        res.status(200).json({ message: "Please Verify your Email" });
+        res.status(200).json("Please Verify your Email");
       })
       .catch(function(error) {
         console.info(error);
-        res
-          .status(400)
-          .json({ error: "Email could not be sent, try to login" });
+        // User.findByIdAndRemove({ _id: newUser_id }, function(err, docs) {
+        //   if (err) res.json(err);
+        //   else console.log(docs);
+        // });
+        res.status(409).json("Email sending failed, try later");
       });
   },
 
@@ -79,14 +81,16 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  secret: async (req, res, next) => {
+  profile: async (req, res, next) => {
     console.log("I managed to get here!");
     let loggedUser = await User.findOne({ _id: req.user.id });
     // console.log(req.user);
     loggedUser = loggedUser[loggedUser.method];
 
-    console.log(loggedUser);
-    res.json({ secter_page: "resource" });
+    // console.log(loggedUser);
+    res.json({
+      profilePageInfo: `Response From Server API | Email: ${loggedUser.email}`
+    });
   },
 
   verify: async (req, res, next) => {
