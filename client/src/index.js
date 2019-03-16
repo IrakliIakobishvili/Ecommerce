@@ -9,12 +9,12 @@ import "./index.css";
 
 import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
-// import Home from "./components/Home";
+import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Profile from "./components/Profile";
-// import ProductDetails from "./components/ProductDetails";
-// import Cart from "./components/Cart";
+import ProductDetails from "./components/ProductDetails";
+import Cart from "./components/Cart";
 import reducers from "./reducers";
 
 import authGuard from "./components/HOCs/authGuard";
