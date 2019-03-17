@@ -3,7 +3,8 @@ import {
   AUTH_SIGN_UP,
   AUTH_SIGN_OUT,
   AUTH_SIGN_IN,
-  AUTH_ERROR,
+  REGISTER_ERROR,
+  LOGIN_ERROR,
   AUTH_SUCCESS
 } from "./types";
 import { API_URL } from "../config";
@@ -48,18 +49,18 @@ export const signUp = data => {
         console.log(res.data);
         dispatch({
           type: AUTH_SUCCESS,
-          payload: "OK"
+          payload: "Please verify your Email"
         });
       })
       .catch(function(error) {
         if (error.response.status === 409) {
           dispatch({
-            type: AUTH_ERROR,
+            type: REGISTER_ERROR,
             payload: error.response.data
           });
         } else {
           dispatch({
-            type: AUTH_ERROR,
+            type: REGISTER_ERROR,
             payload: "Something Wrong, Try Later"
           });
         }
@@ -89,12 +90,12 @@ export const signIn = data => {
       .catch(function(error) {
         if (error.response.status === 401 || error.response.status === 409) {
           dispatch({
-            type: AUTH_ERROR,
+            type: LOGIN_ERROR,
             payload: error.response.data
           });
         } else {
           dispatch({
-            type: AUTH_ERROR,
+            type: LOGIN_ERROR,
             payload: "Something Wrong, Try Later"
           });
         }

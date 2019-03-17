@@ -100,6 +100,8 @@ class SignUp extends Component {
 
               {this.props.errorMessage ? (
                 <div className="">{this.props.errorMessage}</div>
+              ) : this.props.successMessage ? (
+                <div className="">{this.props.successMessage}</div>
               ) : null}
 
               <button type="submit" className="">
@@ -134,7 +136,7 @@ class SignUp extends Component {
 
 function mapStateToProps(state) {
   return {
-    errorMessage: state.auth.errorMessage,
+    errorMessage: state.auth.registerError,
     successMessage: state.auth.success
   };
 }

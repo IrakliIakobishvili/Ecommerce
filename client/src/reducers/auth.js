@@ -2,14 +2,16 @@ import {
   AUTH_SIGN_UP,
   AUTH_SIGN_OUT,
   AUTH_SIGN_IN,
-  AUTH_ERROR,
+  REGISTER_ERROR,
+  LOGIN_ERROR,
   AUTH_SUCCESS
 } from "../actions/types";
 
 const DEFAULT_STATE = {
   isAuthenticated: false,
   token: "",
-  errorMessage: ""
+  registerError: "",
+  loginError: ""
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -19,30 +21,34 @@ export default (state = DEFAULT_STATE, action) => {
         ...state,
         token: action.payload,
         isAuthenticated: true,
-        errorMessage: ""
+        registerError: ""
       };
     case AUTH_SIGN_IN:
       return {
         ...state,
         token: action.payload,
         isAuthenticated: true,
-        errorMessage: ""
+        loginError: ""
       };
     case AUTH_SIGN_OUT:
       return {
         ...state,
         token: action.payload,
         isAuthenticated: false,
-        errorMessage: ""
+        registerError: "",
+        loginrError: ""
       };
     case AUTH_SUCCESS:
       return {
         ...state,
         success: action.payload,
-        errorMessage: ""
+        registerError: "",
+        loginrError: ""
       };
-    case AUTH_ERROR:
-      return { ...state, errorMessage: action.payload };
+    case REGISTER_ERROR:
+      return { ...state, registerError: action.payload };
+    case LOGIN_ERROR:
+      return { ...state, loginError: action.payload };
     default:
       return state;
   }
