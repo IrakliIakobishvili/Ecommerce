@@ -35,6 +35,14 @@ class Header extends Component {
               </li>
             </ul>
 
+            <ul className="">
+              <li className="nav-item">
+                <Link className="" to="/contact">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+
             <ul className="auth-list">
               {!this.props.isAuth
                 ? [
