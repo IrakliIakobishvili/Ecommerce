@@ -13,4 +13,6 @@ router
   .put(ProductController.update)
   .delete(ProductController.remove);
 
+router.route("/category/:id").get(ProductController.findByCat);
+
 module.exports = router;

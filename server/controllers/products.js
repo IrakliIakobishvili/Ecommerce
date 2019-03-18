@@ -18,6 +18,11 @@ module.exports = {
       .then(product => res.json(product))
       .catch(() => res.status(422).json({ message: "Can't Find Product" }));
   },
+  findByCat: function(req, res, next) {
+    Products.find({ category: req.params.id })
+      .then(product => res.json(product))
+      .catch(() => res.status(422).json({ message: "Can't Find Product" }));
+  },
   update: (req, res, next) => {
     Products.findOneAndUpdate({ _id: req.params.id }, req.body) //req.value.body
       .then(product => res.json(product))

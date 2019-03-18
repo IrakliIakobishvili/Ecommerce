@@ -18,3 +18,8 @@
 .categories__list__item:last-child {
     border-bottom: 1px solid red;
 }
+
+.active {
+    background: red;
+    color: green;
+}

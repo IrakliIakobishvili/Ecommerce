@@ -22,3 +22,16 @@ export const getCategories = () => {
     }
   };
 };
+
+export const detectActiveLink = category => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: "DETECT_ACTIVELINK",
+        payload: category
+      });
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
+};

@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Link, Route, Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Product from "./Product";
 import Categories from "./Categories";
 import "../styles/home.css";
@@ -22,7 +22,9 @@ class Home extends Component {
       <h1>Loading...</h1>
     ) : this.props.error ? (
       <h1>{this.props.error}</h1>
-    ) : null;
+    ) : (
+      <h1>Empty</h1>
+    );
 
     return (
       <div className="home-page">

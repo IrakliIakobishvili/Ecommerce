@@ -16,7 +16,9 @@ import Profile from "./components/Profile";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import reducers from "./reducers";
+
 import Categories from "./components/Categories";
+
 import authGuard from "./components/HOCs/authGuard";
 
 const jwtToken = localStorage.getItem("JWT_TOKEN");
@@ -46,13 +48,12 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path="/" component={Home} />
+          {/* <Route exact path="/:cat" component={Categories} /> */}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/cart" component={authGuard(Cart)} />
           <Route exact path="/profile" component={authGuard(Profile)} />
           <Route exact path="/product/:id" component={ProductDetails} />
-          {/* <Route exact path="/category/:name" component={Categories} /> */}
-          {/* <Route path="*" component={SignIn} /> */}
         </Switch>
       </App>
     </BrowserRouter>

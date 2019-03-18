@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { addToCart } from "../actions/cart";
 import { getProductDetails } from "../actions/products";
 
+import Categories from "./Categories";
+
 class Movie extends Component {
   async componentDidMount() {
     this.props.getProductDetails(this.props.match.params.id);
@@ -56,6 +58,7 @@ class Movie extends Component {
       <div className="details-page">
         <div className="container">
           <h1>Details Page</h1>
+          <Categories />
           {productDetails}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions/auth";
 
@@ -44,9 +44,13 @@ class Header extends Component {
                       </Link>
                     </li>,
                     <li className="nav-item" key="signin">
-                      <Link className="" to="/signin">
+                      <NavLink
+                        className=""
+                        to="/signin"
+                        activeClassName="active"
+                      >
                         Sign In
-                      </Link>
+                      </NavLink>
                     </li>
                   ]
                 : null}
