@@ -6,11 +6,42 @@ import {
   CONNECTION_ERROR
 } from "./types";
 
+export const getCategoryAndProducts = () => {
+  return async dispatch => {
+    try {
+      axios
+        .get(`${API_URL}/api/products`)
+        .then(res => {
+          console.log("products from all start");
+          console.log(res.data);
+          console.log("products from all end");
+          // dispatch({
+          //   type: PRODUCTS_GET_DATA,
+          //   payload: res.data
+          // });
+
+          return axios.get(`${API_URL}/api/categories`);
+        })
+        .then(res => {
+          console.log("categories start");
+          console.log(res.data);
+          console.log("categories end");
+        });
+    } catch (err) {
+      console.error("err", err);
+      dispatch({
+        type: CONNECTION_ERROR,
+        payload: "Network error, API is Unavailable (From product.js (catch))"
+      });
+    }
+  };
+};
+
 export const getProducts = () => {
   return async dispatch => {
     try {
       const res = await axios.get(`${API_URL}/api/products/`);
-      console.log(res.data);
+      // console.log(res.data);
 
       dispatch({
         type: PRODUCTS_GET_DATA,
@@ -26,12 +57,32 @@ export const getProducts = () => {
   };
 };
 
+// export const getCategories = () => {
+//   return async dispatch => {
+//     try {
+//       const res = await axios.get(`${API_URL}/api/getCategories`);
+//       console.log(res.data);
+
+//       // dispatch({
+//       //   type: PRODUCTS_GET_DATA,
+//       //   payload: res.data
+//       // });
+//     } catch (err) {
+//       console.error("err", err);
+//       dispatch({
+//         type: CONNECTION_ERROR,
+//         payload: "Network error, API is Unavailable (From product.js (catch))"
+//       });
+//     }
+//   };
+// };
+
 export const getProductDetails = id => {
   return async dispatch => {
     try {
       const res = await axios.get(`${API_URL}/api/products/${id}`);
       console.log("DATA");
-      console.log(res.data);
+      // console.log(res.data);
       dispatch({
         type: PRODUCT_GET_DETAILS,
         payload: res.data

@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, Route, Router } from "react-router-dom";
 import Product from "./Product";
+import Categories from "./Categories";
+import "../styles/home.css";
 
 import { getProducts } from "../actions/products";
 
@@ -24,7 +26,10 @@ class Home extends Component {
 
     return (
       <div className="home-page">
-        <div className="container">{result}</div>
+        <div className="container">
+          <Categories />
+          <div className="products">{result}</div>
+        </div>
       </div>
     );
   }

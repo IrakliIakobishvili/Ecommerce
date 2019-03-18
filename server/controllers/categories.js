@@ -24,7 +24,7 @@ module.exports = {
     if (!allCategory) {
       return res.status(403).json({ message: "Category is Empty" });
     } else {
-      return res.status(200).json({ allCategory });
+      return res.status(200).json(allCategory);
     }
   },
   update: async (req, res, next) => {

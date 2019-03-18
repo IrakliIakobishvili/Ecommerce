@@ -15,3 +15,5 @@ router
   .delete(CategoryController.remove);
 
 module.exports = router;
+
+//getWithProducts
