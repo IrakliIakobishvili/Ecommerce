@@ -1,15 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import classNames from "classnames";
+// import classNames from "classnames";
 import "../styles/categories.css";
 
 import { getCategories, detectActiveLink } from "../actions/categories";
-import { getProductsByCat } from "../actions/products";
+import { getProducts, getProductsByCat } from "../actions/products";
 
 class Categories extends Component {
   async componentDidMount() {
     this.props.getCategories();
+    // this.props.getProducts();
   }
   shouldComponentUpdate(nextProps, nextState) {
     return nextProps.isLoading !== this.props.isLoading;
@@ -19,6 +20,7 @@ class Categories extends Component {
     console.log(this.props.active);
   }
   linkClick = cat => {
+    // this.props.setLoadingTrue();
     this.props.getProductsByCat(cat);
     this.props.detectActiveLink(cat);
   };
@@ -46,6 +48,7 @@ class Categories extends Component {
 
     return (
       <nav className="categories">
+        <h3>Category</h3>
         <ul className="categories_list">{result}</ul>
       </nav>
     );
@@ -63,5 +66,10 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getCategories, getProductsByCat, detectActiveLink }
+  {
+    getCategories,
+    getProducts,
+    getProductsByCat,
+    detectActiveLink
+  }
 )(withRouter(Categories));

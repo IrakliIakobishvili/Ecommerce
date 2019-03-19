@@ -1,8 +1,8 @@
 .categories {
-    width: 250px;
+    /* width: 250px;
+    margin-right: 5px; */
     /*border: 1px solid red;
     margin-right: 5px; */
-    margin-right: 5px;
 }
 
 .categories__list__item a {

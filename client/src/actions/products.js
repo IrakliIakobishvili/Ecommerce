@@ -3,6 +3,9 @@ import { API_URL } from "../config";
 import {
   PRODUCTS_GET_DATA,
   PRODUCT_GET_DETAILS,
+  GET_FILTERED_PRODUCT,
+  LOADING_TRUE,
+  CLEAR_PRODUCTS_DB,
   CONNECTION_ERROR
 } from "./types";
 
@@ -60,7 +63,30 @@ export const getProducts = () => {
 export const getProductsByCat = id => {
   return async dispatch => {
     try {
+      dispatch({
+        type: LOADING_TRUE,
+        payload: true
+      });
       const res = await axios.get(`${API_URL}/api/products/category/${id}`);
+      // console.log(res.data);
+      dispatch({
+        type: PRODUCTS_GET_DATA,
+        payload: res.data
+      });
+    } catch (err) {
+      console.error("err", err);
+      dispatch({
+        type: CONNECTION_ERROR,
+        payload: "Network error, API is Unavailable (From product.js (catch))"
+      });
+    }
+  };
+};
+
+export const getFilteredProducts = params => {
+  return async dispatch => {
+    try {
+      const res = await axios.post(`${API_URL}/api/products`, { params });
       console.log(res.data);
 
       dispatch({
@@ -76,6 +102,15 @@ export const getProductsByCat = id => {
     }
   };
 };
+
+// export const setLoadingTrue = () => {
+//   return async dispatch => {
+//     dispatch({
+//       type: LOADING_TRUE,
+//       payload: true
+//     });
+//   };
+// };
 
 // export const getCategories = () => {
 //   return async dispatch => {
@@ -100,8 +135,12 @@ export const getProductsByCat = id => {
 export const getProductDetails = id => {
   return async dispatch => {
     try {
+      dispatch({
+        type: LOADING_TRUE,
+        payload: true
+      });
       const res = await axios.get(`${API_URL}/api/products/${id}`);
-      console.log("DATA");
+      // console.log("DATA");
       // console.log(res.data);
       dispatch({
         type: PRODUCT_GET_DETAILS,

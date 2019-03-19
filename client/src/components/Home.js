@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Product from "./Product";
 import Categories from "./Categories";
+import Filter from "./Filter";
 import "../styles/home.css";
 
 import { getProducts } from "../actions/products";
@@ -29,7 +30,10 @@ class Home extends Component {
     return (
       <div className="home-page">
         <div className="container">
-          <Categories />
+          <div className="left-side">
+            <Categories />
+            <Filter />
+          </div>
           <div className="products">{result}</div>
         </div>
       </div>

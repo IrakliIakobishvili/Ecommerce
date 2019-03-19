@@ -4,6 +4,11 @@
     align-items: flex-start;
 }
 
+.left-side {
+    width: 250px;
+    margin-right: 5px;
+}
+
 .products {
     flex: 1;
 }

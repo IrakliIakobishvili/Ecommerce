@@ -13,6 +13,9 @@ class Header extends Component {
   // componentDidUpdate() {
   //   this.checkAuth();
   // }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return false;
+  // }
 
   signOut = () => {
     this.props.signOut();
@@ -25,7 +28,6 @@ class Header extends Component {
           <Link className="logo" to="/">
             LOGO
           </Link>
-
           <div className="">
             <ul className="">
               <li className="nav-item">
