@@ -9,6 +9,10 @@
     margin-right: 5px;
 }
 
-.products {
+.right-side {
     flex: 1;
+}
+
+.products {
+    /* flex: 1; */
 }

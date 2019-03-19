@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Product from "./Product";
 import Categories from "./Categories";
 import Filter from "./Filter";
+import Search from "./Search";
 import "../styles/home.css";
 
 import { getProducts } from "../actions/products";
@@ -34,7 +35,10 @@ class Home extends Component {
             <Categories />
             <Filter />
           </div>
-          <div className="products">{result}</div>
+          <div className="right-side">
+            <Search />
+            <div className="products">{result}</div>
+          </div>
         </div>
       </div>
     );

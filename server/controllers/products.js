@@ -34,5 +34,13 @@ module.exports = {
       .then(product => product.remove())
       .then(product => res.json(product))
       .catch(err => res.status(422).json(err));
+  },
+  findByTitle: (req, res, next) => {
+    Products.find(
+      { name: { $regex: req.params.title, $options: "i" } },
+      function(err, docs) {
+        res.status(200).json(docs);
+      }
+    );
   }
 };

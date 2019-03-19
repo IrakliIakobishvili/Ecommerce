@@ -83,6 +83,24 @@ export const getProductsByCat = id => {
   };
 };
 
+export const getProductsByTitle = title => {
+  return async dispatch => {
+    try {
+      const res = await axios.get(`${API_URL}/api/products/title/${title}`);
+      dispatch({
+        type: PRODUCTS_GET_DATA,
+        payload: res.data
+      });
+    } catch (err) {
+      console.error("err", err);
+      dispatch({
+        type: CONNECTION_ERROR,
+        payload: "Network error, API is Unavailable (From product.js (catch))"
+      });
+    }
+  };
+};
+
 export const getFilteredProducts = params => {
   return async dispatch => {
     try {

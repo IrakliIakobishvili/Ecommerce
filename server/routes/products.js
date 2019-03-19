@@ -22,6 +22,8 @@ router
   .put(passportJWT_Admin, ProductController.update)
   .delete(passportJWT_Admin, ProductController.remove);
 
+router.route("/title/:title").get(ProductController.findByTitle);
+
 router.route("/category/:id").get(ProductController.findByCat);
 
 module.exports = router;
