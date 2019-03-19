@@ -18,6 +18,8 @@ import Cart from "./components/Cart";
 import Contact from "./components/Contact";
 import reducers from "./reducers";
 
+import Categories from "./components/Categories";
+
 import authGuard from "./components/HOCs/authGuard";
 
 const jwtToken = localStorage.getItem("JWT_TOKEN");
@@ -30,6 +32,11 @@ const initialState = {
   }
 };
 const middleware = [reduxThunk];
+
+/////
+// const { whyDidYouUpdate } = require("why-did-you-update");
+// whyDidYouUpdate(React);
+/////
 
 ReactDOM.render(
   <Provider
@@ -47,6 +54,7 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path="/" component={Home} />
+          {/* <Route exact path="/:cat" component={Categories} /> */}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/cart" component={authGuard(Cart)} />

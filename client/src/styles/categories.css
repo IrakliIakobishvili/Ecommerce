@@ -1,0 +1,25 @@
+.categories {
+    /* width: 250px;
+    margin-right: 5px; */
+    /*border: 1px solid red;
+    margin-right: 5px; */
+}
+
+.categories__list__item a {
+    border-bottom: dashed green 1px;
+    padding: 8px;
+    /* width: 250px; */
+    border: 1px solid red;
+    border-bottom: none;
+    display: block;
+    text-decoration: none;
+}
+
+.categories__list__item:last-child {
+    border-bottom: 1px solid red;
+}
+
+.active {
+    background: red;
+    color: green;
+}

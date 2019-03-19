@@ -1,12 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../styles/product.css";
 
 export default function Product({ product }) {
   return (
-    <div
-      className="product__item"
-      style={{ border: "1px solid green", margin: "5px", padding: "5px" }}
-    >
+    <div className="product__item">
       <Link to={`/product/${product._id}`}>
         <div>{product.name}</div>
       </Link>

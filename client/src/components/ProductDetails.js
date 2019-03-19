@@ -5,10 +5,18 @@ import { connect } from "react-redux";
 import { addToCart } from "../actions/cart";
 import { getProductDetails } from "../actions/products";
 
+import Categories from "./Categories";
+
 class Movie extends Component {
   async componentDidMount() {
     this.props.getProductDetails(this.props.match.params.id);
   }
+
+  cartBtnHandler = productId => {
+    this.props.isAuth
+      ? this.props.addToCart(productId)
+      : this.props.history.push("/signin");
+  };
 
   render() {
     // const result = products.length ? (
@@ -31,11 +39,16 @@ class Movie extends Component {
           <li>Name: {details.name}</li>
           <li>Category: {details.category}</li>
 
-          {this.props.isAuth ? (
+          {/* {this.props.isAuth ? (
             <button onClick={() => this.props.addToCart(details._id)}>
               Add to Cart
             </button>
-          ) : null}
+          ) : null} */}
+          {/* {this.props.isAuth ? ( */}
+          <button onClick={() => this.cartBtnHandler(details._id)}>
+            Add to Cart
+          </button>
+          {/* ) : null} */}
 
           <li>
             {/* <button
@@ -56,6 +69,7 @@ class Movie extends Component {
       <div className="details-page">
         <div className="container">
           <h1>Details Page</h1>
+          {/* <Categories /> */}
           {productDetails}
         </div>
       </div>

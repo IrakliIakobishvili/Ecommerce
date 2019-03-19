@@ -2,6 +2,10 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Product from "./Product";
+import Categories from "./Categories";
+import Filter from "./Filter";
+import Search from "./Search";
+import "../styles/home.css";
 
 import { getProducts } from "../actions/products";
 
@@ -20,11 +24,22 @@ class Home extends Component {
       <h1>Loading...</h1>
     ) : this.props.error ? (
       <h1>{this.props.error}</h1>
-    ) : null;
+    ) : (
+      <h1>Empty</h1>
+    );
 
     return (
       <div className="home-page">
-        <div className="container">{result}</div>
+        <div className="container">
+          <div className="left-side">
+            <Categories />
+            <Filter />
+          </div>
+          <div className="right-side">
+            <Search />
+            <div className="products">{result}</div>
+          </div>
+        </div>
       </div>
     );
   }
