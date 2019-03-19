@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { Link, NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../actions/auth";
+// import {signIn,signUp,oauthFacebook,oauthGoogle,signOut} from "../actions/auth";
+import * as authActions from "../actions/auth";
+import { getCategories } from "../actions/categories";
+import { getProducts } from "../actions/products";
 
 class Header extends Component {
   // checkAuth() {
@@ -16,16 +19,31 @@ class Header extends Component {
   // shouldComponentUpdate(nextProps, nextState) {
   //   return false;
   // }
+  // async componentDidMount() {
+  //   this.props.getCategories();
+  //   this.props.getProducts();
+  //   // console.log(this.props);
+  // }
+  reloadCatAndProds = async () => {
+    this.props.getCategories();
+    this.props.getProducts();
+    // console.log("ss");
+  };
 
   signOut = () => {
     this.props.signOut();
+    // console.log(this.props);
   };
 
   render() {
     return (
       <header className="main-header">
         <div className="container">
-          <Link className="logo" to="/">
+          <Link
+            className="logo"
+            onClick={() => this.reloadCatAndProds()}
+            to="/"
+          >
             LOGO
           </Link>
           <div className="">
@@ -94,5 +112,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  actions
+  { ...authActions, getCategories, getProducts }
 )(Header);

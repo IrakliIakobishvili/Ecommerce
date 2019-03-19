@@ -34,8 +34,8 @@ const initialState = {
 const middleware = [reduxThunk];
 
 /////
-const { whyDidYouUpdate } = require("why-did-you-update");
-whyDidYouUpdate(React);
+// const { whyDidYouUpdate } = require("why-did-you-update");
+// whyDidYouUpdate(React);
 /////
 
 ReactDOM.render(

@@ -12,6 +12,12 @@ class Movie extends Component {
     this.props.getProductDetails(this.props.match.params.id);
   }
 
+  cartBtnHandler = productId => {
+    this.props.isAuth
+      ? this.props.addToCart(productId)
+      : this.props.history.push("/signin");
+  };
+
   render() {
     // const result = products.length ? (
     //   products.map(product => {
@@ -33,11 +39,16 @@ class Movie extends Component {
           <li>Name: {details.name}</li>
           <li>Category: {details.category}</li>
 
-          {this.props.isAuth ? (
+          {/* {this.props.isAuth ? (
             <button onClick={() => this.props.addToCart(details._id)}>
               Add to Cart
             </button>
-          ) : null}
+          ) : null} */}
+          {/* {this.props.isAuth ? ( */}
+          <button onClick={() => this.cartBtnHandler(details._id)}>
+            Add to Cart
+          </button>
+          {/* ) : null} */}
 
           <li>
             {/* <button

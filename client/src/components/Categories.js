@@ -12,12 +12,12 @@ class Categories extends Component {
     this.props.getCategories();
     // this.props.getProducts();
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.isLoading !== this.props.isLoading;
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   // return nextProps.isLoading !== this.props.isLoading;
+  // }
   componentWillReceiveProps() {
     // console.log("ppp");
-    console.log(this.props.active);
+    // console.log(this.props.active);
   }
   linkClick = cat => {
     // this.props.setLoadingTrue();

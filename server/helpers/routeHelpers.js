@@ -192,7 +192,7 @@ module.exports = {
         price: Joi.number().required(),
         photo: Joi.string()
           .min(1)
-          .max(20)
+          .max(60)
           .required()
       })
     })
