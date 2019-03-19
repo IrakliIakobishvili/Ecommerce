@@ -80,24 +80,8 @@ module.exports = {
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
-
-  // update: (req, res, next) => {
-  //   // User.findOneAndUpdate({"local.firstName": req.body.firstName }, req.body) //req.value.body 
-  //   //   .then(user => res.json(user))
-  //   //   .catch(() => res.status(422).json({ message: "Can't Update user" }));
-  // //   User.findOneAndUpdate({email: 'ramnishvneloba@gmail.com'}, {$set:{
-  // //     firstName:req.body.firstName
-  // //   }}, (err, doc) => {
-  // //     if (err) {
-  // //         console.log("Something wrong when updating data!");
-  // //     }
-    
-  // //     console.log(doc);
-  // // });
-
-  // },
   update: function(req, res) {
-    User.findOneAndUpdate({ _id: req.params.id }, req.body)
+    User.findOneAndUpdate({ _id: req.params.id }, {local:req.body})
       .then(user => res.json(user))
       .catch(err => res.status(422).json("Can't Update"));
   },
