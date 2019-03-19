@@ -13,18 +13,6 @@
 }
 
 .main-header {
-<<<<<<< HEAD
-  height: 80px;
-  background-color: #fff;
-  color: #fff;
-  padding: 0px 50px;
-  border-bottom: 2px solid #e5e6eb;
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  z-index: 99999;
-=======
     height: 60px;
     background-color: #fff;
     color: #fff;
@@ -35,7 +23,6 @@
     top: 0px;
     width: 100%;
     z-index: 99999;
->>>>>>> 4ebc1a2494859a6e6c2640a098f0ab40ef6e10d5
 }
 
 .main-header .container {
@@ -189,12 +176,6 @@ ul.movie-box__list {
 /*-------------- Signup ---------------*/
 
 .signup-page .container {
-<<<<<<< HEAD
   display: flex;
   flex-direction: column;
-}
-=======
-    display: flex;
-    flex-direction: column;
-}
->>>>>>> 4ebc1a2494859a6e6c2640a098f0ab40ef6e10d5
+} 

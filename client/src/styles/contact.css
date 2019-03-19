@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 
-<<<<<<< HEAD:client/src/style/contact.css
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -37,7 +36,7 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
 }
 
-input {
+.contact-page input {
   display: block;
   border: 0;
   outline: 0;
@@ -47,7 +46,7 @@ input {
   padding: 15px 130px;
 }
 
-label {
+.contact-page label {
   color: rgb(109, 109, 109);
 }
 
@@ -83,8 +82,3 @@ label {
     rgb(214, 183, 9)
   );
 }
-=======
-.contact-page input {
-  display: block;
-}
->>>>>>> 4ebc1a2494859a6e6c2640a098f0ab40ef6e10d5:client/src/styles/contact.css

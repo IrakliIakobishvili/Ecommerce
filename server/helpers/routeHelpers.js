@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 const emailAndPassword = {
   email: Joi.string()
-    .email({ minDomainAtoms: 2 })
+    // .email({ minDomainAtoms: 2 })
     .required()
     .error(errors => {
       errors.forEach(err => {
