@@ -9,7 +9,7 @@ import { oauth } from "../config";
 
 import * as actions from "../actions/auth";
 import CustomInput from "./CustomInput";
-import "../styles/signup.css";
+import "../styles/auth.css";
 
 class SignUp extends Component {
   onSubmit = async formData => {
@@ -39,12 +39,12 @@ class SignUp extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="signup-page">
+      <div className="auth-page">
         <div className="container">
-          <div className="signup-form">
-            <div className="signup-form__left">
-              <h2 className="signup-heading">Sign Up</h2>
-              <div className="signup-page__local">
+          <div className="auth-form">
+            <div className="auth-form__left">
+              <h2 className="auth-heading">Sign Up</h2>
+              <div className="auth-page__local">
                 <form onSubmit={handleSubmit(this.onSubmit)}>
                   <div className="input-cont">
                     <i className="fas fa-user" />
@@ -153,13 +153,13 @@ class SignUp extends Component {
                       I agree all statements in <a href="#">Terms of service</a>
                     </span>
                   </div>
-                  <button type="submit" className="register-btn">
+                  <button type="submit" className="auth-btn">
                     Register
                   </button>
                 </form>
               </div>
             </div>
-            <div className="signup-form__right">
+            <div className="auth-form__right signup-img">
               <Link className="member-link" to="/signin">
                 I am already member
               </Link>

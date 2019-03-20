@@ -4,10 +4,12 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
+import { Link } from "react-router-dom";
 import { oauth } from "../config";
 
 import * as actions from "../actions/auth";
 import CustomInput from "./CustomInput";
+import "../styles/auth.css";
 
 class SignIn extends Component {
   onSubmit = async formData => {
@@ -34,52 +36,79 @@ class SignIn extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div className="login-page">
+      <div className="auth-page">
         <div className="container">
-          <div className="login-page__local">
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-              <Field
-                name="email"
-                type="text"
-                id="email"
-                label="Enter your email"
-                placeholder="example@example.com"
-                component={CustomInput}
-              />
-              <Field
-                name="password"
-                type="password"
-                id="password"
-                label="Enter your password"
-                placeholder="yoursuperpassword"
-                component={CustomInput}
-              />
+          <div className="auth-form">
+            <div className="signin-img auth-form__left">
+              <Link className="member-link" to="/signup">
+                Create an account
+              </Link>
+            </div>
+            <div className="auth-form__left">
+              <h2 className="auth-heading">Sign In</h2>
+              <form onSubmit={handleSubmit(this.onSubmit)}>
+                <div className="input-cont">
+                  <i className="fas fa-envelope" />
+                  <Field
+                    name="email"
+                    type="text"
+                    id="email"
+                    placeholder="Your Email"
+                    component={CustomInput}
+                  />
+                </div>
+                <div className="input-cont">
+                  <i className="fas fa-lock" />
+                  <Field
+                    name="password"
+                    type="password"
+                    id="password"
+                    placeholder="Your Password"
+                    component={CustomInput}
+                  />
+                </div>
 
-              {this.props.errorMessage ? (
-                <div className="">{this.props.errorMessage}</div>
-              ) : null}
+                {this.props.errorMessage ? (
+                  <div className="">{this.props.errorMessage}</div>
+                ) : null}
 
-              <button type="submit" className="btn btn-primary">
-                Sign In
-              </button>
-            </form>
-          </div>
-          <div className="login-page__social">
-            <h3>Or sign in using third-party services</h3>
-            <FacebookLogin
-              appId={oauth.facebook.clientID}
-              textButton="Facebook"
-              fields="name,email,picture"
-              callback={this.responseFacebook}
-              cssClass=""
-            />
-            <GoogleLogin
-              clientId={oauth.google.clientID}
-              buttonText="Google"
-              onSuccess={this.responseGoogle}
-              onFailure={this.responseGoogle}
-              className=""
-            />
+                <div className="agreement">
+                  <div className="chackbox">
+                    <input id="agree" type="checkbox" defaultChecked />
+                  </div>
+                  <span>Remember me</span>
+                </div>
+                <button type="submit" className="auth-btn">
+                  Sign In
+                </button>
+
+                <div className="login-page__social">
+                  <span className="desc">Or login with</span>
+                  <FacebookLogin
+                    appId={oauth.facebook.clientID}
+                    textButton=""
+                    fields="name,email,picture"
+                    callback={this.responseFacebook}
+                    cssClass="facebook-btn"
+                    icon="fab fa-facebook-f"
+                  />
+                  <GoogleLogin
+                    clientId={oauth.google.clientID}
+                    buttonText=""
+                    render={renderProps => (
+                      <button
+                        className="google-btn"
+                        onClick={renderProps.onClick}
+                      >
+                        <i className="fab fa-google" />
+                      </button>
+                    )}
+                    onSuccess={this.responseGoogle}
+                    onFailure={this.responseGoogle}
+                  />
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>

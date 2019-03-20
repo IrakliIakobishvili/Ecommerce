@@ -188,11 +188,11 @@ ul.movie-box__list {
 
 /*------- Common Style --------*/
 
-.signup-page {
+.auth-page {
     height: calc(100vh - 80px);
 }
 
-.signup-page .container {
+.auth-page .container {
     display: flex;
     align-items: center;
     justify-content: center;
