@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const { MONGODB_URI } = require("./configuration");
 
-// To fix all deprecation warnings
+// Fix all Deprecation Warnings
 mongoose.set("useNewUrlParser", true);
 mongoose.set("useFindAndModify", false);
 mongoose.set("useCreateIndex", true);
@@ -23,12 +23,13 @@ app.use("/api/users", require("./routes/users"));
 app.use("/api/admin", require("./routes/admin"));
 app.use("/api/categories", require("./routes/categories"));
 app.use("/api/products", require("./routes/products"));
+app.use("/api/cart", require("./routes/cart"));
 
 app.get("/", (req, res) => {
   res.send("Ecommerce Website API");
 });
 
-// Start the server
+// Start the Server
 const port = process.env.PORT || 5000;
 app.listen(port);
 console.log(`Server listening at Port ${port}`);

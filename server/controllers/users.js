@@ -80,6 +80,23 @@ module.exports = {
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
+  findById: function(req, res, next) {
+    User.findById(req.params.id)
+      .then(user => res.json(user))
+      .catch(() => res.status(422).json("Can't Find User"));
+  },
+
+  update: function(req, res) {
+    User.findOneAndUpdate({ _id: req.params.id }, { local: req.body })
+      .then(user => res.json(user))
+      .catch(err => res.status(422).json("Can't find User"));
+  },
+  remove: (req, res, next) => {
+    User.findById({ _id: req.params.id })
+      .then(user => user.remove())
+      .then(user => res.json(user))
+      .catch(err => res.status(422).json(err));
+  },
 
   profile: async (req, res, next) => {
     console.log("I managed to get here!");
