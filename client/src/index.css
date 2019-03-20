@@ -10,6 +10,7 @@
   .container {
     max-width: 1200px;
     margin: auto;
+<<<<<<< HEAD
   }
   
   .main-header {
@@ -23,6 +24,11 @@
     top: 0px;
     width: 100%;
     z-index: 99999;
+=======
+}
+
+.main-header {
+>>>>>>> 27b6bcd57a874a0cf9a34b7d8da9977c86dc6157
     height: 60px;
     background-color: #fff;
     color: #fff;
@@ -33,6 +39,7 @@
     top: 0px;
     width: 100%;
     z-index: 99999;
+<<<<<<< HEAD
   }
   
   .main-header .container {
@@ -53,6 +60,22 @@
         width: 100%;
         background: pink;
     }
+=======
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.App {
+    background-color: #e6e6e6;
+    min-height: 100vh;
+    padding-top: 70px;
+}
+>>>>>>> 27b6bcd57a874a0cf9a34b7d8da9977c86dc6157
 
 .logo {
   color: #0397d5;
@@ -191,8 +214,14 @@ ul.movie-box__list {
 /*-------------- Signup ---------------*/
 
 .signup-page .container {
+<<<<<<< HEAD
   display: flex;
   flex-direction: column;
   display: flex;
   flex-direction: column;
 }
+=======
+  display: flex;
+  flex-direction: column;
+} 
+>>>>>>> 27b6bcd57a874a0cf9a34b7d8da9977c86dc6157

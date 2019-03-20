@@ -68,6 +68,7 @@ router
 router.route("/oauth/google").post(passportGoogle, UsersController.googleOAuth);
 router.route("/oauth/facebook").post(passportFB, UsersController.facebookOAuth);
 
+router.route("/update/:id").put(passportJWT_Admin, UsersController.update);
 router.route("/all").get(passportJWT_Admin, UsersController.findAll);
 router.route("/profile").get(passportJWT_User, UsersController.profile);
 

@@ -80,6 +80,11 @@ module.exports = {
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
+  update: function(req, res) {
+    User.findOneAndUpdate({ _id: req.params.id }, {local:req.body})
+      .then(user => res.json(user))
+      .catch(err => res.status(422).json("Can't Update"));
+  },
 
   profile: async (req, res, next) => {
     console.log("I managed to get here!");

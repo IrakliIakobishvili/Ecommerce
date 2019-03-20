@@ -36,7 +36,11 @@ body {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.6);
 }
 
+<<<<<<< HEAD
 .contact-input {
+=======
+.contact-page input {
+>>>>>>> 27b6bcd57a874a0cf9a34b7d8da9977c86dc6157
   display: block;
   border: 0;
   outline: 0;
@@ -48,7 +52,11 @@ body {
   width: 360px;
 }
 
+<<<<<<< HEAD
 .contact-label {
+=======
+.contact-page label {
+>>>>>>> 27b6bcd57a874a0cf9a34b7d8da9977c86dc6157
   color: rgb(109, 109, 109);
 }
 
@@ -83,4 +91,8 @@ body {
     rgb(233, 119, 12),
     rgb(214, 183, 9)
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 27b6bcd57a874a0cf9a34b7d8da9977c86dc6157
