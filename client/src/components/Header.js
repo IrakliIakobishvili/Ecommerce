@@ -46,7 +46,7 @@ class Header extends Component {
           >
             LOGO
           </Link>
-          <div className="">
+          <div className="header-list">
             <ul className="">
               <li className="nav-item">
                 <Link className="" to="/profile">

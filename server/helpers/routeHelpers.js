@@ -75,16 +75,16 @@ module.exports = {
         .max(20)
         .required(),
       ...emailAndPassword,
-      age: Joi.number()
+      day: Joi.number()
         .required()
         .error(errors => {
           errors.forEach(err => {
             switch (err.type) {
               case "any.empty":
-                err.message = "Age should not be empty!"; // Remove this case
+                err.message = "Day should not be empty!"; // Remove this case
                 break;
               case "number.base":
-                err.message = "Age should be valid!";
+                err.message = "Day should be valid!";
                 break;
               default:
                 break;
@@ -92,13 +92,27 @@ module.exports = {
           });
           return errors;
         }),
-      birthday: Joi.number()
+      month: Joi.number()
         .required()
         .error(errors => {
           errors.forEach(err => {
             switch (err.type) {
               case "number.base":
-                err.message = "Birthday should be valid!";
+                err.message = "Month should be valid!";
+                break;
+              default:
+                break;
+            }
+          });
+          return errors;
+        }),
+      year: Joi.number()
+        .required()
+        .error(errors => {
+          errors.forEach(err => {
+            switch (err.type) {
+              case "number.base":
+                err.message = "Year should be valid!";
                 break;
               default:
                 break;

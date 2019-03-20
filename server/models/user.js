@@ -20,8 +20,9 @@ const userSchema = new Schema(
     local: {
       email: String,
       password: String,
-      age: Number,
-      birthday: Number,
+      day: Number,
+      month: Number,
+      year: Number,
       phone: String,
       ...commonProps
     },

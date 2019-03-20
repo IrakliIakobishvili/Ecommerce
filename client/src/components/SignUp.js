@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import GoogleLogin from "react-google-login";
@@ -8,6 +9,7 @@ import { oauth } from "../config";
 
 import * as actions from "../actions/auth";
 import CustomInput from "./CustomInput";
+import "../styles/signup.css";
 
 class SignUp extends Component {
   onSubmit = async formData => {
@@ -39,77 +41,132 @@ class SignUp extends Component {
     return (
       <div className="signup-page">
         <div className="container">
-          <div className="signup-page__local">
-            <form onSubmit={handleSubmit(this.onSubmit)}>
-              <Field
-                name="email"
-                type="text"
-                id="email"
-                label="Enter your email"
-                placeholder="example@example.com"
-                component={CustomInput}
-              />
-              <Field
-                name="password"
-                type="password"
-                id="password"
-                label="Enter your password"
-                placeholder="Password"
-                component={CustomInput}
-              />
-              <Field
-                name="firstName"
-                type="text"
-                id="firstName"
-                label="Enter your First Name"
-                placeholder="First Name"
-                component={CustomInput}
-              />
-              <Field
-                name="lastName"
-                type="text"
-                id="lastName"
-                label="Enter your Last Name"
-                placeholder="Last Name"
-                component={CustomInput}
-              />
-              <Field
-                name="age"
-                type="text"
-                id="age"
-                label="Enter your age"
-                placeholder="Age"
-                component={CustomInput}
-              />
-              <Field
-                name="birthday"
-                type="text"
-                id="birthday"
-                label="Enter your birthday"
-                placeholder="Birthday"
-                component={CustomInput}
-              />
-              <Field
-                name="phone"
-                type="text"
-                id="phone"
-                label="Enter your phone"
-                placeholder="Phone"
-                component={CustomInput}
-              />
+          <div className="signup-form">
+            <div className="signup-form__left">
+              <h2 className="signup-heading">Sign Up</h2>
+              <div className="signup-page__local">
+                <form onSubmit={handleSubmit(this.onSubmit)}>
+                  <div className="input-cont">
+                    <i className="fas fa-user" />
+                    <Field
+                      name="firstName"
+                      type="text"
+                      id="firstName"
+                      placeholder="First Name"
+                      component={CustomInput}
+                    />
+                  </div>
+                  <div className="input-cont">
+                    <i className="fas fa-user" />
+                    <Field
+                      name="lastName"
+                      type="text"
+                      id="lastName"
+                      placeholder="Last Name"
+                      component={CustomInput}
+                    />
+                  </div>
+                  <div className="input-cont">
+                    <i className="fas fa-envelope" />
+                    <Field
+                      name="email"
+                      type="text"
+                      id="email"
+                      placeholder="Your Email"
+                      component={CustomInput}
+                    />
+                  </div>
+                  <div className="input-cont">
+                    <i className="fas fa-lock" />
+                    <Field
+                      name="password"
+                      type="password"
+                      id="password"
+                      placeholder="Password"
+                      component={CustomInput}
+                    />
+                  </div>
+                  {/* <div className="input-cont">
+                    <i className="fas fa-lock" />
+                    <Field
+                      name="password"
+                      type="password"
+                      id="password"
+                      placeholder="Confirm Password"
+                      component={CustomInput}
+                    />
+                  </div> */}
+                  <div className="input-cont">
+                    <i className="fas fa-phone" />
+                    <Field
+                      name="phone"
+                      type="text"
+                      id="phone"
+                      placeholder="Phone"
+                      component={CustomInput}
+                    />
+                  </div>
+                  <div className="dates">
+                    <div className="input-cont">
+                      <i class="fas fa-calendar-alt" />
+                      <Field
+                        name="day"
+                        type="text"
+                        id="day"
+                        placeholder="Day"
+                        component={CustomInput}
+                      />
+                    </div>
+                    <div className="input-cont">
+                      <i class="fas fa-calendar-alt" />
+                      <Field
+                        name="month"
+                        type="text"
+                        id="month"
+                        placeholder="Month"
+                        component={CustomInput}
+                      />
+                    </div>
+                    <div className="input-cont">
+                      <i class="fas fa-calendar-alt" />
+                      <Field
+                        name="year"
+                        type="text"
+                        id="year"
+                        placeholder="Year"
+                        component={CustomInput}
+                      />
+                    </div>
+                  </div>
+                  {this.props.errorMessage ? (
+                    <div className="">{this.props.errorMessage}</div>
+                  ) : this.props.successMessage ? (
+                    <div className="">{this.props.successMessage}</div>
+                  ) : null}
 
-              {this.props.errorMessage ? (
-                <div className="">{this.props.errorMessage}</div>
-              ) : this.props.successMessage ? (
-                <div className="">{this.props.successMessage}</div>
-              ) : null}
-
-              <button type="submit" className="">
-                Sign Up
-              </button>
-            </form>
+                  <div className="agreement">
+                    <div className="chackbox">
+                      <input id="agree" type="checkbox" defaultChecked />
+                      <label htmlFor="agree" />
+                    </div>
+                    <span>
+                      I agree all statements in <a href="#">Terms of service</a>
+                    </span>
+                  </div>
+                  <button type="submit" className="register-btn">
+                    Register
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div className="signup-form__right">
+              <Link className="member-link" to="/signin">
+                I am already member
+              </Link>
+            </div>
           </div>
-          <div className="signup-page__social">
+
+          {/* <div className="signup-page__social">
             <div className="">
               <div className="">Or sign up using third-party services</div>
               <FacebookLogin
@@ -127,7 +184,7 @@ class SignUp extends Component {
                 className="xx"
               />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     );

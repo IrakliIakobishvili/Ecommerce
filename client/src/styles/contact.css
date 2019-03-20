@@ -14,7 +14,7 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 80px);
   /* opacity: 0.5; */
 }
 
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 80px);
 }
 
 .contact-content {
