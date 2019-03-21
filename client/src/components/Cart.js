@@ -29,10 +29,19 @@ class Cart extends Component {
     return (
       <div className="cart-page">
         <div className="container">
-          {/* <h1>Cart Page</h1>
-          Total item: {this.props.cart.length}
-          <br /> */}
-          <div className="items-cont">{items}</div>
+          {/* Total item: {this.props.cart.length} */}
+          {/* <br /> */}
+          <div className="items-cont">
+            <header className="cart-page__header">
+              <div>Product</div>
+              <div>Price</div>
+              <div>Quantity</div>
+              <div>
+                <button className="clear-cart-btn">Clear Cart</button>
+              </div>
+            </header>
+            {items}
+          </div>
           <div className="checkout-cont">
             <Checkout />
           </div>
