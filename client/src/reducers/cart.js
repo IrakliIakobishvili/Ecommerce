@@ -1,7 +1,32 @@
-import { ADD_PRODUCT_TO_CART } from "../actions/types";
+// import { ADD_PRODUCT_TO_CART } from "../actions/types";
+
+// const DEFAULT_STATE = {
+//   products: []
+// };
+
+// export default (state = DEFAULT_STATE, action) => {
+//   switch (action.type) {
+//     case ADD_PRODUCT_TO_CART:
+//       return {
+//         ...state,
+//         products: state.products.includes(action.payload)
+//           ? state.products.filter(id => id !== action.payload)
+//           : [...state.products, action.payload]
+//       };
+//     default:
+//       return state;
+//   }
+// };
+
+import {
+  ADD_PRODUCT_TO_CART,
+  GET_CART_ITEMS,
+  CONNECTION_ERROR
+} from "../actions/types";
 
 const DEFAULT_STATE = {
-  products: []
+  products: [],
+  isLoading: true
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -13,6 +38,10 @@ export default (state = DEFAULT_STATE, action) => {
           ? state.products.filter(id => id !== action.payload)
           : [...state.products, action.payload]
       };
+    case GET_CART_ITEMS:
+      return { ...state, products: action.payload, isLoading: false };
+    case CONNECTION_ERROR:
+      return { ...state, isLoading: false, error: action.payload };
     default:
       return state;
   }

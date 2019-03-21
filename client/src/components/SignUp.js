@@ -108,7 +108,7 @@ class SignUp extends Component {
                   </div>
                   <div className="dates">
                     <div className="input-cont">
-                      <i class="fas fa-calendar-alt" />
+                      <i className="fas fa-calendar-alt" />
                       <Field
                         name="day"
                         type="text"
@@ -118,7 +118,7 @@ class SignUp extends Component {
                       />
                     </div>
                     <div className="input-cont">
-                      <i class="fas fa-calendar-alt" />
+                      <i className="fas fa-calendar-alt" />
                       <Field
                         name="month"
                         type="text"
@@ -128,7 +128,7 @@ class SignUp extends Component {
                       />
                     </div>
                     <div className="input-cont">
-                      <i class="fas fa-calendar-alt" />
+                      <i className="fas fa-calendar-alt" />
                       <Field
                         name="year"
                         type="text"
