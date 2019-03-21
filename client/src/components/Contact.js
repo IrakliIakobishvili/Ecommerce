@@ -2,57 +2,68 @@ import React, { Component } from "react";
 import "../styles/contact.css";
 
 export default class Contact extends Component {
-  state = {
-    show: false,
-    message: null,
-    notSend: "Please check your email!",
-    formControls: {
-      title: "",
-      text: "",
-      name: "",
-      surname: "",
-      email: ""
-    }
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstname: "",
+      lastname: "",
+      email: "",
+      nameError: "",
+      lastnameError: "",
+      emailError: ""
+    };
+  }
+
+  handleNameChange = event => {
+    this.setState({ firstname: event.target.value }, () => {
+      this.validateName();
+    });
   };
-  
-  onChange = event => {
+
+  handleLastnameChange = event => {
+    this.setState({ lastname: event.target.value }, () => {
+      this.validateName();
+    });
+  };
+
+  handleEmailChange = event => {
+    this.setState({ email: event.target.value }, () => {
+      this.validateEmail();
+    });
+  };
+
+  validateName = () => {
+    const { firstname } = this.state;
+    this.setState({
+      nameError:
+        firstname.length > 1 ? null : "Name must be longer than 1 characters"
+    });
+  };
+
+  validateLastname = () => {
+    const { lastname } = this.state;
+    this.setState({
+      lastnameError:
+        lastname.length > 1 ? null : "Lastname must be longer than 1 characters"
+    });
+  };
+
+  validateEmail = () => {
+    const { email } = this.state;
+    this.setState({
+      emailError:
+        email.length > 7 ? null : "Email must be longer than 7 characters"
+    });
+  };
+
+  handleSubmit = event => {
     event.preventDefault();
-    const value = event.target.value;
-    const name = event.target.name;
-    const formControls = { ...this.state.formControls };
-    formControls[name] = value;
-    if (name == 'email') {
-      if (this.validateEmail(value)) {
-        this.state.message = 'Your message has been sent succesfully!';
-      } else {
-        this.state.message = this.state.notSend;
-      }
-    }
-    
-    this.setState({ formControls });
+    const { firstname, lastname, email } = this.state;
+    alert(`Your state values: \n 
+            firstname: ${firstname} \n 
+            lastname: ${lastname} \n 
+            email: ${email}`);
   };
-  
-  validateEmail(email) {
-    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  }
-  
-  validate() {
-    var result = "#result";
-    var email = "#email".val();
-    result.text("");
-
-    if (this.validateEmail(email)) {
-      result.text(email + " is valid :)");
-      result.css("color", "green");
-    } else {
-      result.text(email + " is not valid :(");
-      result.css("color", "red");
-    }
-    return false;
-  }
-
-
 
   render() {
     return (
@@ -60,40 +71,66 @@ export default class Contact extends Component {
         <div className="contact-container">
           <div className="contact-content">
             <h2 className="contact-us">Contact Us</h2>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <label className="contact-label">
-                firstName:
-                <input type="text" name="firstName" className="contact-input"
-                onChange={event => this.onChange(event)}
-                 />
-              </label>
 
-              <label className="contact-label">
-                lastName:
-                <input type="text" name="lastName" className="contact-input"
-                onChange={event => this.onChange(event)} 
+            <form onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="firstname" className="contact-label">
+                  firstname
+                </label>
+                <input
+                  name="firstname"
+                  className={`contact-input ${
+                    this.state.nameError ? "is-invalid" : ""
+                  }`}
+                  id="firstname"
+                  value={this.state.lastname}
+                  onChange={this.handleNameChange}
+                  onBlur={this.validateName}
                 />
-              </label>
+                <div className="invalid-feedback">{this.state.nameError}</div>
+              </div>
 
-              <label className="contact-label">
-                email:
-                <input type="text" name="email" className="contact-input" 
-                onChange={event => this.onChange(event)}
+              <div className="form-group">
+                <label htmlFor="lastname" className="contact-label">
+                  lastname
+                </label>
+                <input
+                  name="lastname"
+                  className={`contact-input ${
+                    this.state.lastnameError ? "is-invalid" : ""
+                  }`}
+                  id="lastname"
+                  value={this.state.lastname}
+                  onChange={this.handleLastnameChange}
+                  onBlur={this.validateLastname}
                 />
-              </label>
+                <div className="invalid-feedback">
+                  {this.state.lastnameError}
+                </div>
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="email" className="contact-label">
+                  email
+                </label>
+                <input
+                  name="email"
+                  className={`contact-input ${
+                    this.state.emailError ? "is-invalid" : ""
+                  }`}
+                  id="email"
+                  value={this.state.email}
+                  onChange={this.handleEmailChange}
+                  onBlur={this.validateEmail}
+                />
+                <div className="invalid-feedback">{this.state.emailError}</div>
+              </div>
 
               <label className="contact-label">
                 input text:
-                <input type="textarea" name="text" className="contact-input" 
-                onChange={event => this.onChange(event)}
-                />
+                <input type="textarea" name="text" className="contact-input" />
               </label>
-
-              <button
-                className="contact-btn"
-                type="submit"
-                onClick={() => this.setState({ show: true })}
-              >
+              <button type="submit" className="contact-btn">
                 Send Your Message
               </button>
             </form>
