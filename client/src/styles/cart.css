@@ -1,0 +1,37 @@
+.cart__item {
+    border: 1px solid orangered;
+    margin: 5px;
+    padding: 10px;
+}
+
+.quantity-btns button {
+    padding: 10px;
+    background: green;
+    color: #fff;
+}
+
+.quantity-btns input {
+    width: 50px;
+    background: #fff;
+    color: #000;
+}
+
+.remove-btn {
+    padding: 10px;
+    background: orange;
+}
+
+.cart-page .container {
+    display: flex;
+}
+
+.checkout-cont {
+    width: 300px;
+    border: 1px solid tomato;
+    align-self: flex-start;
+    min-height: 200px;
+}
+
+.items-cont {
+    flex: 1;
+}

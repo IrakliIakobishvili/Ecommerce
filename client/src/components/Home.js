@@ -8,10 +8,17 @@ import Search from "./Search";
 import "../styles/home.css";
 
 import { getProducts } from "../actions/products";
+import { getCartItems } from "../actions/cart";
 
 class Home extends Component {
   async componentDidMount() {
     this.props.getProducts();
+    if (this.props.isAuth) {
+      console.log("Logged");
+      this.props.getCartItems();
+    } else {
+      console.log("not logged");
+    }
   }
   render() {
     const { products } = this.props;
@@ -49,11 +56,12 @@ function mapStateToProps(state) {
   return {
     products: state.products.products,
     error: state.products.error,
-    isLoading: state.products.isLoading
+    isLoading: state.products.isLoading,
+    isAuth: state.auth.isAuthenticated
   };
 }
 
 export default connect(
   mapStateToProps,
-  { getProducts }
+  { getProducts, getCartItems }
 )(Home);

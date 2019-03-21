@@ -42,17 +42,23 @@ module.exports = {
       .populate("items.product")
       .exec((err, cart) => {
         if (!cart) {
-          return res.send(null);
+          return res.json({ items: [] });
         }
         res.send(cart);
       });
   },
   removeItemFromCart: (req, res) => {
-    Cart.findById(req.body.cartId).then(foundCart => {
-      foundCart.items = foundCart.items.filter(
-        item => item._id != req.body.itemId
-      );
-      foundCart.save(() => res.status(200).json("Item Removed"));
+    Cart.findOne({ user: req.user.id }).then(foundCart => {
+      if (foundCart) {
+        foundCart.items = foundCart.items.filter(
+          item => item._id != req.body.itemId
+        );
+        foundCart.save(() =>
+          res
+            .status(200)
+            .json({ message: "Item Removed", data: foundCart.items })
+        );
+      }
     });
   },
   emptyCart: (req, res) => {

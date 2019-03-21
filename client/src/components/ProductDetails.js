@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 // import { Redirect } from "react-router-dom";
 import { addToCart } from "../actions/cart";
 import { getProductDetails } from "../actions/products";
+import "../styles/productdetails.css";
 
 import Categories from "./Categories";
 
@@ -14,7 +15,7 @@ class Movie extends Component {
 
   cartBtnHandler = productId => {
     this.props.isAuth
-      ? this.props.addToCart(productId)
+      ? this.props.addToCart(productId, 1)
       : this.props.history.push("/signin");
   };
 
@@ -45,7 +46,10 @@ class Movie extends Component {
             </button>
           ) : null} */}
           {/* {this.props.isAuth ? ( */}
-          <button onClick={() => this.cartBtnHandler(details._id)}>
+          <button
+            className="cart-btn"
+            onClick={() => this.cartBtnHandler(details._id)}
+          >
             Add to Cart
           </button>
           {/* ) : null} */}

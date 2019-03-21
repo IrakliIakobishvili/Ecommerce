@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getProfile } from "../actions/profile";
+import { getCartItems } from "../actions/cart";
 
 class Profile extends Component {
   async componentDidMount() {
     this.props.getProfile();
+    this.props.getCartItems();
   }
 
   render() {
@@ -38,5 +40,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getProfile }
+  { getProfile, getCartItems }
 )(Profile);

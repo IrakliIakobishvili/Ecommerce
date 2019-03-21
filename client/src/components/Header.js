@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as authActions from "../actions/auth";
 import { getCategories } from "../actions/categories";
 import { getProducts } from "../actions/products";
+import { getCartItems } from "../actions/cart";
 
 class Header extends Component {
   // checkAuth() {
@@ -24,6 +25,14 @@ class Header extends Component {
   //   this.props.getProducts();
   //   // console.log(this.props);
   // }
+  componentDidMount() {
+    if (this.props.isAuth) {
+      console.log("Logged");
+      this.props.getCartItems();
+    } else {
+      console.log("not logged");
+    }
+  }
   reloadCatAndProds = async () => {
     this.props.getCategories();
     this.props.getProducts();
@@ -112,5 +121,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { ...authActions, getCategories, getProducts }
+  { ...authActions, getCategories, getProducts, getCartItems }
 )(Header);
