@@ -8,24 +8,46 @@ import Search from "./Search";
 import "../styles/home.css";
 
 import { getProducts } from "../actions/products";
-import { getCartItems } from "../actions/cart";
+import { getCartItems, addToCart } from "../actions/cart";
 
 class Home extends Component {
   async componentDidMount() {
     this.props.getProducts();
     if (this.props.isAuth) {
-      console.log("Logged");
+      console.log("Cart Items Loaded");
       this.props.getCartItems();
     } else {
       console.log("not logged");
     }
   }
   render() {
-    const { products } = this.props;
+    const { products, cart, isAuth } = this.props;
 
-    const result = products.length ? (
+    const IDsOfProductsInCart = cart.map(el => {
+      return el.product._id;
+    });
+    // console.log(IDsOfProductsInCart);
+    let inCart = "AddToCart";
+    let result = products.length ? (
       products.map(product => {
-        return <Product key={product._id} product={product} />;
+        // return <Product key={product._id} product={product} />;
+
+        if (isAuth == false) {
+          inCart = "Unauthorized";
+        } else if (IDsOfProductsInCart.includes(product._id)) {
+          inCart = "ViewInCart";
+        } else {
+          inCart = "AddtoCart";
+        }
+        return (
+          <Product
+            key={product._id}
+            product={product}
+            inCart={inCart}
+            item={product}
+            addToCart={this.props.addToCart}
+          />
+        );
       })
     ) : this.props.isLoading ? (
       <h1>Loading...</h1>
@@ -57,11 +79,12 @@ function mapStateToProps(state) {
     products: state.products.products,
     error: state.products.error,
     isLoading: state.products.isLoading,
-    isAuth: state.auth.isAuthenticated
+    isAuth: state.auth.isAuthenticated,
+    cart: state.cart.products
   };
 }
 
 export default connect(
   mapStateToProps,
-  { getProducts, getCartItems }
+  { getProducts, getCartItems, addToCart }
 )(Home);

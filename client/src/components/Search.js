@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import "../styles/search.css";
 import { getProductsByTitle, getProducts } from "../actions/products";
+import { clearActiveLinks } from "../actions/activeLinks";
 
 class Search extends Component {
   state = {
@@ -17,6 +18,7 @@ class Search extends Component {
       <div className="search">
         <input
           value={this.state.inputValue}
+          onKeyDown={this.props.clearActiveLinks}
           onChange={e => this.updateInputValue(e)}
           placeholder="Search Product"
           onKeyUp={() => {
@@ -34,5 +36,5 @@ class Search extends Component {
 
 export default connect(
   null,
-  { getProductsByTitle, getProducts }
+  { getProductsByTitle, getProducts, clearActiveLinks }
 )(Search);

@@ -133,7 +133,14 @@ class Header extends Component {
                       </Link>
                     </li>,
                     <li key="logout" className="nav-item">
-                      <Link className="nav-link" to="/" onClick={this.signOut}>
+                      <Link
+                        className="nav-link"
+                        to="/"
+                        onClick={() => {
+                          this.signOut();
+                          this.props.clearActiveLinks();
+                        }}
+                      >
                         Sign Out
                       </Link>
                     </li>
