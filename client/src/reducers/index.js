@@ -5,6 +5,7 @@ import profileReducer from "./profile";
 import productsReducer from "./products";
 import categoriesReducer from "./categories";
 import cartReducer from "./cart";
+import activeReducer from "./activeLinks";
 
 export default combineReducers({
   form: formReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   profile: profileReducer,
   categories: categoriesReducer,
   products: productsReducer,
-  cart: cartReducer
+  cart: cartReducer,
+  activeLinks: activeReducer
 });

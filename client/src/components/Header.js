@@ -3,6 +3,7 @@ import { Link, NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 // import {signIn,signUp,oauthFacebook,oauthGoogle,signOut} from "../actions/auth";
 import * as authActions from "../actions/auth";
+import { ActiveHeaderLink, clearActiveLinks } from "../actions/activeLinks";
 import { getCategories } from "../actions/categories";
 import { getProducts } from "../actions/products";
 import { getCartItems } from "../actions/cart";
@@ -34,9 +35,11 @@ class Header extends Component {
       console.log("not logged");
     }
   }
-  reloadCatAndProds = async () => {
+  reloadCatAndProds = async className => {
     this.props.getCategories();
     this.props.getProducts();
+    this.props.clearActiveLinks();
+    this.detectActiveLink(className);
     // console.log("ss");
   };
 
@@ -45,12 +48,22 @@ class Header extends Component {
     // console.log(this.props);
   };
 
+  detectActiveLink = className => {
+    // console.log(className);
+    this.props.ActiveHeaderLink(className);
+  };
+
   render() {
+    const { activeLink } = this.props;
     return (
       <header className="main-header">
         <div className="container">
           <div className="logo">
-            <Link onClick={() => this.reloadCatAndProds()} to="/">
+            <Link
+              // className={`logo-link ${activeLink == "logo-link" ? null : null}`}
+              onClick={() => this.reloadCatAndProds("logo-link")}
+              to="/"
+            >
               <img src={require("../assets/img/logo.svg")} height="62px" />
               <h1 className="logo__heading">BURGER HUB</h1>
             </Link>
@@ -66,7 +79,13 @@ class Header extends Component {
 
             <ul className="">
               <li className="nav-item">
-                <Link className="" to="/contact">
+                <Link
+                  onClick={() => this.detectActiveLink("contact-link")}
+                  className={`contact-link ${
+                    activeLink == "contact-link" ? "red" : null
+                  }`}
+                  to="/contact"
+                >
                   Contact
                 </Link>
               </li>
@@ -76,18 +95,26 @@ class Header extends Component {
               {!this.props.isAuth
                 ? [
                     <li className="" key="signup">
-                      <Link className="auth-list__link" to="/signup">
+                      <Link
+                        onClick={() => this.detectActiveLink("signup-link")}
+                        className={`signup-link ${
+                          activeLink == "signup-link" ? "red" : null
+                        }`}
+                        to="/signup"
+                      >
                         Sign Up
                       </Link>
                     </li>,
                     <li className="nav-item" key="signin">
-                      <NavLink
-                        className=""
+                      <Link
+                        onClick={() => this.detectActiveLink("signin-link")}
+                        className={`signin-link ${
+                          activeLink == "signin-link" ? "red" : null
+                        }`}
                         to="/signin"
-                        activeClassName="active"
                       >
                         Sign In
-                      </NavLink>
+                      </Link>
                     </li>
                   ]
                 : null}
@@ -95,7 +122,15 @@ class Header extends Component {
               {this.props.isAuth
                 ? [
                     <li key="cart" style={{ color: "red" }}>
-                      <Link to="/cart">Total: {this.props.cart.length}</Link>
+                      <Link
+                        onClick={() => this.detectActiveLink("cart-link")}
+                        to="/cart"
+                        className={`cart-link ${
+                          activeLink == "cart-link" ? "red" : null
+                        }`}
+                      >
+                        Total: {this.props.cart.length}
+                      </Link>
                     </li>,
                     <li key="logout" className="nav-item">
                       <Link className="nav-link" to="/" onClick={this.signOut}>
@@ -115,11 +150,19 @@ class Header extends Component {
 function mapStateToProps(state) {
   return {
     isAuth: state.auth.isAuthenticated,
-    cart: state.cart.products
+    cart: state.cart.products,
+    activeLink: state.activeLinks.topNav
   };
 }
 
 export default connect(
   mapStateToProps,
-  { ...authActions, getCategories, getProducts, getCartItems }
+  {
+    ...authActions,
+    getCategories,
+    getProducts,
+    getCartItems,
+    ActiveHeaderLink,
+    clearActiveLinks
+  }
 )(Header);
