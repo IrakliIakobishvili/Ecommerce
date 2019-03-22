@@ -6,6 +6,7 @@ import * as authActions from "../actions/auth";
 import { getCategories } from "../actions/categories";
 import { getProducts } from "../actions/products";
 import { getCartItems } from "../actions/cart";
+import "../styles/header.css";
 
 class Header extends Component {
   // checkAuth() {
@@ -48,13 +49,12 @@ class Header extends Component {
     return (
       <header className="main-header">
         <div className="container">
-          <Link
-            className="logo"
-            onClick={() => this.reloadCatAndProds()}
-            to="/"
-          >
-            LOGO
-          </Link>
+          <div className="logo">
+            <Link onClick={() => this.reloadCatAndProds()} to="/">
+              <img src={require("../assets/img/logo.svg")} height="62px" />
+              <h1 className="logo__heading">BURGER HUB</h1>
+            </Link>
+          </div>
           <div className="header-list">
             <ul className="">
               <li className="nav-item">

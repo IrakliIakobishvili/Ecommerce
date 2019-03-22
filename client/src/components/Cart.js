@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
 
-import { addToCart, getCartItems } from "../actions/cart";
+import { addToCart, getCartItems, emptyCart } from "../actions/cart";
 import CartItem from "./CartItem";
 import Checkout from "./Checkout";
 import "../styles/cart.css";
@@ -11,6 +11,9 @@ class Cart extends Component {
   async componentDidMount() {
     this.props.getCartItems();
   }
+  emptyCartHandler = () => {
+    this.props.emptyCart();
+  };
   render() {
     const { cart, isLoading, error } = this.props;
 
@@ -37,7 +40,12 @@ class Cart extends Component {
               <div>Price</div>
               <div>Quantity</div>
               <div>
-                <button className="clear-cart-btn">Clear Cart</button>
+                <button
+                  onClick={() => this.emptyCartHandler()}
+                  className="clear-cart-btn"
+                >
+                  Clear Cart
+                </button>
               </div>
             </header>
             {items}
@@ -61,5 +69,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { addToCart, getCartItems }
+  { addToCart, getCartItems, emptyCart }
 )(Cart);

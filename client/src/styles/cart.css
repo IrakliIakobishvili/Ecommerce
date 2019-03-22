@@ -220,6 +220,7 @@
 
 .checkout__heading i {
     color: #FFAF00;
+    /* color: rgb(255, 196, 57); */
     font-size: 18px;
 }
 
@@ -247,9 +248,10 @@
 }
 
 .checkout__list__item--total span:last-of-type {
-    background: #FFAF00;
+    /* background: #FFAF00; */
+    background: rgb(255, 196, 57);
     padding: 4px 10px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .checkout__list li {

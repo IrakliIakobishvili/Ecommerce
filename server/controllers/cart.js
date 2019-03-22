@@ -80,8 +80,10 @@ module.exports = {
     });
   },
   emptyCart: (req, res) => {
-    Cart.findByIdAndRemove(req.body.cartID)
-      .then(() => res.status(200).json("Empty Cart"))
-      .catch(err => res.send(err));
+    Cart.findOne({ user: req.user.id }).then(foundCart => {
+      Cart.findByIdAndRemove(foundCart._id)
+        .then(() => res.status(200).json("Empty Cart"))
+        .catch(err => res.send(err));
+    });
   }
 };

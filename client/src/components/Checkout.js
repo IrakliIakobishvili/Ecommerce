@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { addToCart } from "../actions/cart";
+import { addToCart, emptyCart } from "../actions/cart";
+import PayPalButton from "./PayPalButton";
 // import "../styles/productdetails.css";
 
 class Checkout extends Component {
@@ -15,6 +16,9 @@ class Checkout extends Component {
   //   };
 
   render() {
+    const lengthLimiter = num => {
+      return Number(num.toFixed(2));
+    };
     // const { item } = this.props;
     // const { product } = item;
     console.log("Checkout Start");
@@ -30,7 +34,9 @@ class Checkout extends Component {
     });
     let tax = subtotal * 0.1;
     let total = subtotal + tax;
-    // console.log(subtotal);
+    subtotal = lengthLimiter(subtotal);
+    tax = lengthLimiter(tax);
+    total = lengthLimiter(total);
     return (
       <div className="checkout">
         <header className="checkout__heading">
@@ -62,7 +68,12 @@ class Checkout extends Component {
           <li className="checkout__list__item checkout__list__item--buttons">
             <button>Checkout</button>
             <br />
-            <button>Checkout With Paypal</button>
+            {/* <button>Checkout With Paypal</button> */}
+            <PayPalButton
+              total={total}
+              clearCart={this.props.emptyCart}
+              history={this.props.history}
+            />
           </li>
         </ul>
         {/* <div>
@@ -93,7 +104,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { addToCart }
+  { addToCart, emptyCart }
 )(Checkout);
 
 // export default connect()(Checkout);

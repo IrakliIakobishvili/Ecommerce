@@ -21,6 +21,7 @@
 import {
   ADD_PRODUCT_TO_CART,
   GET_CART_ITEMS,
+  EMPTY_CART,
   CONNECTION_ERROR
 } from "../actions/types";
 
@@ -40,6 +41,8 @@ export default (state = DEFAULT_STATE, action) => {
       };
     case GET_CART_ITEMS:
       return { ...state, products: action.payload, isLoading: false };
+    case EMPTY_CART:
+      return { ...state, products: [], isLoading: false };
     case CONNECTION_ERROR:
       return { ...state, isLoading: false, error: action.payload };
     default:
