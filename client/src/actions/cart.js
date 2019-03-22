@@ -9,12 +9,13 @@ export const addToCart = (product, quantity) => {
         product,
         quantity
       });
+      console.log("post res");
       const newRes = await axios.get("http://localhost:5000/api/cart");
       dispatch({
         type: GET_CART_ITEMS,
         payload: newRes.data.items
       });
-      console.log(newRes);
+      // console.log(newRes);
     } catch (err) {
       console.error("err", err);
       dispatch({

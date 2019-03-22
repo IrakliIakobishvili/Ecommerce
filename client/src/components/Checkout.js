@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-// import { addToCart } from "../actions/cart";
+import { addToCart } from "../actions/cart";
 // import "../styles/productdetails.css";
 
 class Checkout extends Component {
@@ -17,9 +17,54 @@ class Checkout extends Component {
   render() {
     // const { item } = this.props;
     // const { product } = item;
+    console.log("Checkout Start");
+    // console.log(this.props.items);
+    const { cart } = this.props;
+    console.log(cart);
+    console.log("Checkout End");
+    // let price = 0;
+    let subtotal = 0;
+    // let quantity = 0;
+    cart.forEach(el => {
+      subtotal += el.quantity * el.product.details.price;
+    });
+    let tax = subtotal * 0.1;
+    let total = subtotal + tax;
+    // console.log(subtotal);
     return (
       <div className="checkout">
-        <div>checkout section</div>
+        <header className="checkout__heading">
+          <span>Checkout Details</span>
+          <i className="fas fa-wallet" />
+        </header>
+        <ul className="checkout__list">
+          <li>
+            <span>SUBTOTAL:</span>
+            <span>
+              <i className="fas fa-dollar-sign" />
+              {subtotal}
+            </span>
+          </li>
+          <li>
+            <span>TAXES:</span>
+            <span>
+              <i className="fas fa-dollar-sign" />
+              {tax}
+            </span>
+          </li>
+          <li className="checkout__list__item checkout__list__item--total">
+            <span>TOTAL:</span>
+            <span>
+              <i className="fas fa-dollar-sign" />
+              {total}
+            </span>
+          </li>
+          <li className="checkout__list__item checkout__list__item--buttons">
+            <button>Checkout</button>
+            <br />
+            <button>Checkout With Paypal</button>
+          </li>
+        </ul>
         {/* <div>
           ID: {item._id} | Name: {product.name}
         </div>
@@ -40,9 +85,15 @@ class Checkout extends Component {
 //   isLoading: state.products.isLoading
 // });
 
-// export default connect(
-//   mapStateToProps,
-//   { addToCart, getProductDetails }
-// )(Movie);
+function mapStateToProps(state) {
+  return {
+    cart: state.cart.products
+  };
+}
 
-export default connect()(Checkout);
+export default connect(
+  mapStateToProps,
+  { addToCart }
+)(Checkout);
+
+// export default connect()(Checkout);
