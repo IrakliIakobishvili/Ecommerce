@@ -6,7 +6,7 @@ module.exports.sendMail = function(url, userEmail, userName, token) {
     service: "Hotmail",
     auth: {
       user: "no-replay.facebook@hotmail.com",
-      pass: EMAIL_PASS
+      pass: "EMAIL_PASS"
     }
   });
   let mailOptions = {

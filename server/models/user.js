@@ -6,7 +6,11 @@ const commonProps = {
   firstName: String,
   lastName: String,
   balance: Number,
-  verified: Boolean
+  verified: Boolean,
+  orders: {
+    type: [],
+    default: undefined
+  }
 };
 
 // Create a schema

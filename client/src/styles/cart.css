@@ -263,7 +263,7 @@
     /* background: #FFAF00; */
     background: rgb(255, 196, 57);
     padding: 4px 10px;
-    border-radius: 8px;
+    border-radius: 6px;
 }
 
 .checkout__list li {

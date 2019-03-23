@@ -28,7 +28,7 @@ module.exports = {
     // Create a new user
     const newUser = new User({
       method: "local",
-      local: { ...req.value.body }
+      local: { ...req.value.body, orders: [] }
     });
 
     await newUser.save();

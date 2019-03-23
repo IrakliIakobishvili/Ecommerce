@@ -39,6 +39,15 @@ export default class MyApp extends React.Component {
       sandbox: paypal.clientID,
       production: "YOUR-PRODUCTION-APP-ID"
     };
+
+    let style = {
+      label: "paypal",
+      tagline: false,
+      size: "responsive",
+      shape: "rect",
+      color: "gold",
+      height: 40
+    };
     // In order to get production's app-ID, you will have to send your app to Paypal for approval first
     // For sandbox app-ID (after logging into your developer account, please locate the "REST API apps" section, click "Create App"):
     //   => https://developer.paypal.com/docs/classic/lifecycle/sb_credentials/
@@ -52,6 +61,7 @@ export default class MyApp extends React.Component {
         client={client}
         currency={currency}
         total={total}
+        style={style}
         onError={onError}
         onSuccess={onSuccess}
         onCancel={onCancel}
