@@ -41,7 +41,7 @@ export default class MyApp extends React.Component {
     };
 
     let style = {
-      label: "paypal",
+      label: "checkout",
       tagline: false,
       size: "responsive",
       shape: "rect",

@@ -66,15 +66,17 @@ class Checkout extends Component {
             </span>
           </li>
           <li className="checkout__list__item checkout__list__item--buttons">
-            <button>Checkout</button>
-            <br />
-            {/* <button>Checkout With Paypal</button> */}
-            <PayPalButton
-              total={total}
-              clearCart={this.props.emptyCart}
-              history={this.props.history}
-              history={this.props.history}
-            />
+            <button className="checkout-btn checkout-btn--burger">
+              <span>BurgerHub</span> <span>Checkout</span>
+            </button>
+            <div className="checkout-btn checkout-btn--burger">
+              <PayPalButton
+                total={total}
+                clearCart={this.props.emptyCart}
+                history={this.props.history}
+                history={this.props.history}
+              />
+            </div>
           </li>
         </ul>
         {/* <div>

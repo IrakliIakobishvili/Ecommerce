@@ -9,14 +9,23 @@ import "../styles/productdetails.css";
 import Categories from "./Categories";
 
 class Movie extends Component {
+  state = {
+    disabled: false
+  };
   async componentDidMount() {
     this.props.getProductDetails(this.props.match.params.id);
   }
 
   cartBtnHandler = productId => {
-    this.props.isAuth
-      ? this.props.addToCart(productId, 1)
-      : this.props.history.push("/signin");
+    // this.props.isAuth
+    //   ? this.props.addToCart(productId, 1)
+    //   : this.props.history.push("/signin");
+    if (this.props.isAuth) {
+      this.setState({ disabled: true });
+      this.props.addToCart(productId, 1);
+    } else {
+      this.props.history.push("/signin");
+    }
   };
 
   render() {
@@ -38,6 +47,7 @@ class Movie extends Component {
             </button>
           ) : (
             <button
+              disabled={this.state.disabled}
               className="cart-btn"
               onClick={() => this.cartBtnHandler(details._id)}
             >
