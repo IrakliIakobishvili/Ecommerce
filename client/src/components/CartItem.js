@@ -5,21 +5,22 @@ import { Link } from "react-router-dom";
 // import "../styles/productdetails.css";
 
 class CartItem extends Component {
-  //   async componentDidMount() {
-  //     this.props.getProductDetails(this.props.match.params.id);
-  //   }
+  componentWillReceiveProps() {
+    this.setState({ disabled: false });
+  }
 
-  //   cartBtnHandler = productId => {
-  //     this.props.isAuth
-  //       ? this.props.addToCart(productId, 1)
-  //       : this.props.history.push("/signin");
-  //   };
-
+  state = {
+    disabled: false
+  };
   increment = product => {
+    this.setState({ disabled: true });
     this.props.addToCart(product, 1);
   };
-  decrement = product => {
-    this.props.addToCart(product, -1);
+  decrement = (product, quantity) => {
+    this.setState({ disabled: true });
+    if (quantity > 1) {
+      this.props.addToCart(product, -1);
+    }
   };
   removeItem = product => {
     this.props.removeItemFromCart(product);
@@ -61,10 +62,18 @@ class CartItem extends Component {
           {/* <div className="cart__item__quantity">{item.quantity}</div> */}
           <div className="cart__item__btns">
             <div className="quantity-btns">
-              <button onClick={() => this.decrement(product._id)}>
+              <button
+                disabled={this.state.disabled}
+                onClick={() => this.decrement(product._id, item.quantity)}
+              >
                 <i className="fas fa-minus" />
               </button>
-              <input disabled value={item.quantity} type="text" />
+              <input
+                ref="cartInput"
+                disabled
+                value={item.quantity}
+                type="text"
+              />
               <button onClick={() => this.increment(product._id)}>
                 <i className="fas fa-plus" />
               </button>
