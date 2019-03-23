@@ -20,6 +20,7 @@ class Home extends Component {
       console.log("not logged");
     }
   }
+
   render() {
     const { products, cart, isAuth } = this.props;
 
@@ -44,7 +45,6 @@ class Home extends Component {
             key={product._id}
             product={product}
             inCart={inCart}
-            item={product}
             addToCart={this.props.addToCart}
           />
         );
