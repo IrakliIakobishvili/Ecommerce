@@ -301,6 +301,7 @@
     border-radius: 4px;
     cursor: pointer;
     background-color: #ffc439;
+    outline: none;
 }
 
 .checkout-btn--burger:hover {

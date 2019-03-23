@@ -27,3 +27,31 @@
 .logo__heading::before {
     left: 4px;
 }
+
+/*--- Midnight Drive ---*/
+
+@font-face {
+    font-family: 'Midnight Drive';
+    src: url('fonts/MidnightDrive.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.logo h1 {
+    font-family: 'Midnight Drive';
+    font-size: 28px;
+    color: #d62231;
+    text-shadow: 1px 1px 1px #ffaf00;
+    margin-left: 48px;
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+img.logo__img {
+    position: absolute;
+    left: 0px;
+    height: 40px;
+    top: -10px;
+}

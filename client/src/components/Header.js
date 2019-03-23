@@ -58,7 +58,7 @@ class Header extends Component {
     return (
       <header className="main-header">
         <div className="container">
-          <div className="logo">
+          {/* <div className="logo">
             <Link
               // className={`logo-link ${activeLink == "logo-link" ? null : null}`}
               onClick={() => this.reloadCatAndProds("logo-link")}
@@ -66,6 +66,16 @@ class Header extends Component {
             >
               <img src={require("../assets/img/logo.svg")} height="62px" />
               <h1 className="logo__heading">BURGER HUB</h1>
+            </Link>
+          </div> */}
+          <div className="logo">
+            <Link onClick={() => this.reloadCatAndProds("logo-link")} to="/">
+              <img
+                className="logo__img"
+                src={require("../assets/img/hamburguer.svg")}
+                height="62px"
+              />
+              <h1 className="logo__heading_2">Burger Hub</h1>
             </Link>
           </div>
           <div className="header-list">
