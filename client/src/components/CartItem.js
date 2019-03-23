@@ -74,7 +74,10 @@ class CartItem extends Component {
                 value={item.quantity}
                 type="text"
               />
-              <button onClick={() => this.increment(product._id)}>
+              <button
+                disabled={this.state.disabled}
+                onClick={() => this.increment(product._id)}
+              >
                 <i className="fas fa-plus" />
               </button>
             </div>

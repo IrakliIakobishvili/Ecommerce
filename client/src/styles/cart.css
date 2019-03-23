@@ -131,6 +131,10 @@
     text-decoration: none;
 }
 
+.cart__item__link:hover {
+    text-decoration: underline;
+}
+
 .cart__item__product-img-cont {
     width: 100px;
     height: 100px;

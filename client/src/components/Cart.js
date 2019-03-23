@@ -51,7 +51,7 @@ class Cart extends Component {
             {items}
           </div>
           <div className="checkout-cont">
-            <Checkout />
+            <Checkout history={this.props.history} />
           </div>
         </div>
       </div>

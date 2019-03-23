@@ -73,6 +73,7 @@ class Checkout extends Component {
               total={total}
               clearCart={this.props.emptyCart}
               history={this.props.history}
+              history={this.props.history}
             />
           </li>
         </ul>
