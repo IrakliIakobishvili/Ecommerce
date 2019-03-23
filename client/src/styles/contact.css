@@ -61,7 +61,12 @@
 }
 
 .contact-btn {
-  background-image: linear-gradient( to right, rgb(194, 34, 34), rgb(233, 119, 12), rgb(214, 183, 9));
+  background-image: linear-gradient(
+    to right,
+    rgb(194, 34, 34),
+    rgb(233, 119, 12),
+    rgb(214, 183, 9)
+  );
   border: 0;
   padding: 15px 35px;
   margin-top: 5px;
@@ -72,5 +77,14 @@
 }
 
 .contact-btn:hover {
-  background-image: linear-gradient( to left, rgb(194, 34, 34), rgb(233, 119, 12), rgb(214, 183, 9));
+  background-image: linear-gradient(
+    to left,
+    rgb(194, 34, 34),
+    rgb(233, 119, 12),
+    rgb(214, 183, 9)
+  );
+}
+
+.is-invalid {
+  border-bottom: 1px solid red;
 }
