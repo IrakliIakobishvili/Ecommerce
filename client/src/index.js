@@ -16,7 +16,8 @@ import Profile from "./components/Profile";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Contact from "./components/Contact";
-import reducers from "./reducers";
+import Admin from './components/admin/Admin';
+import reducers from "./reducers"; 
 
 import Categories from "./components/Categories";
 
@@ -61,6 +62,7 @@ ReactDOM.render(
           <Route exact path="/profile" component={authGuard(Profile)} />
           <Route exact path="/product/:id" component={ProductDetails} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path='/admin' component={Admin}/> 
         </Switch>
       </App>
     </BrowserRouter>

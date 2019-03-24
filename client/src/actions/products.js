@@ -48,7 +48,7 @@ export const getProducts = () => {
 
       dispatch({
         type: PRODUCTS_GET_DATA,
-        payload: res.data
+        payload: res.data 
       });
     } catch (err) {
       console.error("err", err);

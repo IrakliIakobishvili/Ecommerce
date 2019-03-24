@@ -16,7 +16,7 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case AUTH_SIGN_UP:
+    case AUTH_SIGN_UP: 
       return {
         ...state,
         token: action.payload,

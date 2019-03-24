@@ -134,8 +134,8 @@ class SignUp extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
+function mapStateToProps(state) { 
+  return { 
     errorMessage: state.auth.registerError,
     successMessage: state.auth.success
   };
