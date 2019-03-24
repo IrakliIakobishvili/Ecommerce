@@ -9,13 +9,6 @@ module.exports = {
     let loggedUser = await User.findOne({ _id: user });
     let loggedUserDetails = loggedUser[loggedUser.method];
     if (loggedUserDetails.balance >= totalPrice) {
-      const orderIDs = order.map(el => el._id);
-      //   return res.json(orderIDs);
-      console.log(orderIDs);
-      console.log("start");
-      console.log(["5c8ade78befcf3021c6ae9d5", "5c8af4bd8c6dc74fbcbfad79"]);
-      console.log("end");
-
       for (let i = 0; i < order.length; i++) {
         let currentProduct = await Product.findOne({
           _id: order[i].product._id
@@ -28,17 +21,26 @@ module.exports = {
           );
         }
       }
-      //////////////////////////////////
       for (let i = 0; i < order.length; i++) {
         await Product.update(
           { _id: order[i].product._id },
           { $inc: { quantity: -order[i].quantity } }
         );
       }
-      //   console.log(loggedUser.balance);
       loggedUserDetails.balance = loggedUserDetails.balance - totalPrice;
       await loggedUser.save();
-      return res.json("Products and balance reduced");
+      Order.findOne({ user: user }).then(foundDoc => {
+        if (foundDoc) {
+          foundDoc.orders.push(order);
+          foundDoc.save().then(() => res.status(200).json("Order Saved"));
+        } else {
+          Order.create({
+            user: user,
+            orders: [order]
+          }).then(() => res.status(200).json("Order Created"));
+        }
+      });
+      //   return res.json("Products and balance reduced");
       //   const availableOrNotProduct = await Product.find({
       //     _id: { $in: [...orderIDs] }
       //   });
