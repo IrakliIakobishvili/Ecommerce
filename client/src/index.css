@@ -1,3 +1,10 @@
+/* @font-face {
+    font-family: 'Midnight Drive';
+    src: url('styles/fonts/MidnightDrive.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+
 * {
     margin: 0px;
     padding: 0px;

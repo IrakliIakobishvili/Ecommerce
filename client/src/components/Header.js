@@ -75,7 +75,7 @@ class Header extends Component {
                 src={require("../assets/img/hamburguer.svg")}
                 height="62px"
               />
-              <h1 className="logo__heading_2">Burger Hub</h1>
+              <h1 className="logo__heading_2">Burger HuB</h1>
             </Link>
           </div>
           <div className="header-list">

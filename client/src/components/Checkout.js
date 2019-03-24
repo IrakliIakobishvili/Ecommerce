@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { addToCart, emptyCart } from "../actions/cart";
+import { saveOrder } from "../actions/orders";
 import PayPalButton from "./PayPalButton";
 // import "../styles/productdetails.css";
 
@@ -14,6 +15,10 @@ class Checkout extends Component {
   //       ? this.props.addToCart(productId, 1)
   //       : this.props.history.push("/signin");
   //   };
+  saveOrderHandler = totalPrice => {
+    console.log(this.props.cart);
+    this.props.saveOrder(this.props.cart, totalPrice);
+  };
 
   render() {
     const lengthLimiter = num => {
@@ -23,7 +28,7 @@ class Checkout extends Component {
     // const { product } = item;
     console.log("Checkout Start");
     // console.log(this.props.items);
-    const { cart } = this.props;
+    const { cart, saveOrder } = this.props;
     console.log(cart);
     console.log("Checkout End");
     // let price = 0;
@@ -66,8 +71,11 @@ class Checkout extends Component {
             </span>
           </li>
           <li className="checkout__list__item checkout__list__item--buttons">
-            <button className="checkout-btn checkout-btn--burger">
-              <span>BurgerHub</span> <span>Checkout</span>
+            <button
+              onClick={() => this.saveOrderHandler(total)}
+              className="checkout-btn checkout-btn--burger"
+            >
+              <span>BurgerHuB</span> <span>Checkout</span>
             </button>
             <div className="checkout-btn checkout-btn--burger">
               <PayPalButton
@@ -107,7 +115,7 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { addToCart, emptyCart }
+  { addToCart, emptyCart, saveOrder }
 )(Checkout);
 
 // export default connect()(Checkout);
