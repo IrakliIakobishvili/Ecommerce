@@ -7,19 +7,14 @@ module.exports = {
     const user = req.user.id;
     const { totalPrice, order } = req.body;
     let loggedUser = await User.findOne({ _id: user });
-    loggedUser = loggedUser[loggedUser.method];
-    if (loggedUser.balance >= totalPrice) {
+    let loggedUserDetails = loggedUser[loggedUser.method];
+    if (loggedUserDetails.balance >= totalPrice) {
       const orderIDs = order.map(el => el._id);
       //   return res.json(orderIDs);
       console.log(orderIDs);
       console.log("start");
       console.log(["5c8ade78befcf3021c6ae9d5", "5c8af4bd8c6dc74fbcbfad79"]);
       console.log("end");
-      //   res.json(order);
-      //   order.forEach(async el => {
-      //     let currentProduct = await Product.findOne({ _id: el.product._id });
-      //     console.log(currentProduct.quantity);
-      //   });
 
       for (let i = 0; i < order.length; i++) {
         let currentProduct = await Product.findOne({
@@ -40,7 +35,10 @@ module.exports = {
           { $inc: { quantity: -order[i].quantity } }
         );
       }
-      return res.json("Products dreduced and now i can charge client");
+      //   console.log(loggedUser.balance);
+      loggedUserDetails.balance = loggedUserDetails.balance - totalPrice;
+      await loggedUser.save();
+      return res.json("Products and balance reduced");
       //   const availableOrNotProduct = await Product.find({
       //     _id: { $in: [...orderIDs] }
       //   });
