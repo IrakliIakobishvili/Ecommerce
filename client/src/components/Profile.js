@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProfile } from "../actions/profile";
 import { getCartItems } from "../actions/cart";
+import "../styles/profile.css";
+// import ChangePassword from "./ChangePassword";
 
 class Profile extends Component {
   async componentDidMount() {
@@ -25,11 +28,33 @@ class Profile extends Component {
           <h1>Profile Page</h1>
           {content}
         </div>
+
+        <div className="profile-nav-conteiner">
+          <div className="profile-nav-conteiner-item">
+            <Link className="profile-item-link" to="/myOrders">
+              My Orders
+            </Link>
+          </div>
+
+          <div className="profile-nav-conteiner-item">
+            <Link className="profile-item-link" to="/changePassword">
+              Change Password
+            </Link>
+          </div>
+
+          <div className="profile-nav-conteiner-item">
+            <Link className="profile-item-link" to="/smth">
+              History or smth
+            </Link>
+          </div>
+
+          {/* <Route path="/about/" component={myOrders} /> */}
+          {/* <Route path="/ChangePassword" component={ChangePassword} /> */}
+        </div>
       </div>
     );
   }
 }
-
 function mapStateToProps(state) {
   return {
     profileContent: state.profile.profile,

@@ -7,10 +7,7 @@ export default class Contact extends Component {
     this.state = {
       firstname: "",
       lastname: "",
-      email: "",
-      nameError: "",
-      lastnameError: "",
-      emailError: ""
+      email: ""
     };
   }
 
@@ -36,7 +33,7 @@ export default class Contact extends Component {
     const { firstname } = this.state;
     this.setState({
       nameError:
-        firstname.length > 1 ? null : "Name must be longer than 1 characters"
+        firstname.length > 1 ? null : " "
     });
   };
 
@@ -44,7 +41,7 @@ export default class Contact extends Component {
     const { lastname } = this.state;
     this.setState({
       lastnameError:
-        lastname.length > 1 ? null : "Lastname must be longer than 1 characters"
+        lastname.length > 1 ? null : " "
     });
   };
 
@@ -52,7 +49,7 @@ export default class Contact extends Component {
     const { email } = this.state;
     this.setState({
       emailError:
-        email.length > 7 ? null : "Email must be longer than 7 characters"
+        email.length > 7 ? null : " "
     });
   };
 
@@ -74,16 +71,16 @@ export default class Contact extends Component {
 
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
-                <label htmlFor="firstname" className="contact-label">
-                  firstname
+                <label htmlFor="name" className="contact-label">
+                  Firstname
                 </label>
                 <input
-                  name="firstname"
+                  name="name"
                   className={`contact-input ${
                     this.state.nameError ? "is-invalid" : ""
                   }`}
-                  id="firstname"
-                  value={this.state.lastname}
+                  id="name"
+                  value={this.state.firstname}
                   onChange={this.handleNameChange}
                   onBlur={this.validateName}
                 />
@@ -92,7 +89,7 @@ export default class Contact extends Component {
 
               <div className="form-group">
                 <label htmlFor="lastname" className="contact-label">
-                  lastname
+                  Lastname
                 </label>
                 <input
                   name="lastname"
@@ -111,7 +108,7 @@ export default class Contact extends Component {
 
               <div className="form-group">
                 <label htmlFor="email" className="contact-label">
-                  email
+                  Email
                 </label>
                 <input
                   name="email"
@@ -127,7 +124,7 @@ export default class Contact extends Component {
               </div>
 
               <label className="contact-label">
-                input text:
+                Input text:
                 <input type="textarea" name="text" className="contact-input" />
               </label>
               <button type="submit" className="contact-btn">
