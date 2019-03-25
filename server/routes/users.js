@@ -65,6 +65,9 @@ router
   .put(passportJWT_Admin, UsersController.update)
   .delete(passportJWT_Admin, UsersController.remove);
 router.route("/").get(passportJWT_Admin, UsersController.findAll);
+router
+  .route("/search/:value")
+  .get(passportJWT_Admin, UsersController.findByValue);
 router.route("/page/profile").get(passportJWT_User, UsersController.profile);
 
 router.route("/verify/:token").get(UsersController.verify);

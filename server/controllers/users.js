@@ -85,7 +85,83 @@ module.exports = {
       .then(user => res.json(user))
       .catch(() => res.status(422).json("Can't Find User"));
   },
+  findByValue: (req, res, next) => {
+    // db.inventory.find({
+    //   $and: [
+    //     { $or: [{ price: 0.99 }, { price: 1.99 }] },
+    //     { $or: [{ sale: true }, { qty: { $lt: 20 } }] }
+    //   ]
+    // });
+    ///
+    // User.find()
+    //   .and([{ $or: [{ a: 1 }, { b: 1 }] }, { $or: [{ c: 1 }, { d: 1 }] }])
+    //   .exec(function(err, results) {
+    //     res.status(200).json(results);
+    //   });
 
+    // User.find()
+    //   .and([
+    //     {
+    //       $or: [
+    //         { firstName: { $regex: req.params.value, $options: "i" } },
+    //         { lastName: { $regex: req.params.value, $options: "i" } }
+    //       ]
+    //     },
+    //     {
+    //       $or: [
+    //         { email: { $regex: req.params.value, $options: "i" } },
+    //         { phone: { $regex: req.params.value, $options: "i" } }
+    //       ]
+    //     }
+    //   ])
+    //   .exec(function(err, results) {
+    //     res.status(200).json(results);
+    //   });
+
+    // User.find()
+    //   .and([
+    //     {
+    //       $or: [
+    //         { "local.firstName": { $regex: req.params.value, $options: "i" } },
+    //         { "google.firstName": { $regex: req.params.value, $options: "i" } },
+    //         {
+    //           "facebook.firstName": { $regex: req.params.value, $options: "i" }
+    //         },
+    //         { "local.lastName": { $regex: req.params.value, $options: "i" } },
+    //         { "google.lastName": { $regex: req.params.value, $options: "i" } },
+    //         {
+    //           "facebook.lastName": { $regex: req.params.value, $options: "i" }
+    //         },
+    //         { "local.email": { $regex: req.params.value, $options: "i" } },
+    //         { "google.email": { $regex: req.params.value, $options: "i" } },
+    //         { "facebook.email": { $regex: req.params.value, $options: "i" } }
+    //       ]
+    //     }
+    //   ])
+    //   .exec(function(err, results) {
+    //     res.json(results);
+    //   });
+
+    User.find({
+      $or: [
+        { "local.firstName": { $regex: req.params.value, $options: "i" } },
+        { "google.firstName": { $regex: req.params.value, $options: "i" } },
+        {
+          "facebook.firstName": { $regex: req.params.value, $options: "i" }
+        },
+        { "local.lastName": { $regex: req.params.value, $options: "i" } },
+        { "google.lastName": { $regex: req.params.value, $options: "i" } },
+        {
+          "facebook.lastName": { $regex: req.params.value, $options: "i" }
+        },
+        { "local.email": { $regex: req.params.value, $options: "i" } },
+        { "google.email": { $regex: req.params.value, $options: "i" } },
+        { "facebook.email": { $regex: req.params.value, $options: "i" } }
+      ]
+    }).exec(function(err, results) {
+      res.json(results);
+    });
+  },
   update: function(req, res) {
     User.findOneAndUpdate({ _id: req.params.id }, { local: req.body })
       .then(user => res.json(user))
