@@ -28,7 +28,7 @@ module.exports = {
     // Create a new user
     const newUser = new User({
       method: "local",
-      local: { ...req.value.body }
+      local: { ...req.value.body, orders: [] }
     });
 
     await newUser.save();
@@ -80,10 +80,22 @@ module.exports = {
       .then(user => res.json(user))
       .catch(err => res.status(422).json(err));
   },
-  update: function(req, res) {
-    User.findOneAndUpdate({ _id: req.params.id }, {local:req.body})
+  findById: function(req, res, next) {
+    User.findById(req.params.id)
       .then(user => res.json(user))
-      .catch(err => res.status(422).json("Can't Update"));
+      .catch(() => res.status(422).json("Can't Find User"));
+  },
+
+  update: function(req, res) {
+    User.findOneAndUpdate({ _id: req.params.id }, { local: req.body })
+      .then(user => res.json(user))
+      .catch(err => res.status(422).json("Can't find User"));
+  },
+  remove: (req, res, next) => {
+    User.findById({ _id: req.params.id })
+      .then(user => user.remove())
+      .then(user => res.json(user))
+      .catch(err => res.status(422).json(err));
   },
 
   profile: async (req, res, next) => {

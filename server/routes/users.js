@@ -48,15 +48,6 @@ router
   .route("/signup")
   .post(validateBody(schemas.registerSchema), UsersController.signUp);
 
-// router
-//   .route("/signin")
-//   .post(
-//     validateBody(schemas.loginSchema),
-//     passportSignIn,
-//     UsersController.signIn
-//   );
-
-// Custom Error For Unauthorized User
 router
   .route("/signin")
   .post(
@@ -68,9 +59,13 @@ router
 router.route("/oauth/google").post(passportGoogle, UsersController.googleOAuth);
 router.route("/oauth/facebook").post(passportFB, UsersController.facebookOAuth);
 
-router.route("/update/:id").put(passportJWT_Admin, UsersController.update);
-router.route("/all").get(passportJWT_Admin, UsersController.findAll);
-router.route("/profile").get(passportJWT_User, UsersController.profile);
+router
+  .route("/:id")
+  .get(passportJWT_Admin, UsersController.findById)
+  .put(passportJWT_Admin, UsersController.update)
+  .delete(passportJWT_Admin, UsersController.remove);
+router.route("/").get(passportJWT_Admin, UsersController.findAll);
+router.route("/page/profile").get(passportJWT_User, UsersController.profile);
 
 router.route("/verify/:token").get(UsersController.verify);
 router.route("/recover").get(UsersController.recover);

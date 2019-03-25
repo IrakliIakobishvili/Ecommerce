@@ -1,0 +1,29 @@
+.logo {
+    position: relative;
+}
+
+.logo__heading {
+    font-style: italic;
+    color: #dd1829;
+    position: relative;
+    white-space: nowrap;
+    font-size: 16PX;
+    font-weight: bold;
+    position: absolute;
+    bottom: 10px;
+    left: 75px;
+}
+
+.logo__heading::before, .logo__heading::after {
+    content: "";
+    display: block;
+    border-width: 2px;
+    width: 97px;
+    height: 2px;
+    position: absolute;
+    background-color: #dd1829;
+}
+
+.logo__heading::before {
+    left: 4px;
+}

@@ -6,7 +6,11 @@ const commonProps = {
   firstName: String,
   lastName: String,
   balance: Number,
-  verified: Boolean
+  verified: Boolean,
+  orders: {
+    type: [],
+    default: undefined
+  }
 };
 
 // Create a schema
@@ -20,8 +24,9 @@ const userSchema = new Schema(
     local: {
       email: String,
       password: String,
-      age: Number,
-      birthday: Number,
+      day: Number,
+      month: Number,
+      year: Number,
       phone: String,
       ...commonProps
     },

@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 // import classNames from "classnames";
 import "../styles/categories.css";
 
-import { getCategories, detectActiveLink } from "../actions/categories";
+import { getCategories } from "../actions/categories";
+import { detectActiveLink } from "../actions/activeLinks";
 import { getProducts, getProductsByCat } from "../actions/products";
 
 class Categories extends Component {
@@ -25,16 +26,19 @@ class Categories extends Component {
     this.props.detectActiveLink(cat);
   };
   render() {
-    const { categories } = this.props;
+    const { categories, activeLink } = this.props;
 
     const result = categories.length ? (
       categories.map(category => {
         return (
           <li key={category._id} className="categories__list__item">
-            {/* <NavLink activeClass="active" to={`${category.categoryID}`}>
-              {category.title}
-            </NavLink> */}
-            <Link to="/" onClick={() => this.linkClick(category.categoryID)}>
+            <Link
+              className={
+                activeLink == category.categoryID ? "active-cat" : null
+              }
+              to="/"
+              onClick={() => this.linkClick(category.categoryID)}
+            >
               {category.title}
             </Link>
           </li>
@@ -60,7 +64,8 @@ function mapStateToProps(state) {
     categories: state.categories.categories,
     error: state.categories.error,
     isLoading: state.categories.isLoading,
-    active: state.categories.active
+    // active: state.categories.active
+    activeLink: state.activeLinks.catNav
   };
 }
 

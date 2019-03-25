@@ -90,7 +90,7 @@ export const getProductsByTitle = title => {
       dispatch({
         type: PRODUCTS_GET_DATA,
         payload: res.data
-      });
+      }); 
     } catch (err) {
       console.error("err", err);
       dispatch({

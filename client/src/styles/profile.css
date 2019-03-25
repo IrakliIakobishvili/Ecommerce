@@ -1,0 +1,34 @@
+.profile-nav-conteiner {
+  background: rgb(204, 201, 201);
+  margin-top: 50px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* opacity: 0.5; */
+}
+
+.profile-nav-conteiner-item {
+  display: inline-block;
+  /* background: pink; */
+  padding: 30px;
+  margin: 30px;
+  border-right: 1px solid gray;
+}
+
+.profile-item-link {
+  text-decoration: none;
+  font-size: 20px;
+  background: -webkit-linear-gradient(rgb(250, 225, 0), rgb(134, 13, 13));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.profile-item-link:hover {
+  font-size: 20px;
+  background: -webkit-linear-gradient(rgb(134, 13, 13), rgb(255, 238, 1));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 3px #a89f1a;
+}

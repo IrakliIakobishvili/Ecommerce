@@ -2,7 +2,8 @@
     margin: 0px;
     padding: 0px;
     list-style: none;
-    outline: none;
+    /* outline: none; */
+    border: none;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
@@ -13,16 +14,17 @@
 }
 
 .main-header {
-    height: 60px;
+    height: 80px;
     background-color: #fff;
     color: #fff;
     padding: 0px 50px;
-    border-bottom: 2px solid #e5e6eb;
+    /* border-bottom: 2px solid #e5e6eb; */
     position: fixed;
     left: 0px;
     top: 0px;
     width: 100%;
     z-index: 99999;
+    box-shadow: 1px 1px 8px rgb(209, 209, 209);
 }
 
 .main-header .container {
@@ -35,13 +37,13 @@
 .App {
     background-color: #e6e6e6;
     min-height: 100vh;
-    padding-top: 70px;
+    padding-top: 80px;
 }
 
 .logo {
-    color: #0397d5;
+    /* color: #0397d5;
     font-weight: bold;
-    text-decoration: none;
+    text-decoration: none; */
 }
 
 .top-nav__list {
@@ -58,6 +60,10 @@
     border: 2px solid #e7e7e7;
     padding: 0px 5px;
     min-width: 200px;
+}
+
+.header-list {
+    display: flex;
 }
 
 .loginBtn {
@@ -175,7 +181,21 @@ ul.movie-box__list {
 
 /*-------------- Signup ---------------*/
 
-.signup-page .container {
-  display: flex;
-  flex-direction: column;
-} 
+/* .signup-page .container {
+    display: flex;
+    flex-direction: column;
+} */
+
+/*------- Common Style --------*/
+
+.auth-page {
+    height: calc(100vh - 80px);
+}
+
+.auth-page .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: red; */
+    height: 100%;
+}

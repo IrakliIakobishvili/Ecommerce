@@ -13,13 +13,22 @@
     border-bottom: none;
     display: block;
     text-decoration: none;
+    color: black;
 }
 
 .categories__list__item:last-child {
     border-bottom: 1px solid red;
 }
 
-.active {
+.active-cat {
     background: red;
     color: green;
+}
+
+.red {
+    background: red;
+}
+
+.blue {
+    background: blue;
 }

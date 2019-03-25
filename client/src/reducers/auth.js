@@ -2,6 +2,7 @@ import {
   AUTH_SIGN_UP,
   AUTH_SIGN_OUT,
   AUTH_SIGN_IN,
+  ACTIVE_HEADER_LINK,
   REGISTER_ERROR,
   LOGIN_ERROR,
   AUTH_SUCCESS
@@ -11,7 +12,8 @@ const DEFAULT_STATE = {
   isAuthenticated: false,
   token: "",
   registerError: "",
-  loginError: ""
+  loginError: "",
+  activeLink: ""
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -47,6 +49,8 @@ export default (state = DEFAULT_STATE, action) => {
       };
     case REGISTER_ERROR:
       return { ...state, registerError: action.payload };
+    case ACTIVE_HEADER_LINK:
+      return { ...state, activeLink: action.payload };
     case LOGIN_ERROR:
       return { ...state, loginError: action.payload };
     default:

@@ -1,5 +1,9 @@
 import React, { Component} from "react";
 import axios from 'axios';
+import {Link,Route} from 'react-router-dom';
+import Navigation from './Navigation';
+import Users from './Users';
+import "../../styles/admin/index.css";
 
 
 class Admin extends Component {
@@ -9,7 +13,7 @@ class Admin extends Component {
     //     adminOnline : true,
     //     users: []     
     //     }
-    //   }
+    //   } vergavige ratqvi aa ara gaagrdzel4
     //   componentDidMount() {
     //     axios.get('http://localhost:5000/api/users/all')
     //       .then((response) => {
@@ -39,8 +43,15 @@ class Admin extends Component {
 
     render () {
         return (
-            <div>
-                <button onClick={this.showAdminContent}>All Users</button>             
+            <div className='admin-page'>
+                <div className='container'>
+                    {/* <Navigation /> */}
+                    {/* <Route path='/admin/users' component={Users} /> */}
+                    <Link to='/admin/users' className='admin-page__users'>Users</Link>
+                    <Link to='/admin/products' className='admin-page__users'>Products</Link>
+                    <Link to='/admin/categories' className='admin-page__users'>Categories</Link>
+                    <Link to='/admin/messages' className='admin-page__users'>Messages</Link>
+                </div>
             </div>
         )
     }
@@ -54,3 +65,7 @@ class Admin extends Component {
 
 
 export default Admin;
+
+// <div>
+            //     <button onClick={this.showAdminContent}>All Users</button>             
+            // </div>
