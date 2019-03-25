@@ -88,7 +88,6 @@ passport.use(
             firstName: profile.name.givenName,
             lastName: profile.name.familyName,
             balance: 0,
-            orders: [],
             verified: true
           }
         });
@@ -128,7 +127,6 @@ passport.use(
             firstName: profile.name.givenName,
             lastName: profile.name.familyName,
             balance: 0,
-            orders: [],
             verified: true
           }
         });

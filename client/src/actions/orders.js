@@ -4,7 +4,7 @@ import {
   EMPTY_CART,
   ORDER_FAILED,
   CONNECTION_ERROR,
-  SAVED_ORDER
+  ORDER_FINISHED
 } from "./types";
 import { API_URL } from "../config";
 
@@ -22,8 +22,12 @@ export const saveOrder = (order, totalPrice) => {
       console.log("end");
       if (success) {
         dispatch({
-          type: EMPTY_CART,
+          type: ORDER_FINISHED,
           payload: message
+        });
+        dispatch({
+          type: EMPTY_CART,
+          payload: []
         });
       } else {
         dispatch({

@@ -9,6 +9,8 @@ module.exports = {
     const { totalPrice, order } = req.body;
     let loggedUser = await User.findOne({ _id: user });
     let loggedUserDetails = loggedUser[loggedUser.method];
+    console.log("totalPrice", totalPrice);
+    console.log("loggedUserDetails.balance", loggedUserDetails.balance);
     if (loggedUserDetails.balance >= totalPrice) {
       for (let i = 0; i < order.length; i++) {
         let currentProduct = await Product.findOne({

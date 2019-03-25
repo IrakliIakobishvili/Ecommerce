@@ -28,7 +28,7 @@ module.exports = {
     // Create a new user
     const newUser = new User({
       method: "local",
-      local: { ...req.value.body, orders: [] }
+      local: { ...req.value.body }
     });
 
     await newUser.save();
@@ -82,7 +82,24 @@ module.exports = {
   },
   findById: function(req, res, next) {
     User.findById(req.params.id)
-      .then(user => res.json(user))
+      .then(user => {
+        let _user = "";
+        _user = user[user.method];
+        filteredUser = {
+          id: user._id,
+          method: user.method,
+          email: _user.email,
+          firstName: _user.firstName,
+          lastName: _user.lastName,
+          phone: _user.phone,
+          day: _user.day,
+          month: _user.month,
+          year: _user.year,
+          balance: _user.balance,
+          verified: _user.verified
+        };
+        res.json(filteredUser);
+      })
       .catch(() => res.status(422).json("Can't Find User"));
   },
   findByValue: (req, res, next) => {
@@ -159,11 +176,35 @@ module.exports = {
         { "facebook.email": { $regex: req.params.value, $options: "i" } }
       ]
     }).exec(function(err, results) {
-      res.json(results);
+      let _user = "";
+      const filteredUsers = results.map(user => {
+        _user = user[user.method];
+        return {
+          id: user._id,
+          method: user.method,
+          email: _user.email,
+          password: _user.password,
+          firstName: _user.firstName,
+          lastName: _user.lastName,
+          phone: _user.phone,
+          day: _user.day,
+          month: _user.month,
+          year: _user.year,
+          balance: _user.balance,
+          verified: _user.verified
+        };
+      });
+      res.json(filteredUsers);
     });
   },
   update: function(req, res) {
-    User.findOneAndUpdate({ _id: req.params.id }, { local: req.body })
+    let method = req.body.method;
+    // console.log(method);
+    User.findOneAndUpdate(
+      { _id: req.params.id },
+      { local: req.body }
+      // { [req.body.method]: req.body.user }
+    )
       .then(user => res.json(user))
       .catch(err => res.status(422).json("Can't find User"));
   },

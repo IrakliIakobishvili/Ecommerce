@@ -1,4 +1,9 @@
-import { GET_ORDERS, ORDER_FAILED, CONNECTION_ERROR } from "../actions/types";
+import {
+  GET_ORDERS,
+  ORDER_FAILED,
+  ORDER_FINISHED,
+  CONNECTION_ERROR
+} from "../actions/types";
 
 const DEFAULT_STATE = {
   orders: [],
@@ -17,6 +22,13 @@ export default (state = DEFAULT_STATE, action) => {
         orders: action.payload
       };
     case ORDER_FAILED:
+      return {
+        ...state,
+        isLoading: false,
+        error: "",
+        response: action.payload
+      };
+    case ORDER_FINISHED:
       return {
         ...state,
         isLoading: false,
