@@ -46,8 +46,8 @@
 }
 
 .active-cat {
-    padding-left: 58px;
-    background-position-x: 25px;
+    padding-left: 58px !important;
+    background-position-x: 25px !important;
 }
 
 .red {
