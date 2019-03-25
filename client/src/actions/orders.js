@@ -1,5 +1,11 @@
 import axios from "axios";
-import { GET_CART_ITEMS, EMPTY_CART, CONNECTION_ERROR } from "./types";
+import {
+  GET_CART_ITEMS,
+  EMPTY_CART,
+  ORDER_FAILED,
+  CONNECTION_ERROR,
+  SAVED_ORDER
+} from "./types";
 import { API_URL } from "../config";
 
 export const saveOrder = (order, totalPrice) => {
@@ -9,11 +15,22 @@ export const saveOrder = (order, totalPrice) => {
         order,
         totalPrice
       });
-      console.log(res);
-      //   dispatch({
-      //     type: GET_CART_ITEMS,
-      //     payload: newRes.data.items
-      //   });
+      const { message, success } = res.data;
+      console.log("start");
+      console.log(message);
+      console.log(success);
+      console.log("end");
+      if (success) {
+        dispatch({
+          type: EMPTY_CART,
+          payload: message
+        });
+      } else {
+        dispatch({
+          type: ORDER_FAILED,
+          payload: message
+        });
+      }
     } catch (err) {
       console.error("err", err);
       dispatch({
@@ -84,3 +101,23 @@ export const emptyCart = () => {
     }
   };
 };
+
+// switch (res.data) {
+//     case "Success":
+//       dispatch({
+//         type: EMPTY_CART,
+//         payload: []
+//       });
+//       break;
+//     case "Order Saved":
+//       dispatch({
+//         type: EMPTY_CART,
+//         payload: []
+//       });
+//       break;
+//     default:
+//       dispatch({
+//         type: SAVED_ORDER,
+//         payload: res.data
+//       });
+//   }

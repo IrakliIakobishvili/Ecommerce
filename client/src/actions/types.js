@@ -18,4 +18,7 @@ export const LOADING_TRUE = "LOADING_TRUE";
 export const CLEAR_PRODUCTS_DB = "CLEAR_PRODUCTS_DB";
 export const GET_CART_ITEMS = "GET_CART_ITEMS";
 export const EMPTY_CART = "EMPTY_CART";
+export const GET_ORDERS = "GET_ORDERS";
+// export const SAVED_ORDER = "SAVED_ORDER";
+export const ORDER_FAILED = "ORDER_FAILED";
 export const CONNECTION_ERROR = "CONNECTION_ERROR";

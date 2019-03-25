@@ -15,7 +15,8 @@ class Cart extends Component {
     this.props.emptyCart();
   };
   render() {
-    const { cart, isLoading, error } = this.props;
+    const { cart, isLoading, error, response } = this.props;
+    console.log("response", response);
 
     const items = cart.length ? (
       cart.map(product => {
@@ -63,7 +64,8 @@ function mapStateToProps(state) {
   return {
     cart: state.cart.products,
     isLoading: state.cart.isLoading,
-    error: state.cart.error
+    error: state.cart.error,
+    response: state.orders.response
   };
 }
 

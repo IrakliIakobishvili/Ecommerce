@@ -15,12 +15,25 @@ class Checkout extends Component {
   //       ? this.props.addToCart(productId, 1)
   //       : this.props.history.push("/signin");
   //   };
-  saveOrderHandler = totalPrice => {
+  // componentWillReceiveProps() {
+  //   this.setState({ disabled: false });
+  // }
+  state = {
+    disabled: false
+  };
+  makeOrderHandler = totalPrice => {
     console.log(this.props.cart);
+    // this.setState({ disabled: true });
     this.props.saveOrder(this.props.cart, totalPrice);
   };
+  // componentWillReceiveProps() {
+  //   console.log("RECEIVED PROPS");
+  // }
 
   render() {
+    // console.log("FROM checkout page start");
+    // console.log(this.props.response);
+    // console.log("FROM checkout page end");
     const lengthLimiter = num => {
       return Number(num.toFixed(2));
     };
@@ -71,11 +84,17 @@ class Checkout extends Component {
             </span>
           </li>
           <li className="checkout__list__item checkout__list__item--buttons">
+            <div className="checkout__list__item__options">
+              <div />
+              <span>Checkout With</span>
+            </div>
             <button
-              onClick={() => this.saveOrderHandler(total)}
+              // disabled={this.state.disabled}
+              // disabled={this.props.isLoading}
+              onClick={() => this.makeOrderHandler(total)}
               className="checkout-btn checkout-btn--burger"
             >
-              <span>BurgerHuB</span> <span>Checkout</span>
+              BurgerHuB
             </button>
             <div className="checkout-btn checkout-btn--burger">
               <PayPalButton
@@ -87,14 +106,6 @@ class Checkout extends Component {
             </div>
           </li>
         </ul>
-        {/* <div>
-          ID: {item._id} | Name: {product.name}
-        </div>
-        <div className="btns">
-          <button>-</button>
-          <input disabled type="text" />
-          <button>+</button>
-        </div> */}
       </div>
     );
   }
@@ -109,7 +120,8 @@ class Checkout extends Component {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart.products
+    cart: state.cart.products,
+    isLoading: state.orders.isLoading
   };
 }
 
