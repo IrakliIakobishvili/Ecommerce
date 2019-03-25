@@ -52,7 +52,7 @@ class Categories extends Component {
 
     return (
       <nav className="categories">
-        <h3>Category</h3>
+        <h3 className="categories__heading">CATEGORIES</h3>
         <ul className="categories_list">{result}</ul>
       </nav>
     );
