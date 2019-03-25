@@ -206,3 +206,22 @@ ul.movie-box__list {
     /* background: red; */
     height: 100%;
 }
+
+.empty, .loading {
+    font-size: 120px;
+    text-align: center;
+    color: #b7b7b7;
+}
+
+.loading {
+    -webkit-animation: rotation 2s infinite linear;
+}
+
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(359deg);
+    }
+}

@@ -1,4 +1,4 @@
-.profile-nav-conteiner {
+/* .profile-nav-conteiner {
   background: rgb(204, 201, 201);
   margin-top: 50px;
   width: 100%;
@@ -6,12 +6,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* opacity: 0.5; */
 }
 
 .profile-nav-conteiner-item {
   display: inline-block;
-  /* background: pink; */
   padding: 30px;
   margin: 30px;
   border-right: 1px solid gray;
@@ -31,4 +29,4 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 3px #a89f1a;
-}
+} */
