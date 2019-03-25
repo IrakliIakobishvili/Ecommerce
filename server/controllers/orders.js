@@ -31,10 +31,15 @@ module.exports = {
           { $inc: { quantity: -order[i].quantity } }
         );
       }
-      loggedUserDetails.balance = loggedUserDetails.balance - totalPrice;
-      await loggedUser.save();
-      /// gaaukme kalata da daacommite mere!!!
-      /////
+      await User.update(
+        { _id: user },
+        {
+          $set: {
+            [loggedUser.method + ".balance"]:
+              loggedUserDetails.balance - totalPrice
+          }
+        }
+      );
       function clearCart(user) {
         Cart.findOne({ user: user }).then(foundCart => {
           Cart.findByIdAndRemove(foundCart._id)

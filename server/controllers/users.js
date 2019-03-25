@@ -223,7 +223,9 @@ module.exports = {
 
     // console.log(loggedUser);
     res.json({
-      profilePageInfo: `Response From Server API | Email: ${loggedUser.email}`
+      profilePageInfo: `Response From Server API | Email: ${
+        loggedUser.email
+      } Balance: ${loggedUser.balance}`
     });
   },
 
