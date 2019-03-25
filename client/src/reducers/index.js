@@ -6,6 +6,7 @@ import productsReducer from "./products";
 import categoriesReducer from "./categories";
 import cartReducer from "./cart";
 import orderReducer from "./orders";
+import adminReducer from "./admin";
 import activeReducer from "./activeLinks";
 
 export default combineReducers({
@@ -16,5 +17,6 @@ export default combineReducers({
   products: productsReducer,
   cart: cartReducer,
   orders: orderReducer,
+  admin: adminReducer,
   activeLinks: activeReducer
 });

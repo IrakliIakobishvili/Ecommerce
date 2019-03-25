@@ -1,0 +1,15 @@
+.admin-page .admin-page__users {
+    width: 200px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    border:1px solid green;
+    padding: 10px;
+}
+.admin-page .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
