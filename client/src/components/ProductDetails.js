@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cart";
 import { getProductDetails } from "../actions/products";
+import { getProductReviews } from "../actions/reviews";
 import "../styles/productdetails.css";
 
 import Categories from "./Categories";
@@ -14,6 +15,7 @@ class Movie extends Component {
   };
   async componentDidMount() {
     this.props.getProductDetails(this.props.match.params.id);
+    this.props.getProductReviews(this.props.match.params.id);
   }
 
   cartBtnHandler = productId => {
@@ -87,5 +89,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addToCart, getProductDetails }
+  { addToCart, getProductDetails, getProductReviews }
 )(Movie);

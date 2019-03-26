@@ -2,15 +2,21 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const reviewSchema = new Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "user"
-  },
   product: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Product"
   },
-  reviews: []
+  reviews: [
+    {
+      user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "user"
+      },
+      message: {
+        type: String
+      }
+    }
+  ]
 });
 
 const Review = mongoose.model("Review", reviewSchema);

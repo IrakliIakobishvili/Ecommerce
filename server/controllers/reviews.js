@@ -65,17 +65,46 @@ module.exports = {
         );
       }
     });
+  },
+  getReviews: async (req, res) => {
+    Review.find({ product: req.params.id })
+      // .populate("reviews.user", "local.firstName" + " " + "local.lastName")
+      .populate(
+        "reviews.user",
+        [req.user.method] +
+          "._id" +
+          " " +
+          [req.user.method] +
+          ".firstName" +
+          " " +
+          [req.user.method] +
+          ".lastName"
+      )
+      .exec((err, reviews) => {
+        if (!reviews) {
+          return res.json({ reviews });
+        }
+
+        res.send(reviews);
+      });
+
+    // const reviewDoc = await Review.find({ product: req.params.id });
+    // if (reviewDoc) {
+    //   console.log(reviewDoc[0].reviews);
+    //   const reviews = reviewDoc.reviews;
+    //   res.status(200).send(reviews);
+    // }
   }
-  //   getCartItems: (req, res) => {
-  //     Cart.findOne({ user: req.user.id })
-  //       .populate("items.product")
-  //       .exec((err, cart) => {
-  //         if (!cart) {
-  //           return res.json({ items: [] });
-  //         }
-  //         res.send(cart);
-  //       });
-  //   }
+  // getReviews: (req, res) => {
+  //   Review.findOne({ product: req.body.productID })
+  //     .populate("reviews.product")
+  //     .exec((err, cart) => {
+  //       if (!cart) {
+  //         return res.json({ items: [] });
+  //       }
+  //       res.send(cart);
+  //     });
+  // }
   //   removeItemFromCart: (req, res) => {
   //     Cart.findOne({ user: req.user.id }).then(foundCart => {
   //       if (foundCart) {

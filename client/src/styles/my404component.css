@@ -42,6 +42,8 @@
     border-radius: 15px;
     font-size: 14px;
     display: inline-block;
+    cursor: pointer;
+    outline: none;
 }
 
 .not-found-page__link:hover {

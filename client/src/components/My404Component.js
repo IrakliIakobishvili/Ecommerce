@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import "../styles/my404component.css";
 
 export default class My404Component extends Component {
+  goBack = () => {
+    this.props.history.goBack();
+  };
   render() {
     return (
       <div className="not-found-page">
@@ -13,9 +16,12 @@ export default class My404Component extends Component {
               <p className="not-found-page__desc">
                 The page you requested could not be found.
               </p>
-              <Link className="not-found-page__link" to="/">
+              {/* <Link className="not-found-page__link" to="/">
                 go back
-              </Link>
+              </Link> */}
+              <button className="not-found-page__link" onClick={this.goBack}>
+                go back
+              </button>
             </li>
             <li>
               <img
