@@ -16,6 +16,9 @@
 
 .products {
     /* flex: 1; */
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
 }
 
 /* .home-page {

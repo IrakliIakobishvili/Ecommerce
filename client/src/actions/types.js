@@ -20,6 +20,7 @@ export const GET_CART_ITEMS = "GET_CART_ITEMS";
 export const USERS_GET_DATA = "USERS_GET_DATA";
 export const EMPTY_CART = "EMPTY_CART";
 export const GET_ORDERS = "GET_ORDERS";
+export const GET_REVIEWS = "GET_REVIEWS";
 export const ORDER_FINISHED = "ORDER_FINISHED";
 // export const SAVED_ORDER = "SAVED_ORDER";
 export const ORDER_FAILED = "ORDER_FAILED";

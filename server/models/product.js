@@ -17,19 +17,20 @@ const productSchema = new Schema(
       required: "Quantity is required"
     },
     details: {
-      dimensions: String,
-      weight: String,
-      displayType: String,
-      displaySize: String,
-      displayResolution: String,
-      os: String,
-      cpu: String,
-      internalMemory: String,
-      ram: String,
-      camera: String,
-      color: String,
-      price: Number,
-      photo: String
+      size: String,
+      energy: String,
+      sugar: String,
+      protein: String,
+      cholesterol: String,
+      photo: String,
+      totalfat: String,
+      saturatedfat: String,
+      transfat: String,
+      dietaryfibre: String,
+      sodium: String,
+      servingsize: Number,
+      price: String,
+      description: String
     }
   },
   { timestamps: true }

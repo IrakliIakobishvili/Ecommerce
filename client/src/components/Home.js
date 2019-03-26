@@ -50,11 +50,15 @@ class Home extends Component {
         );
       })
     ) : this.props.isLoading ? (
-      <h1>Loading...</h1>
+      <div className="loading">
+        <i className="fas fa-spinner" />
+      </div>
     ) : this.props.error ? (
       <h1>{this.props.error}</h1>
     ) : (
-      <h1>Empty</h1>
+      <div className="empty">
+        <i className="far fa-frown" />
+      </div>
     );
 
     return (
