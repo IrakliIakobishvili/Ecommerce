@@ -66,9 +66,11 @@ class Movie extends Component {
     return (
       <div className="details-page">
         <div className="container">
-          <h1>Details Page</h1>
-          {/* <Categories /> */}
-          {productDetails}
+          <h2 className="details-page__heading">
+            <span className="details-page__heading__title">details</span>
+            <span className="details-page__heading__hr" />
+          </h2>
+          <div className="details-cont">{productDetails}</div>
         </div>
       </div>
     );

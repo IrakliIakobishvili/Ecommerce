@@ -32,7 +32,8 @@
     /* border: none; */
     /* box-shadow: 0px 0px 5px #8c8c8c; */
     /* border-width: 3px; */
-    /* border-color: #d62231; */
+    border-color: #d62231;
+    /* background: red */
 }
 
 .products .product__item:nth-child(4n+4) {
@@ -42,6 +43,7 @@
 
 .product__item__img-cont {
     height: 200px;
+    overflow: hidden;
 }
 
 .product__item__link {
