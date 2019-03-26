@@ -159,49 +159,53 @@ module.exports = {
         .required(),
       quantity: Joi.number().required(),
       details: Joi.object().keys({
-        dimensions: Joi.string()
+        size: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        weight: Joi.string()
+        energy: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        displayType: Joi.string()
+        sugar: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        displaySize: Joi.string()
+        protein: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        displayResolution: Joi.string()
+        cholesterol: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        cpu: Joi.string()
+        totalfat: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        internalMemory: Joi.string()
+        saturatedfat: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        ram: Joi.string()
+        transfat: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        os: Joi.string()
+        dietaryfibre: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        camera: Joi.string()
+        sodium: Joi.string()
           .min(1)
           .max(20)
           .required(),
-        color: Joi.string()
+        servingsize: Joi.string()
           .min(1)
           .max(20)
+          .required(),
+        description: Joi.string()
+          .min(1)
+          .max(1000)
           .required(),
         price: Joi.number().required(),
         photo: Joi.string()

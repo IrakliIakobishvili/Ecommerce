@@ -211,6 +211,10 @@ ul.movie-box__list {
     font-size: 120px;
     text-align: center;
     color: #b7b7b7;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    margin: auto;
 }
 
 .loading {
