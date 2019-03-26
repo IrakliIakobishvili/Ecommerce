@@ -25,6 +25,7 @@ app.use("/api/categories", require("./routes/categories"));
 app.use("/api/products", require("./routes/products"));
 app.use("/api/cart", require("./routes/cart"));
 app.use("/api/order", require("./routes/orders"));
+app.use("/api/review", require("./routes/reviews"));
 
 app.get("/", (req, res) => {
   res.send("Ecommerce Website API");
