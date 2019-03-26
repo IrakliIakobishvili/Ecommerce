@@ -14,12 +14,13 @@ import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Profile from "./components/Profile";
 import ChangePassword from "./components/ChangePassword";
+import MyOrders from "./components/MyOrders";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Contact from "./components/Contact";
-import Admin from './components/admin/Admin';
-import Users from './components/admin/Users'
-import reducers from "./reducers"; 
+import Admin from "./components/admin/Admin";
+import Users from "./components/admin/Users";
+import reducers from "./reducers";
 
 import Categories from "./components/Categories";
 
@@ -64,9 +65,14 @@ ReactDOM.render(
           <Route exact path="/profile" component={authGuard(Profile)} />
           <Route exact path="/product/:id" component={ProductDetails} />
           <Route exact path="/contact" component={Contact} />
-          <Route exact path='/admin' component={authGuard(Admin)}/>
-          <Route exact path='/admin/users/' component={Users}/>
-          <Route exect path="/changePassword" component={ChangePassword}></Route>
+          <Route exact path="/admin" component={authGuard(Admin)} />
+          <Route exact path="/admin/users/" component={Users} />
+          <Route
+            exect
+            path="/profile/changePassword"
+            component={ChangePassword}
+          />
+          <Route exect path="/profile/my_orders" component={MyOrders} />
         </Switch>
       </App>
     </BrowserRouter>

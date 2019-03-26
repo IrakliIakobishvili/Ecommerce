@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { Router, Route, Link } from "react-router-dom";
+import { BrowserRouter, Router, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getProfile } from "../actions/profile";
 import { getCartItems } from "../actions/cart";
+// import { BrowserRouter } from "react-router-dom";
+
+import { ChangePassword } from "./profile/ChangePassword";
+import {ProductView, MyOrders } from "./profile/MyOrders";
+import { NestedView } from "./profile/Nasted";
+import { NavBar } from "./profile/NavBar";
+
 import "../styles/profile.css";
 // import ChangePassword from "./ChangePassword";
 
@@ -23,35 +30,16 @@ class Profile extends Component {
     ) : null;
 
     return (
-      <div className="profile-page">
-        <div className="container">
-          <h1>Profile Page</h1>
-          {content}
+      <BrowserRouter>
+        <div>
+          <NavBar />
+          <Route exact path="/change_password" component={ChangePassword} />
+          <Route path="/another" component={() => <div>yo!</div>} />
+          <Route path="/my_orders" component={MyOrders} />
+          <Route path="/product/:id" component={ProductView} />
+          <Route path="/nested" component={NestedView} />
         </div>
-
-        <div className="profile-nav-conteiner">
-          <div className="profile-nav-conteiner-item">
-            <Link className="profile-item-link" to="/myOrders">
-              My Orders
-            </Link>
-          </div>
-
-          <div className="profile-nav-conteiner-item">
-            <Link className="profile-item-link" to="/changePassword">
-              Change Password
-            </Link>
-          </div>
-
-          <div className="profile-nav-conteiner-item">
-            <Link className="profile-item-link" to="/smth">
-              History or smth
-            </Link>
-          </div>
-
-          {/* <Route path="/about/" component={myOrders} /> */}
-          {/* <Route path="/ChangePassword" component={ChangePassword} /> */}
-        </div>
-      </div>
+      </BrowserRouter>
     );
   }
 }
