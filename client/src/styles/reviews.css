@@ -1,0 +1,9 @@
+.reviews {
+    border: 1px solid red;
+}
+
+.review__list__item__message {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid green;
+}

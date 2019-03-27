@@ -7,5 +7,5 @@ router.route("/").post(passportJWT_User, ReviewController.addReview);
 //   .get(passportJWT_User, OrderController.getCartItems)
 //   .put(passportJWT_User, OrderController.removeItemFromCart)
 //   .delete(passportJWT_User, OrderController.emptyCart);
-router.route("/:id").get(passportJWT_User, ReviewController.getReviews);
+router.route("/:id").get(ReviewController.getReviews);
 module.exports = router;
