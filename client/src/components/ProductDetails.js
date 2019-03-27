@@ -5,18 +5,28 @@ import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cart";
 import { getProductDetails } from "../actions/products";
 import { getProductReviews } from "../actions/reviews";
+import Reviews from "./Reviews";
 import "../styles/productdetails.css";
 
-import Categories from "./Categories";
+// import Categories from "./Categories";
 
-class Movie extends Component {
+class Details extends Component {
   state = {
     disabled: false
   };
-  async componentDidMount() {
+  componentDidMount() {
     this.props.getProductDetails(this.props.match.params.id);
-    this.props.getProductReviews(this.props.match.params.id);
+    // this.props.getProductReviews(this.props.match.params.id);
   }
+  loadDetailsAndReviews = () => {
+    this.props.getProductDetails(this.props.match.params.id);
+    // this.props.getProductReviews(this.props.match.params.id);
+    console.log("loadDetailsAndReviews Run");
+  };
+  // componentWillReceiveProps() {
+  //   this.props.getProductDetails(this.props.match.params.id);
+  //   this.props.getProductReviews(this.props.match.params.id);
+  // }
 
   cartBtnHandler = productId => {
     // this.props.isAuth
@@ -31,7 +41,15 @@ class Movie extends Component {
   };
 
   render() {
-    const { details, cart } = this.props;
+    // const totalReviews = this.props.reviews.length ? (
+    //   <h2>Are Reviews</h2>
+    // ) : (
+    //   <h2>No Reviews</h2>
+    // );
+    // console.log("REVIEW FROM PROD ST");
+    // console.log(this.props.reviews);
+    // console.log("REVIEW FROM PROD EN");
+    const { details, cart, reviews } = this.props;
     const productInCart = cart.filter(el => {
       return el.product._id == this.props.match.params.id;
     });
@@ -43,24 +61,30 @@ class Movie extends Component {
         <ul>
           <li>Name: {details.name}</li>
           <li>Category: {details.category}</li>
-          {productInCart.length ? (
-            <button className="cart-btn">
-              <Link to="/cart">View In Cart</Link>
-            </button>
-          ) : (
-            <button
-              disabled={this.state.disabled}
-              className="cart-btn"
-              onClick={() => this.cartBtnHandler(details._id)}
-            >
-              Add to Cart
-            </button>
-          )}
-          <li />
+          <li>
+            {productInCart.length ? (
+              <button className="cart-btn">
+                <Link to="/cart">View In Cart</Link>
+              </button>
+            ) : (
+              <button
+                disabled={this.state.disabled}
+                className="cart-btn"
+                onClick={() => this.cartBtnHandler(details._id)}
+              >
+                Add to Cart
+              </button>
+            )}
+          </li>
+          {/* <li>{}</li> */}
         </ul>
+        {/* <div className="reviews">{totalReviews}</div> */}
       </Fragment>
     ) : this.props.isLoading ? (
       <h1>Loading...</h1>
+    ) : this.props.details == "" ? (
+      // <h1>CARIELIA</h1>
+      this.loadDetailsAndReviews()
     ) : this.props.error ? (
       <h1>{this.props.error}</h1>
     ) : null;
@@ -73,6 +97,10 @@ class Movie extends Component {
             <span className="details-page__heading__hr" />
           </h2>
           <div className="details-cont">{productDetails}</div>
+          <Reviews
+            productID={this.props.match.params.id}
+            history={this.props.history}
+          />
         </div>
       </div>
     );
@@ -82,6 +110,7 @@ class Movie extends Component {
 const mapStateToProps = state => ({
   isAuth: state.auth.isAuthenticated,
   details: state.products.details,
+  // reviews: state.products.reviews,
   error: state.products.error,
   isLoading: state.products.isLoading,
   cart: state.cart.products
@@ -90,4 +119,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addToCart, getProductDetails, getProductReviews }
-)(Movie);
+)(Details);

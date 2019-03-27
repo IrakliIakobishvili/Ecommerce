@@ -36,8 +36,8 @@ class Header extends Component {
     }
   }
   reloadCatAndProds = async className => {
-    this.props.getCategories();
-    this.props.getProducts();
+    // this.props.getCategories();
+    // this.props.getProducts();
     this.props.clearActiveLinks();
     this.detectActiveLink(className);
     // console.log("ss");

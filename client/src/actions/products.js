@@ -6,6 +6,7 @@ import {
   GET_FILTERED_PRODUCT,
   LOADING_TRUE,
   CLEAR_PRODUCTS_DB,
+  GET_REVIEWS,
   CONNECTION_ERROR
 } from "./types";
 
@@ -48,7 +49,7 @@ export const getProducts = () => {
 
       dispatch({
         type: PRODUCTS_GET_DATA,
-        payload: res.data 
+        payload: res.data
       });
     } catch (err) {
       console.error("err", err);
@@ -90,7 +91,7 @@ export const getProductsByTitle = title => {
       dispatch({
         type: PRODUCTS_GET_DATA,
         payload: res.data
-      }); 
+      });
     } catch (err) {
       console.error("err", err);
       dispatch({
@@ -173,3 +174,43 @@ export const getProductDetails = id => {
     }
   };
 };
+
+// export const getProductDetails = id => {
+//   return async dispatch => {
+//     try {
+//       dispatch({
+//         type: LOADING_TRUE,
+//         payload: true
+//       });
+//       // const res = await axios.get(`${API_URL}/api/products/${id}`);
+//       // dispatch({
+//       //   type: PRODUCT_GET_DETAILS,
+//       //   payload: res.data
+//       // });
+//       axios
+//         .get(`${API_URL}/api/products/${id}`)
+//         .then(res => {
+//           dispatch({
+//             type: PRODUCT_GET_DETAILS,
+//             payload: res.data
+//           });
+//           return axios.get(`${API_URL}/api/review/${id}`);
+//         })
+//         .then(res => {
+//           console.log("review Load start");
+//           console.log(res.data);
+//           console.log("review Load end");
+//           dispatch({
+//             type: GET_REVIEWS,
+//             payload: res.data
+//           });
+//         });
+//     } catch (err) {
+//       console.error("err", err);
+//       dispatch({
+//         type: CONNECTION_ERROR,
+//         payload: "Connection error || Wrong URL"
+//       });
+//     }
+//   };
+// };
