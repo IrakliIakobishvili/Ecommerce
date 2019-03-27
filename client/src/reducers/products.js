@@ -2,6 +2,7 @@ import {
   PRODUCTS_GET_DATA,
   PRODUCT_GET_DETAILS,
   LOADING_TRUE,
+  GET_REVIEWS,
   CONNECTION_ERROR
 } from "../actions/types";
 

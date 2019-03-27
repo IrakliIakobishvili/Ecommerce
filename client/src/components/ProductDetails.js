@@ -15,7 +15,7 @@ class Movie extends Component {
   };
   async componentDidMount() {
     this.props.getProductDetails(this.props.match.params.id);
-    this.props.getProductReviews(this.props.match.params.id);
+    await this.props.getProductReviews(this.props.match.params.id);
   }
 
   cartBtnHandler = productId => {

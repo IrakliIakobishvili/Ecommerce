@@ -67,27 +67,74 @@ module.exports = {
     });
   },
   getReviews: async (req, res) => {
-    Review.find({ product: req.params.id })
-      // .populate("reviews.user", "local.firstName" + " " + "local.lastName")
-      .populate(
-        "reviews.user",
-        [req.user.method] +
-          "._id" +
-          " " +
-          [req.user.method] +
-          ".firstName" +
-          " " +
-          [req.user.method] +
-          ".lastName"
-      )
-      .exec((err, reviews) => {
-        if (!reviews) {
-          return res.json({ reviews });
-        }
+    // Review.find({ product: req.params.id })
+    //   .populate("reviews.user")
+    //   .exec((err, reviewsDoc) => {
+    //     if (!reviewsDoc) {
+    //       // console.log("reviewsDoc");
+    //       // console.log(reviewsDoc);
+    //       return res.json([]); // change with []
+    //       // return res.end();
+    //     }
+    //     // console.log("arsebobs");
+    //     const reducedInfo = reviewsDoc[0].reviews.map(review => {
+    //       // let method = review.user.method;
+    //       return {
+    //         id: review._id,
+    //         author: {
+    //           id: review.user._id,
+    //           fullName:
+    //             review.user[review.user.method].firstName +
+    //             " " +
+    //             review.user[review.user.method].lastName
+    //         },
+    //         message: review.message
+    //       };
+    //     });
+    //     res.json(reducedInfo);
+    //     // res.json("ki");
+    //   });
+    // const reviewDoc = await Review.findOne({ product: req.params.id }).populate(
+    //   "reviews.user"
+    // );
+    // if (reviewDoc) {
+    //   return res.json("arsebobs");
+    // } else {
+    //   return res.json("ar arsebobs");
+    // }
 
-        res.send(reviews);
-      });
-
+    Review.findOne({ product: req.params.id }, function(err, result) {
+      if (err) {
+        return res.send([]);
+      }
+      if (!result) {
+        return res.send([]);
+      } else {
+        ////////////////
+        Review.find({ product: req.params.id })
+          .populate("reviews.user")
+          .exec((err, reviewsDoc) => {
+            if (!reviewsDoc) {
+              return res.json([]);
+            }
+            const reducedInfo = reviewsDoc[0].reviews.map(review => {
+              return {
+                id: review._id,
+                author: {
+                  id: review.user._id,
+                  fullName:
+                    review.user[review.user.method].firstName +
+                    " " +
+                    review.user[review.user.method].lastName
+                },
+                message: review.message
+              };
+            });
+            res.json(reducedInfo);
+          });
+        ///////////////
+      }
+    });
     // const reviewDoc = await Review.find({ product: req.params.id });
     // if (reviewDoc) {
     //   console.log(reviewDoc[0].reviews);
