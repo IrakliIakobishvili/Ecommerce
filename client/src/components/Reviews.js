@@ -31,7 +31,7 @@ class Review extends Component {
         this.props.addProductReview(id, message, rating);
         this.setState({ inputValue: "" });
       } else {
-        console.log("sheavse ra yvela");
+        console.log("Fill all Field");
       }
     }
   };
@@ -41,6 +41,7 @@ class Review extends Component {
     console.log("FROM REVIEW COMP end");
     const { reviews, rating } = this.props;
     const totalReviews = reviews.length ? (
+      //   reviews = reviews.reverse()
       reviews.map(review => {
         return (
           <li key={review.id} className="review__list__item">
@@ -64,15 +65,15 @@ class Review extends Component {
             onChange={this.setGender.bind(this)}
           >
             <input type="radio" id="star5" name="rate" value="5" />
-            <label htmlFor="star5" title="5" />
+            <label htmlFor="star5" />
             <input type="radio" id="star4" name="rate" value="4" />
-            <label htmlFor="star4" title="4" />
+            <label htmlFor="star4" />
             <input type="radio" id="star3" name="rate" value="3" />
-            <label htmlFor="star3" title="3" />
+            <label htmlFor="star3" />
             <input type="radio" id="star2" name="rate" value="2" />
-            <label htmlFor="star2" title="2" />
+            <label htmlFor="star2" />
             <input type="radio" id="star1" name="rate" value="1" />
-            <label htmlFor="star1" title="1" />
+            <label htmlFor="star1" />
           </div>
           <input
             value={this.state.inputValue}
