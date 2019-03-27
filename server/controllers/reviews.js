@@ -5,10 +5,12 @@ const Review = require("../models/review");
 module.exports = {
   addReview: (req, res) => {
     const user = req.user.id;
-    const { productID, message } = req.body;
+    const { productID, message, rating } = req.body;
+    console.log(req.body);
     const review = {
       user: user,
-      message: message
+      message: message,
+      rating: rating
     };
     // const product = req.body.productID;
     // const review = {
@@ -105,19 +107,24 @@ module.exports = {
 
     Review.findOne({ product: req.params.id }, function(err, result) {
       if (err) {
-        return res.send([]);
+        return res.send({ reviews: [], rating: 0 });
       }
       if (!result) {
-        return res.send([]);
+        return res.send({ reviews: [], rating: 0 });
       } else {
         ////////////////
         Review.find({ product: req.params.id })
           .populate("reviews.user")
           .exec((err, reviewsDoc) => {
             if (!reviewsDoc) {
-              return res.json([]);
+              return res.json({ reviews: [], rating: 0 });
             }
+            let totalRating = 0;
+            let totalReviews = 0;
+            // averageRating = averageRating.toFixed(2);
             const reducedInfo = reviewsDoc[0].reviews.map(review => {
+              totalRating += review.rating;
+              totalReviews++;
               return {
                 id: review._id,
                 author: {
@@ -127,10 +134,20 @@ module.exports = {
                     " " +
                     review.user[review.user.method].lastName
                 },
-                message: review.message
+                message: review.message,
+                rating: review.rating
               };
             });
-            res.json(reducedInfo);
+            // console.log("totalRating ", totalRating);
+            // console.log("totalReviews ", totalReviews);
+            // averageRating = totalRating / totalReviews;
+            // console.log(averageRating);
+            // if (typeof totalReviews === "number") {
+            //   console.log("totalReviews is number");
+            // }
+            let averageRating = totalRating / totalReviews;
+            averageRating = averageRating.toFixed(2);
+            res.json({ reviews: reducedInfo, rating: averageRating });
           });
         ///////////////
       }

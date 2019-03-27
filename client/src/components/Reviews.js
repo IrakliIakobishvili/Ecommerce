@@ -10,28 +10,36 @@ class Review extends Component {
   };
 
   state = {
-    inputValue: ""
+    inputValue: "",
+    rating: ""
+  };
+  setGender = event => {
+    this.setState({ rating: Number(event.target.value) });
+    // console.log(this.state.rating);
+    console.log(Number(event.target.value));
   };
   updateInputValue(e) {
     this.setState({
       inputValue: e.target.value
     });
   }
-  reviewLeavHandler = (id, message) => {
+  reviewLeavHandler = (id, message, rating) => {
     if (!this.props.isAuth) {
       this.props.history.push("/signin");
     } else {
-      if (this.state.inputValue.trim() !== "") {
-        this.props.addProductReview(id, message);
+      if (this.state.inputValue.trim() !== "" && this.state.rating !== "") {
+        this.props.addProductReview(id, message, rating);
+        this.setState({ inputValue: "" });
+      } else {
+        console.log("sheavse ra yvela");
       }
-      this.setState({ inputValue: "" });
     }
   };
   render() {
     console.log("FROM REVIEW COMP start");
     console.log(this.props.reviews);
     console.log("FROM REVIEW COMP end");
-    const { reviews } = this.props;
+    const { reviews, rating } = this.props;
     const totalReviews = reviews.length ? (
       reviews.map(review => {
         return (
@@ -48,7 +56,24 @@ class Review extends Component {
     );
     return (
       <div className="reviews">
+        <div className="review__rating">Rating: {rating}</div>
         <div className="write-review">
+          <div
+            // className={"rate" + this.state.rating == "" ? "rate--red" : "rate"}
+            className="rate"
+            onChange={this.setGender.bind(this)}
+          >
+            <input type="radio" id="star5" name="rate" value="5" />
+            <label htmlFor="star5" title="5" />
+            <input type="radio" id="star4" name="rate" value="4" />
+            <label htmlFor="star4" title="4" />
+            <input type="radio" id="star3" name="rate" value="3" />
+            <label htmlFor="star3" title="3" />
+            <input type="radio" id="star2" name="rate" value="2" />
+            <label htmlFor="star2" title="2" />
+            <input type="radio" id="star1" name="rate" value="1" />
+            <label htmlFor="star1" title="1" />
+          </div>
           <input
             value={this.state.inputValue}
             onChange={e => this.updateInputValue(e)}
@@ -60,7 +85,8 @@ class Review extends Component {
             onClick={() =>
               this.reviewLeavHandler(
                 this.props.productID,
-                this.state.inputValue
+                this.state.inputValue,
+                this.state.rating
               )
             }
             className="review__button"
@@ -77,6 +103,7 @@ class Review extends Component {
 const mapStateToProps = state => ({
   isAuth: state.auth.isAuthenticated,
   reviews: state.reviews.reviews,
+  rating: state.reviews.rating,
   error: state.products.error,
   isLoading: state.products.isLoading
 });

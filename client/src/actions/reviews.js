@@ -6,6 +6,7 @@ export const getProductReviews = id => {
   return async dispatch => {
     try {
       const res = await axios.get(`${API_URL}/api/review/${id}`);
+      //   console.log(res.data.reviews);
       dispatch({
         type: GET_REVIEWS,
         payload: res.data
@@ -20,13 +21,14 @@ export const getProductReviews = id => {
   };
 };
 
-export const addProductReview = (id, message) => {
+export const addProductReview = (id, message, rating) => {
   return async dispatch => {
     try {
       const res = await axios
         .post(`${API_URL}/api/review`, {
           productID: id,
-          message: message
+          message: message,
+          rating: rating
         })
         .then(res => {
           return axios.get(`${API_URL}/api/review/${id}`);
