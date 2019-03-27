@@ -25,3 +25,5 @@ export const ORDER_FINISHED = "ORDER_FINISHED";
 // export const SAVED_ORDER = "SAVED_ORDER";
 export const ORDER_FAILED = "ORDER_FAILED";
 export const CONNECTION_ERROR = "CONNECTION_ERROR";
+export const USER_DELETE = "USER_DELETE";
+

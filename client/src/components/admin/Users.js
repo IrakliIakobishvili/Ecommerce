@@ -31,9 +31,9 @@ class Users extends Component {
         // console.log(user)
         return (
           <li key={user._id} className="user__list__item">
-            <Link to="/" onClick={(e) => this.targetUser(e,user[method])} user={user[method]}>
+            {/* <Link to="/" onClick={(e) => this.targetUser(e,user[method])} user={user[method]}>
               {user[method].firstName +' '+ user[method].lastName}
-            </Link> 
+            </Link>  */}
           </li>
         );
       })

@@ -21,6 +21,8 @@ router
   .put(passportJWT_Admin, CategoryController.update)
   .delete(passportJWT_Admin, CategoryController.remove);
 
+router.route("/search/:value")
+  .get(passportJWT_Admin, CategoryController.findByValue);
 module.exports = router;
 
 //getWithProducts
