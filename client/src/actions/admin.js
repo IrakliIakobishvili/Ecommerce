@@ -71,6 +71,25 @@ export const getUsersByTitle = title => {
       }
     };
   };
+
+
+  export const addCategory = data => {
+    return async dispatch => {
+      try {
+        const res = await axios.post(`${API_URL}/api/categories`,{
+            title:data.title,
+            categoryID:data.categoryID
+        });
+        console.log(res.data)
+      } catch (err) {
+        console.error("err", err);
+        dispatch({
+          type: CONNECTION_ERROR,
+          payload: "Network error, API is Unavailable (From admin.js (catch))"
+        });
+      }
+    };
+  };
   
   export const getCategoriesAdmin = () => {
     return async dispatch => {

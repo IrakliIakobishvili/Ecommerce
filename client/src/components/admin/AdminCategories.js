@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import "../../styles/admin/categories.css"
 
-import {getCategoriesByTitle,getCategoriesAdmin} from "../../actions/admin";
+import {getCategoriesByTitle,getCategoriesAdmin,addCategory} from "../../actions/admin";
 
 class AdminCategories extends Component {
     state = {
-        inputValue: ""
+        inputValue: "",
+        title:'',
+        categoryID:''
       };
       updateInputValue =(e) =>{
         this.setState({inputValue:e.target.value})
@@ -23,6 +26,22 @@ class AdminCategories extends Component {
             // console.log('ccccccccccccc')
         }        
       }
+      categoryOnclickHandler = (el) => {
+          console.log(el)
+      }
+      categoryAddHandler = (e) => {
+        e.preventDefault()
+        const data = {
+            title:this.state.title,
+            categoryID:this.state.categoryID
+        }
+        // console.log(data)
+        this.props.addCategory(data);
+      }
+      inputValues = (e) => {
+          console.log(e.target.name)
+          this.setState({[e.target.name]:e.target.value})
+      }
   render() {
     //   console.log("Tekle")
     //   console.log(this.props.categories)
@@ -30,7 +49,7 @@ class AdminCategories extends Component {
     const {categories} = this.props;
     const cats = categories.length ? (
         categories.map(el => {
-            return <li key={el._id}>{el.title}</li>
+            return <li onClick={() => this.categoryOnclickHandler(el)} key={el._id}>{el.title}</li>
         })
     ):(
         <h3>No Categories</h3>
@@ -39,13 +58,23 @@ class AdminCategories extends Component {
     return (
       <div className='admin-categories'>
         <div className='container'>
-            <h3>Categories</h3>
-            <div className='cat-search'>
-                <input type='text' value={this.state.inputValue} onChange={this.updateInputValue} onKeyDown={this.searchHandler}/>
+            <h3 className='admin-categories__heading'>Categories</h3>
+            <div className='admin-categories-aside admin-categories-aside--left'>
+                <div className='cat-search'>
+                    <input type='text' value={this.state.inputValue} onChange={this.updateInputValue} onKeyDown={this.searchHandler}/>
+                </div>
+                <ul>
+                    {cats}
+                </ul>
             </div>
-            <ul>
-                {cats}
-            </ul>
+            <div className='admin-categories-aside admin-categories-aside--right'>
+                <h3>Edit / Add</h3>
+                <form onSubmit={this.categoryAddHandler} onChange={(e)=>this.inputValues(e)}>
+                    <input placeholder='Title' type='text' name='title' /><br/><br/>
+                    <input placeholder='ID' type='text' name='categoryID' /><br/>
+                    <button>ADD</button>
+                </form>
+            </div>
         </div>
       </div>
     )
@@ -62,5 +91,5 @@ function mapStateToProps(state) {
     
 export default connect( 
     mapStateToProps,
-    {getCategoriesByTitle, getCategoriesAdmin }
+    {getCategoriesByTitle, getCategoriesAdmin, addCategory }
   )(AdminCategories);
