@@ -7,10 +7,19 @@ class Search extends Component {
   state = {
     inputValue: ""
   };
-  updateInputValue =(e) =>{
+  updateInputValue =(e) => {
     this.setState({
       inputValue: e.target.value
     });
+  }
+  usersSearchHandler = () => {
+    // this.props.getUsersByTitle(this.state.inputValue);
+    // console.log(this.state.inputValue)
+    if(this.state.inputValue) {
+      this.props.getUsersByTitle(this.state.inputValue);
+    }else {
+      this.props.getUsers();
+    }
   }
   render() {
     return (
@@ -19,7 +28,7 @@ class Search extends Component {
           value={this.state.inputValue}
           onKeyDown={this.props.clearActiveLinks}
           onChange={e => this.updateInputValue(e)}
-          onKeyUp={()=> console.log('ddd')}
+          onKeyUp={()=> this.usersSearchHandler()}
           placeholder="Search User"
           // onKeyUp={() =
             //  this.state.inputValue.length

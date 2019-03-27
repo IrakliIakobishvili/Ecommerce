@@ -8,7 +8,7 @@ class Users extends Component {
   targetUser =(e,user) => {
     e.preventDefault();
     let currentUser = user;
-    console.log(currentUser)
+    // console.log(currentUser)
   }
   render() {
     const {users} = this.props;
@@ -31,6 +31,11 @@ class Users extends Component {
         // console.log(user)
         return (
           <li key={user._id} className="user__list__item">
+            {console.log('start')}
+            {console.log(user[user.method].email)}
+            {console.log('end')}
+          {/* {user[method].firstName +' '+ user[method].lastName} */}
+          {/* {users.length} */}
             {/* <Link to="/" onClick={(e) => this.targetUser(e,user[method])} user={user[method]}>
               {user[method].firstName +' '+ user[method].lastName}
             </Link>  */}

@@ -28,6 +28,9 @@ class AdminCategories extends Component {
       }
       categoryOnclickHandler = (el) => {
           console.log(el)
+          const {title,categoryID} = el;
+          this.setState({title,categoryID})
+          console.log(this.state)
       }
       categoryAddHandler = (e) => {
         e.preventDefault()
@@ -61,7 +64,7 @@ class AdminCategories extends Component {
             <h3 className='admin-categories__heading'>Categories</h3>
             <div className='admin-categories-aside admin-categories-aside--left'>
                 <div className='cat-search'>
-                    <input type='text' value={this.state.inputValue} onChange={this.updateInputValue} onKeyDown={this.searchHandler}/>
+                    <input type='text' value={this.state.inputValue} onChange={this.updateInputValue} onKeyUp={this.searchHandler}/>
                 </div>
                 <ul>
                     {cats}
@@ -69,9 +72,9 @@ class AdminCategories extends Component {
             </div>
             <div className='admin-categories-aside admin-categories-aside--right'>
                 <h3>Edit / Add</h3>
-                <form onSubmit={this.categoryAddHandler} onChange={(e)=>this.inputValues(e)}>
-                    <input placeholder='Title' type='text' name='title' /><br/><br/>
-                    <input placeholder='ID' type='text' name='categoryID' /><br/>
+                <form onSubmit={this.categoryAddHandler} >
+                    <input value={this.state.title} onChange={(e)=>this.inputValues(e)} placeholder='Title' type='text' name='title' /><br/><br/>
+                    <input value={this.state.categoryID} onChange={(e)=>this.inputValues(e)} placeholder='ID' type='text' name='categoryID' /><br/>
                     <button>ADD</button>
                 </form>
             </div>
