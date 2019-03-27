@@ -7,16 +7,25 @@ import { getProductDetails } from "../actions/products";
 import { getProductReviews } from "../actions/reviews";
 import "../styles/productdetails.css";
 
-import Categories from "./Categories";
+// import Categories from "./Categories";
 
-class Movie extends Component {
+class Details extends Component {
   state = {
     disabled: false
   };
-  async componentDidMount() {
+  componentDidMount() {
     this.props.getProductDetails(this.props.match.params.id);
-    await this.props.getProductReviews(this.props.match.params.id);
+    this.props.getProductReviews(this.props.match.params.id);
   }
+  loadDetailsAndReviews = () => {
+    this.props.getProductDetails(this.props.match.params.id);
+    // this.props.getProductReviews(this.props.match.params.id);
+    console.log("loadDetailsAndReviews Runed");
+  };
+  // componentWillReceiveProps() {
+  //   this.props.getProductDetails(this.props.match.params.id);
+  //   this.props.getProductReviews(this.props.match.params.id);
+  // }
 
   cartBtnHandler = productId => {
     // this.props.isAuth
@@ -61,6 +70,9 @@ class Movie extends Component {
       </Fragment>
     ) : this.props.isLoading ? (
       <h1>Loading...</h1>
+    ) : this.props.details == "" ? (
+      // <h1>CARIELIA</h1>
+      this.loadDetailsAndReviews()
     ) : this.props.error ? (
       <h1>{this.props.error}</h1>
     ) : null;
@@ -90,4 +102,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { addToCart, getProductDetails, getProductReviews }
-)(Movie);
+)(Details);

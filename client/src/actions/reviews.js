@@ -9,10 +9,10 @@ export const getProductReviews = id => {
       console.log("review start");
       console.log(res.data);
       console.log("review end");
-      //   dispatch({
-      //     type: GET_REVIEWS,
-      //     payload: res.data
-      //   });
+      dispatch({
+        type: GET_REVIEWS,
+        payload: { reviews: res.data }
+      });
     } catch (err) {
       console.error("err", err);
       dispatch({
