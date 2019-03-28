@@ -110,3 +110,25 @@ export const getCategoriesAdmin = () => {
     }
   };
 };
+
+
+export const updateUser = (data) => {
+  return async dispatch => {
+    try {
+      const res = await axios.put(`${API_URL}/api/users/${data.id}`,{...data});
+      console.log("updateUs;er start");
+      console.log(res.data)
+      console.log("updateUser end")
+      // dispatch({
+      //   type: GET_CATEGORIES_ADMIN,
+      //   payload: res.data
+      // });
+    } catch (err) {
+      console.error("err", err);
+      dispatch({
+        type: CONNECTION_ERROR,
+        payload: "Network error, API is Unavailable (From admin.js (catch))"
+      });
+    }
+  };
+};

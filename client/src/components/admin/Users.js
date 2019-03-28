@@ -2,30 +2,57 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "./Search";
-import { getUsersByTitle } from "../../actions/admin";
+import { getUsersByTitle,updateUser } from "../../actions/admin";
 
 class Users extends Component {
   state = {
+    id:'',
     firstName:'',
     lastName:'',
     email:'',
+    password:'',
     balance:'',
     verified: '',
-    method:''
+    method:'',
+    day:'',
+    month:'',
+    year:'',
+    phone:''
   }
-  targetUser = (e, user) => {
+  updateHandler = (e, user) => {
     e.preventDefault();
     if(user.method !== 'local') {
       console.log("Can't Update!")
-      this.setState({firstName:'',
+      this.setState({
+      id:'',
+      firstName:'',
       lastName:'',
       email:'',
+      password:'',
       balance:'',
       verified: '',
-      method:''});
+      method:'',
+      day:'',
+      month:'',
+      year:'',
+      phone:''
+    });
     }else {
-      this.setState({id:user.id,firstName:user.firstName,lastName:user.lastName,email:user.email,balance:user.balance,verified:user.verified,method:user.method})
+      this.setState({
+        id:user.id,
+        firstName:user.firstName,
+        lastName:user.lastName,
+        email:user.email,
+        password:user.password,
+        balance:user.balance,
+        verified:user.verified,
+        method:user.method,
+        day:user.day,
+        month:user.month,
+        year:user.year
+      })
     }
+    
   };
   inputValues = (e) => {
     this.setState({[e.target.name]:e.target.value});
@@ -33,7 +60,11 @@ class Users extends Component {
   }
   submitHandler = (e) => {
     e.preventDefault()
+    console.log("STATE START")
     console.log(this.state)
+    // console.log(this.state)
+    // const modifiedUser = 
+    this.props.updateUser(this.state);
   }
   render() {
     const { users } = this.props;
@@ -42,7 +73,7 @@ class Users extends Component {
       users.map(user => {
         return (
           <li key={user.id} className="user__list__item">
-            <Link to="/" onClick={e => this.targetUser(e, user)} user={user}>
+            <Link to="/" onClick={e => this.updateHandler(e, user)} user={user}>
               {user.firstName + " " + user.lastName}
             </Link>
           </li>
@@ -88,5 +119,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getUsersByTitle }
+  { getUsersByTitle,updateUser }
 )(Users);
