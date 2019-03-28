@@ -15,27 +15,8 @@ class Users extends Component {
     console.log(users);
     const result = users.length ? (
       users.map(user => {
-        // let method = user.method == 'local' ?
-        let method = "";
-        switch (user.method) {
-          case "local":
-            method = "local";
-            break;
-          case "google":
-            method = "google";
-            break;
-          case "facebook":
-            method = "facebook";
-            break;
-        }
-        // console.log(user)
         return (
           <li key={user.id} className="user__list__item">
-            {/* {console.log("start")}
-            {console.log(user.email)} */}
-            {/* {console.log("end")} */}
-            {/* {user[method].firstName +' '+ user[method].lastName} */}
-            {/* {users.length} */}
             <Link to="/" onClick={e => this.targetUser(e, user)} user={user}>
               {user.firstName + " " + user.lastName}
             </Link>
@@ -78,11 +59,3 @@ export default connect(
   mapStateToProps,
   { getUsersByTitle }
 )(Users);
-
-// "email":"updated new irakli@gmail.com",
-// 	"password":"iiii",
-// 	"firstName":"ramnishvneloba updated 3",
-// 	"lastName":"",
-// 	"age":"99",
-// 	"birthday":"78",
-// "phone":"9"
