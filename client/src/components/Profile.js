@@ -6,8 +6,8 @@ import { getCartItems } from "../actions/cart";
 // import { BrowserRouter } from "react-router-dom";
 
 import { ChangePassword } from "./profile/ChangePassword";
-import {ProductView, MyOrders } from "./profile/MyOrders";
-import { NestedView } from "./profile/Nasted";
+import { ProductView, MyOrders } from "./profile/MyOrders";
+import { BalanceView } from "./profile/Balance";
 import { NavBar } from "./profile/NavBar";
 
 import "../styles/profile.css";
@@ -31,13 +31,13 @@ class Profile extends Component {
 
     return (
       <BrowserRouter>
-        <div>
+        <div className="tryng">
           <NavBar />
           <Route exact path="/change_password" component={ChangePassword} />
-          <Route path="/another" component={() => <div>yo!</div>} />
-          <Route path="/my_orders" component={MyOrders} />
-          <Route path="/product/:id" component={ProductView} />
-          <Route path="/nested" component={NestedView} />
+          {/* <Route exact path="/balance" component={() => <div>yo!</div>} /> */}
+          <Route exact path="/my_orders" component={MyOrders} />
+          {/* <Route exact path="/product/:id" component={ProductView} /> */}
+          <Route exact path="/balance" component={BalanceView} />
         </div>
       </BrowserRouter>
     );

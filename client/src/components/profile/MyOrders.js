@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import "../../styles/myOrders.css";
 
 export const MyOrders = () => {
   return (
@@ -12,12 +13,7 @@ export const MyOrders = () => {
             <div>Price</div>
             <div>Quantity</div>
             <div>
-              <button
-                onClick={() => this.emptyCartHandler()}
-                className="clear-cart-btn"
-              >
-                Clear Cart
-              </button>
+              <button className="clear-cart-btn">Clear Cart</button>
             </div>
           </header>
         </div>
@@ -29,7 +25,7 @@ export const MyOrders = () => {
 export const ProductView = ({ match }) => {
   return (
     <div>
-      <h3>khatia</h3>
+      <h3>...</h3>
     </div>
   );
 };

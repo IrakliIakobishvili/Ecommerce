@@ -68,8 +68,8 @@ ReactDOM.render(
           <Route exact path="/admin" component={authGuard(Admin)} />
           <Route exact path="/admin/users/" component={Users} />
           <Route exect path="/changePassword" component={ChangePassword} />
-          <Route path="/404" component={My404Component} />
-          <Redirect from="*" to="/404" />
+          {/* <Route path="/404" component={My404Component} />
+          <Redirect from="*" to="/404" /> */}
         </Switch>
       </App>
     </BrowserRouter>
