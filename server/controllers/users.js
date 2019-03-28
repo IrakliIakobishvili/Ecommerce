@@ -179,17 +179,21 @@ module.exports = {
   },
 
   profile: async (req, res, next) => {
-    console.log("I managed to get here!");
     let loggedUser = await User.findOne({ _id: req.user.id });
-    // console.log(req.user);
     loggedUser = loggedUser[loggedUser.method];
-
-    // console.log(loggedUser);
-    res.json({
-      profilePageInfo: `Response From Server API | Email: ${
-        loggedUser.email
-      } Balance: ${loggedUser.balance}`
-    });
+    filteredUser = {
+      firstName: loggedUser.firstName,
+      lastName: loggedUser.lastName,
+      email: loggedUser.email,
+      phone: loggedUser.phone,
+      birthDay: {
+        day: loggedUser.day,
+        month: loggedUser.month,
+        year: loggedUser.year
+      },
+      balance: loggedUser.balance
+    };
+    res.json(filteredUser);
   },
 
   verify: async (req, res, next) => {
