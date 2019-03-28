@@ -1,0 +1,15 @@
+.admin-categories .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.admin-categories-aside {
+    border: 1px solid green;
+    padding: 20px;
+}
+.admin-categories__heading {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}

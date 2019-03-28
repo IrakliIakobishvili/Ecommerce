@@ -24,6 +24,8 @@ import reducers from "./reducers";
 
 import Categories from "./components/Categories";
 
+import AdminCategories from './components/admin/AdminCategories';
+
 import authGuard from "./components/HOCs/authGuard";
 
 const jwtToken = localStorage.getItem("JWT_TOKEN");
@@ -67,7 +69,8 @@ ReactDOM.render(
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/admin" component={authGuard(Admin)} />
           <Route exact path="/admin/users/" component={Users} />
-          <Route exect path="/changePassword" component={ChangePassword} />
+          <Route exact path="/admin/categories/" component={AdminCategories} />
+          {/* <Route exect path="/changePassword" component={ChangePassword} /> */}
           <Route path="/404" component={My404Component} />
           <Redirect from="*" to="/404" />
         </Switch>
