@@ -76,8 +76,27 @@ module.exports = {
 
   findAll: function(req, res) {
     User.find({})
-      .sort({ date: -1 })
-      .then(user => res.json(user))
+      .then(users => {
+        let _user = "";
+        const filteredUsers = users.map(user => {
+          _user = user[user.method];
+          return {
+            id: user._id,
+            method: user.method,
+            email: _user.email,
+            password: _user.password,
+            firstName: _user.firstName,
+            lastName: _user.lastName,
+            phone: _user.phone,
+            day: _user.day,
+            month: _user.month,
+            year: _user.year,
+            balance: _user.balance,
+            verified: _user.verified
+          };
+        });
+        res.json(filteredUsers);
+      })
       .catch(err => res.status(422).json(err));
   },
   findById: function(req, res, next) {
@@ -103,62 +122,6 @@ module.exports = {
       .catch(() => res.status(422).json("Can't Find User"));
   },
   findByValue: (req, res, next) => {
-    // db.inventory.find({
-    //   $and: [
-    //     { $or: [{ price: 0.99 }, { price: 1.99 }] },
-    //     { $or: [{ sale: true }, { qty: { $lt: 20 } }] }
-    //   ]
-    // });
-    ///
-    // User.find()
-    //   .and([{ $or: [{ a: 1 }, { b: 1 }] }, { $or: [{ c: 1 }, { d: 1 }] }])
-    //   .exec(function(err, results) {
-    //     res.status(200).json(results);
-    //   });
-
-    // User.find()
-    //   .and([
-    //     {
-    //       $or: [
-    //         { firstName: { $regex: req.params.value, $options: "i" } },
-    //         { lastName: { $regex: req.params.value, $options: "i" } }
-    //       ]
-    //     },
-    //     {
-    //       $or: [
-    //         { email: { $regex: req.params.value, $options: "i" } },
-    //         { phone: { $regex: req.params.value, $options: "i" } }
-    //       ]
-    //     }
-    //   ])
-    //   .exec(function(err, results) {
-    //     res.status(200).json(results);
-    //   });
-
-    // User.find()
-    //   .and([
-    //     {
-    //       $or: [
-    //         { "local.firstName": { $regex: req.params.value, $options: "i" } },
-    //         { "google.firstName": { $regex: req.params.value, $options: "i" } },
-    //         {
-    //           "facebook.firstName": { $regex: req.params.value, $options: "i" }
-    //         },
-    //         { "local.lastName": { $regex: req.params.value, $options: "i" } },
-    //         { "google.lastName": { $regex: req.params.value, $options: "i" } },
-    //         {
-    //           "facebook.lastName": { $regex: req.params.value, $options: "i" }
-    //         },
-    //         { "local.email": { $regex: req.params.value, $options: "i" } },
-    //         { "google.email": { $regex: req.params.value, $options: "i" } },
-    //         { "facebook.email": { $regex: req.params.value, $options: "i" } }
-    //       ]
-    //     }
-    //   ])
-    //   .exec(function(err, results) {
-    //     res.json(results);
-    //   });
-
     User.find({
       $or: [
         { "local.firstName": { $regex: req.params.value, $options: "i" } },
@@ -216,17 +179,21 @@ module.exports = {
   },
 
   profile: async (req, res, next) => {
-    console.log("I managed to get here!");
     let loggedUser = await User.findOne({ _id: req.user.id });
-    // console.log(req.user);
     loggedUser = loggedUser[loggedUser.method];
-
-    // console.log(loggedUser);
-    res.json({
-      profilePageInfo: `Response From Server API | Email: ${
-        loggedUser.email
-      } Balance: ${loggedUser.balance}`
-    });
+    filteredUser = {
+      firstName: loggedUser.firstName,
+      lastName: loggedUser.lastName,
+      email: loggedUser.email,
+      phone: loggedUser.phone,
+      birthDay: {
+        day: loggedUser.day,
+        month: loggedUser.month,
+        year: loggedUser.year
+      },
+      balance: loggedUser.balance
+    };
+    res.json(filteredUser);
   },
 
   verify: async (req, res, next) => {

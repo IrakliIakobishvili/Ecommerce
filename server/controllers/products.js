@@ -42,5 +42,26 @@ module.exports = {
         res.status(200).json(docs);
       }
     );
+  },
+  findByFilter: async (req, res, next) => {
+    let key = req.body.key;
+    let lt = req.body.lt;
+    let gt = req.body.gt;
+    let docs = [];
+    // console.log(typeof lt);
+    if (key == "price") {
+      docs = await Products.find({ "details.price": { $gt: gt, $lt: lt } });
+    } else if (key == "protein") {
+      docs = await Products.find({
+        "details.protein": { $gt: gt, $lt: lt }
+      });
+    } else if (key == "cholesterol") {
+      docs = await Products.find({
+        "details.cholesterol": { $gt: gt, $lt: lt }
+      });
+    } else {
+      docs = ["Empty"];
+    }
+    res.json(docs);
   }
 };

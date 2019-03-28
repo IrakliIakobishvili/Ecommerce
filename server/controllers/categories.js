@@ -42,7 +42,14 @@ module.exports = {
     }
     res.status(200).json({ category: category });
   },
-
+  findByValue: (req, res, next) => {
+    Category.find(
+      { title: { $regex: req.params.value, $options: "i" } },
+      function(err, docs) {
+        res.status(200).json(docs);
+      }
+    );
+  },
   remove: async (req, res, next) => {
     res.status(200).json({ delete: req.params.id });
   }

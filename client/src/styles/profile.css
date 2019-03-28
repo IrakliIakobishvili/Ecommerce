@@ -1,0 +1,121 @@
+/* .profile-nav-conteiner {
+  background: rgb(204, 201, 201);
+  margin-top: 50px;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-nav-conteiner-item {
+  display: inline-block;
+  padding: 30px;
+  margin: 30px;
+  border-right: 1px solid gray;
+}
+
+.profile-item-link {
+  text-decoration: none;
+  font-size: 20px;
+  background: -webkit-linear-gradient(rgb(250, 225, 0), rgb(134, 13, 13));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.profile-item-link:hover {
+  font-size: 20px;
+  background: -webkit-linear-gradient(rgb(134, 13, 13), rgb(104, 97, 2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+} */
+
+.profile-page .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: green; */
+  height: calc(100vh - 80px);
+  /* box-sizing: border-box; */
+}
+
+.profile-page-aside {
+  width: 250px;
+  /* border: 1px solid red; */
+  border-right: 1px solid gray;
+  /* min-height: 500px; */
+  display: flex;
+  justify-content: center;
+}
+
+.profile-page-wrapper {
+  width: 100%;
+  /* background: #fff; */
+  display: flex;
+  align-items: center;
+  height: auto;
+  padding: 20px;
+  border-radius: 5px;
+  background: orange;
+  /* justify-content: flex-start; */
+  /* justify-content: space-between;/ */
+}
+
+.profile-page-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  background: #fff;
+  height: 100%;
+}
+
+/*------------- Nav --------------- */
+
+.profile-page-nav {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  margin-right: 10px;
+  overflow: hidden;
+}
+
+.profile-page-nav__heading {
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  background: #d62231;
+  padding: 10px 0px;
+  color: #fff;
+}
+
+.profile-list__item__link {
+  padding: 10px;
+  border-bottom: none;
+  display: block;
+  text-decoration: none;
+  color: #692f28;
+  border-bottom: 1px solid #cecece;
+  padding-left: 43px;
+  background: url("../assets/img/categories/settings.svg") no-repeat 10px 50%;
+  transition-duration: 0.3s;
+  background-size: 25px;
+}
+
+.profile-list__item__link:hover {
+  padding-left: 58px;
+  background-position-x: 25px;
+}
+
+.profile-list {
+}
+.profile__list__item {
+  padding: 10px;
+  border: 1px solid gray;
+  margin: 5px 0px;
+  /* background: red; *;
+  /* border: 1px solid green; */
+}
+.profile__list__item i {
+  margin-right: 10px;
+}

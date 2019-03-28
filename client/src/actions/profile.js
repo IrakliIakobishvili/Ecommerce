@@ -8,7 +8,7 @@ export const getProfile = () => {
       const res = await axios.get(`${API_URL}/api/users/page/profile`);
       dispatch({
         type: PROFILE_GET_DATA,
-        payload: res.data.profilePageInfo
+        payload: res.data
       });
     } catch (err) {
       dispatch({
