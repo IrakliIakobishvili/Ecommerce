@@ -9,3 +9,16 @@ export default class Orders extends Component {
     );
   }
 }
+
+// function mapStateToProps(state) {
+//   return {
+//     order: state.profile.profile,
+//     isLoading: state.profile.isLoading,
+//     error: state.profile.error
+//   };
+// }
+
+// export default connect(
+//   null,
+//   null
+// )(Orders);
