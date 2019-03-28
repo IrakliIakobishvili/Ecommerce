@@ -26,10 +26,10 @@ export const getOrder = () => {
       console.log("GET ORDER START");
       console.log(res.data);
       console.log("GET ORDER END");
-      // dispatch({
-      //   type: GET_ORDER,
-      //   payload: res.data
-      // });
+      dispatch({
+        type: GET_ORDER,
+        payload: res.data
+      });
     } catch (err) {
       console.error("err", err);
       dispatch({

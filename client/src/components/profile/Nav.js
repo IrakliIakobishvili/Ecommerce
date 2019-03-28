@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getOrder } from "../../actions/profile";
+// import { getOrder } from "../../actions/profile";
 
 class Nav extends Component {
   render() {
@@ -17,7 +17,7 @@ class Nav extends Component {
           </li>
           <li className="profile-list__item">
             <Link
-              onClick={() => this.props.getOrder()}
+              // onClick={() => this.props.getOrder()}
               className="profile-list__item__link"
               to="/profile/orders"
             >
@@ -37,5 +37,5 @@ class Nav extends Component {
 
 export default connect(
   null,
-  { getOrder }
+  null
 )(Nav);

@@ -77,9 +77,9 @@ module.exports = {
   getOrder: (req, res) => {
     Order.findOne({ user: req.user.id }).then(foundDoc => {
       if (foundDoc) {
-        res.status(200).json(foundDoc);
+        res.status(200).json(foundDoc.orders[0]);
       } else {
-        res.status(200).json("Order Not Found");
+        res.status(200).json([]);
       }
     });
   }
