@@ -29,7 +29,7 @@ const productSchema = new Schema(
       dietaryfibre: String,
       sodium: String,
       servingsize: Number,
-      price: String,
+      price: Number,
       description: String
     }
   },
