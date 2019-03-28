@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-// import { getOrder } from "../../actions/profile";
-
 class Nav extends Component {
   render() {
     return (
@@ -16,11 +14,7 @@ class Nav extends Component {
             </Link>
           </li>
           <li className="profile-list__item">
-            <Link
-              // onClick={() => this.props.getOrder()}
-              className="profile-list__item__link"
-              to="/profile/orders"
-            >
+            <Link className="profile-list__item__link" to="/profile/orders">
               Shopping History
             </Link>
           </li>
