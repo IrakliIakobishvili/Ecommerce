@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { API_URL } from "../../config";
 
 import { getOrder } from "../../actions/profile";
 
@@ -12,26 +13,28 @@ class Orders extends Component {
     let i = 0;
     const content = order.length ? (
       order.map(el => {
+        console.log(el);
         return el.map(e => {
+          console.log(e);
           return (
             <li key={i++}>
               <div>
                 <img
-                  src={el[0].product.details.photo}
-                  alt={el[0].product.name}
+                  src={API_URL + "/" + e.product.details.photo}
+                  alt={e.product.name}
                 />
               </div>
-              <div>{el[0].product.name}</div>
-              <div>{el[0].product.details.price}</div>
-              <div>{el[0].quantity}</div>
+              <div>{e.product.name}</div>
+              <div>{e.product.details.price}</div>
+              <div>{e.quantity}</div>
               <ul>
-                <li>{el[0].product.details.cholesterol}</li>
-                <li>{el[0].product.details.size}</li>
-                <li>{el[0].product.details.cholesterol}</li>
-                <li>{el[0].product.details.dietaryfibre}</li>
-                <li>{el[0].product.details.energy}</li>
-                <li>{el[0].product.details.protein}</li>
-                <li>{el[0].product.details.sugar}</li>
+                <li>{e.product.details.cholesterol}</li>
+                <li>{e.product.details.size}</li>
+                <li>{e.product.details.cholesterol}</li>
+                <li>{e.product.details.dietaryfibre}</li>
+                <li>{e.product.details.energy}</li>
+                <li>{e.product.details.protein}</li>
+                <li>{e.product.details.sugar}</li>
               </ul>
             </li>
           );
