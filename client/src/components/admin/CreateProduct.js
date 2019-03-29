@@ -64,7 +64,7 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="quantity">Quantity</label>
                 <input
-                  type="text"
+                  type="number"
                   id="quantity"
                   name="quantity"
                   placeholder="quantity"
@@ -159,7 +159,7 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="servingsize">servingsize</label>
                 <input
-                  type="text"
+                  type="number"
                   id="servingsize"
                   name="servingsize"
                   placeholder="servingsize"
@@ -168,7 +168,7 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="price">price</label>
                 <input
-                  type="text"
+                  type="number"
                   id="price"
                   name="price"
                   placeholder="price"

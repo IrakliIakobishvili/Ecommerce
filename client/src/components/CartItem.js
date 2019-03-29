@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import { API_URL } from "../config";
 import { addToCart, removeItemFromCart } from "../actions/cart";
 import { Link } from "react-router-dom";
 // import "../styles/productdetails.css";
@@ -36,7 +37,7 @@ class CartItem extends Component {
           {/* ID: {product._id} | Name: {product.name} */}
           <div className="cart__item__product">
             <div className="cart__item__product-img-cont">
-              <img src={details.photo} alt={product.name} />
+              <img src={API_URL + "/" + details.photo} alt={product.name} />
             </div>
             <div>
               <div className="cart__item__title">

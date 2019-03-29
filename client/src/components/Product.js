@@ -1,44 +1,8 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import "../styles/product.css";
-
-// export default function Product({ product, inCart, addToCart }) {
-//   console.log(inCart);
-//   return (
-//     <div className="product__item">
-//       <Link to={`/product/${product._id}`}>
-//         <div>{product.name}</div>
-//       </Link>
-//       <div>{product.details.os}</div>
-//       <div>{product.details.cpu}</div>
-//       <div>{product.details.ram}</div>
-//       <div className="cart-btn-cont">
-//         {inCart == "Unauthorized" ? (
-//           <button>
-//             <Link to="/signin">Add To Cart</Link>
-//           </button>
-//         ) : inCart == "AddtoCart" ? (
-//           <button onClick={() => addToCart(product._id, 1)}>
-//             Add To Cart
-//             {/* <Link to="/cart">Add To Cart</Link> */}
-//           </button>
-//         ) : inCart == "ViewInCart" ? (
-//           <button>
-//             <Link to="/cart">{inCart}</Link>
-//           </button>
-//         ) : null}
-//       </div>
-//     </div>
-//   );
-// }
-
-//////////
-/////////
-////////
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../actions/cart";
+import { API_URL } from "../config";
 import "../styles/product.css";
 
 class Product extends Component {
@@ -61,7 +25,7 @@ class Product extends Component {
           <div className="product__item__img-cont">
             <img
               className="product__item__img-cont__img"
-              src={product.details.photo}
+              src={API_URL + "/" + product.details.photo}
               alt={product.name}
             />
           </div>

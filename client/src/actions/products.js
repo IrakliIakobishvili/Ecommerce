@@ -87,7 +87,7 @@ export const getProductsByCat = id => {
 export const getProductsByTitle = title => {
   return async dispatch => {
     try {
-      const res = await axios.get(`${API_URL}/api/products/title/${title}`);
+      const res = await axios.get(`${API_URL}/api/products/search/${title}`);
       dispatch({
         type: PRODUCTS_GET_DATA,
         payload: res.data

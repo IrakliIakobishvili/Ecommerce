@@ -158,7 +158,7 @@ module.exports = {
         .min(1)
         .max(20)
         .required(),
-      quantity: Joi.string().required(),
+      quantity: Joi.number().required(),
       details: Joi.object().keys({
         size: Joi.string()
           .min(1)
@@ -176,7 +176,7 @@ module.exports = {
           .min(1)
           .max(20)
           .required(),
-        cholesterol: Joi.string()
+        cholesterol: Joi.number()
           .min(1)
           .max(20)
           .required(),
@@ -208,7 +208,7 @@ module.exports = {
           .min(1)
           .max(1000)
           .required(),
-        price: Joi.string().required(),
+        price: Joi.number().required(),
         photo: Joi.string()
           .min(1)
           .max(60)

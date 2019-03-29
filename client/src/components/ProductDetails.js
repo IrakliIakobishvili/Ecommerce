@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 // import _ from "lodash";
 import { Link } from "react-router-dom";
+import { API_URL } from "../config";
 import { addToCart } from "../actions/cart";
 import { getProductDetails } from "../actions/products";
 import { getProductReviews } from "../actions/reviews";
@@ -56,7 +57,7 @@ class Details extends Component {
     const productDetails = Object.keys(details).length ? (
       <Fragment>
         <div className="img-cont">
-          <img src={details.details.photo} alt={details.name} />
+          <img src={API_URL + "/" + details.details.photo} alt={details.name} />
         </div>
         <ul>
           <li>Name: {details.name}</li>

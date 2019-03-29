@@ -1,11 +1,6 @@
 const Products = require("../models/product");
 const { isEmpty } = require("../helpers/routeHelpers");
 module.exports = {
-  // create: (req, res, next) => {
-  //   Products.create(req.value.body)
-  //     .then(product => res.json(product))
-  //     .catch(() => res.status(422).json({ message: "Can't create" }));
-  // },
   create: (req, res, next) => {
     if (req.fileValidationError) {
       return res.end(req.fileValidationError);
@@ -13,16 +8,20 @@ module.exports = {
       if (isEmpty(req.body)) {
         res.json(isEmpty(req.body));
       } else {
-        res.json({ ...req.body, photo: req.file.filename });
+        Products.create({
+          name: req.body.name,
+          category: req.body.category,
+          quantity: req.body.quantity,
+          details: { ...req.body, photo: req.file.filename }
+        })
+          .then(product => res.json(product))
+          .catch(() => res.status(422).json({ message: "Can't create" }));
       }
     }
-    // Products.create(req.value.body)
-    //   .then(product => res.json(product))
-    //   .catch(() => res.status(422).json({ message: "Can't create" }));
   },
   findAll: (req, res, next) => {
     Products.find(req.query)
-      .sort({ date: -1 })
+      .sort({ createdAt: -1 })
       .then(all => res.json(all))
       .catch(() => res.status(422).json({ message: "Empty List" }));
   },
