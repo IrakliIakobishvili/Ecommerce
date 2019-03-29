@@ -1,5 +1,4 @@
 const Joi = require("joi");
-const multer = require("multer");
 
 const emailAndPassword = {
   email: Joi.string()
@@ -53,6 +52,7 @@ module.exports = {
     return (req, res, next) => {
       const result = Joi.validate(req.body, schema);
       if (result.error) {
+        // console.log(result);
         return res.status(409).json(result.error.details[0].message);
         // return res.status(400).json({error: result.error.details[0].message});
       }
@@ -158,7 +158,7 @@ module.exports = {
         .min(1)
         .max(20)
         .required(),
-      quantity: Joi.number().required(),
+      quantity: Joi.string().required(),
       details: Joi.object().keys({
         size: Joi.string()
           .min(1)
@@ -208,7 +208,7 @@ module.exports = {
           .min(1)
           .max(1000)
           .required(),
-        price: Joi.number().required(),
+        price: Joi.string().required(),
         photo: Joi.string()
           .min(1)
           .max(60)
@@ -216,31 +216,13 @@ module.exports = {
       })
     })
   },
-  multer: image => {
-    const storage = multer.diskStorage({
-      destination: function(req, file, cb) {
-        cb(null, "uploads/");
-      },
-      filename: function(req, file, cb) {
-        cb(null, file.originalname);
+  isEmpty: obj => {
+    let arr = Object.keys(obj);
+    for (let i = 0; i < arr.length; i++) {
+      if (obj[arr[i]].trim() === "") {
+        return arr[i] + "is Empty!";
       }
-    });
-
-    const fileFilter = (req, file, cb) => {
-      if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
-        cb(null, true);
-      } else {
-        cb(null, false, new Error("Only JPG and PNG are allowed"));
-      }
-    };
-
-    const upload = multer({
-      storage: storage,
-      limits: {
-        fileSize: 1024 * 1024 * 2
-      },
-      fileFilter: fileFilter
-    });
-    return upload.single(image);
+    }
+    return false;
   }
 };

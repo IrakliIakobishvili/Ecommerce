@@ -8,7 +8,24 @@ class CreateProduct extends Component {
     event.preventDefault();
     const data = new FormData();
     // data.append(`${event.target.name}`, event.target.title.value);
+    data.append("name", event.target.name.value);
+    data.append("category", event.target.category.value);
+    data.append("quantity", event.target.quantity.value);
+    data.append("size", event.target.size.value);
+    data.append("energy", event.target.energy.value);
+    data.append("sugar", event.target.sugar.value);
+    data.append("protein", event.target.protein.value);
+    data.append("cholesterol", event.target.cholesterol.value);
+    data.append("totalfat", event.target.totalfat.value);
+    data.append("saturatedfat", event.target.saturatedfat.value);
+    data.append("transfat", event.target.transfat.value);
+
+    data.append("dietaryfibre", event.target.dietaryfibre.value);
+    data.append("sodium", event.target.sodium.value);
+    data.append("servingsize", event.target.servingsize.value);
     data.append("price", event.target.price.value);
+    data.append("description", event.target.description.value);
+
     data.append("image", event.target.image.files[0]);
     // console.log(data);
 
@@ -47,7 +64,7 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="quantity">Quantity</label>
                 <input
-                  type="number"
+                  type="text"
                   id="quantity"
                   name="quantity"
                   placeholder="quantity"
