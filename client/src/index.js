@@ -19,7 +19,7 @@ import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Contact from "./components/Contact";
 import Admin from "./components/admin/Admin";
-import Users from "./components/admin/Users";
+import AdminUsers from "./components/admin/Users";
 
 import My404Component from "./components/My404Component";
 import reducers from "./reducers";
@@ -27,6 +27,7 @@ import reducers from "./reducers";
 import Categories from "./components/Categories";
 
 import AdminCategories from "./components/admin/AdminCategories";
+import CreateProduct from "./components/admin/CreateProduct";
 
 import authGuard from "./components/HOCs/authGuard";
 
@@ -69,8 +70,9 @@ ReactDOM.render(
           <Route exact path="/product/:id" component={ProductDetails} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/admin" component={authGuard(Admin)} />
-          <Route exact path="/admin/users/" component={Users} />
+          <Route exact path="/admin/users/" component={AdminUsers} />
           <Route exact path="/admin/categories/" component={AdminCategories} />
+          <Route exact path="/admin/products/" component={CreateProduct} />
           <Route exact path="/profile/" component={authGuard(Profile)} />
           <Route exect path="/profile/reset/" component={authGuard(Profile)} />
           <Route exect path="/profile/orders/" component={authGuard(Profile)} />

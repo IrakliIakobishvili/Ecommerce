@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const multer = require("multer");
 
 const emailAndPassword = {
   email: Joi.string()
@@ -214,5 +215,32 @@ module.exports = {
           .required()
       })
     })
+  },
+  multer: image => {
+    const storage = multer.diskStorage({
+      destination: function(req, file, cb) {
+        cb(null, "uploads/");
+      },
+      filename: function(req, file, cb) {
+        cb(null, file.originalname);
+      }
+    });
+
+    const fileFilter = (req, file, cb) => {
+      if (file.mimetype === "image/jpeg" || file.mimetype === "image/png") {
+        cb(null, true);
+      } else {
+        cb(null, false, new Error("Only JPG and PNG are allowed"));
+      }
+    };
+
+    const upload = multer({
+      storage: storage,
+      limits: {
+        fileSize: 1024 * 1024 * 2
+      },
+      fileFilter: fileFilter
+    });
+    return upload.single(image);
   }
 };
