@@ -178,8 +178,9 @@ export default class Contact extends Component {
                 /> */}
                 <textarea
                   onChange={this.handleChange}
-                  style={{ resize: "none" }}
+                  style={{ resize: "none", height: "60px" }}
                   value={this.state.message}
+                  placeholder="Message"
                   // value={}
                   // onChange={this.handleChange}
                   className={`contact-input ${

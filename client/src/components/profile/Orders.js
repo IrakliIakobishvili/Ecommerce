@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { API_URL } from "../../config";
+import "../../styles/orders.css";
 
 import { getOrder } from "../../actions/profile";
 
@@ -17,17 +18,26 @@ class Orders extends Component {
         return el.map(e => {
           console.log(e);
           return (
-            <li key={i++}>
-              <div>
+            <li className="order-list__item" key={i++}>
+              <div className="order-list__item__img-cont">
                 <img
                   src={API_URL + "/" + e.product.details.photo}
                   alt={e.product.name}
                 />
               </div>
-              <div>{e.product.name}</div>
-              <div>{e.product.details.price}</div>
-              <div>{e.quantity}</div>
-              <ul>
+              <div>
+                <span>Name: </span>
+                {e.product.name}
+              </div>
+              <div>
+                <span>Price: </span>
+                {e.product.details.price}
+              </div>
+              <div>
+                <span>Quantity: </span>
+                {e.quantity}
+              </div>
+              <ul className="order-sub-list">
                 <li>{e.product.details.cholesterol}</li>
                 <li>{e.product.details.size}</li>
                 <li>{e.product.details.cholesterol}</li>
@@ -48,7 +58,7 @@ class Orders extends Component {
       <h2>Empty</h2>
     ) : null;
 
-    return <ul style={{ maxHeight: "500px" }}>{content}</ul>;
+    return <ul className="order-list">{content}</ul>;
   }
 }
 
