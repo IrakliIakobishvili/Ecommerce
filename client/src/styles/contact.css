@@ -88,3 +88,6 @@
 .is-invalid {
   border-bottom: 1px solid red;
 }
+.is-valid {
+  border-bottom: 1px solid green;
+}
