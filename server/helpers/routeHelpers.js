@@ -220,7 +220,7 @@ module.exports = {
     let arr = Object.keys(obj);
     for (let i = 0; i < arr.length; i++) {
       if (obj[arr[i]].trim() === "") {
-        return arr[i] + "is Empty!";
+        return arr[i] + " is Empty!";
       }
     }
     return false;

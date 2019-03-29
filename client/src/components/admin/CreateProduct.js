@@ -1,33 +1,43 @@
 import React, { Component } from "react";
 import axios from "axios";
 
+const initialState = {
+  name: "",
+  category: "",
+  quantity: "",
+  size: "",
+  energy: "",
+  sugar: "",
+  protein: "",
+  cholesterol: "",
+  totalfat: "",
+  saturatedfat: "",
+  transfat: "",
+  dietaryfibre: "",
+  sodium: "",
+  servingsize: "",
+  price: "",
+  description: "",
+  image: ""
+  // empty: ""
+};
 class CreateProduct extends Component {
-  state = {};
+  state = { ...initialState };
+  handleReset = () => {
+    this.setState(initialState);
+  };
 
   hanldeFormSubmit = event => {
     event.preventDefault();
     const data = new FormData();
-    // data.append(`${event.target.name}`, event.target.title.value);
-    data.append("name", event.target.name.value);
-    data.append("category", event.target.category.value);
-    data.append("quantity", event.target.quantity.value);
-    data.append("size", event.target.size.value);
-    data.append("energy", event.target.energy.value);
-    data.append("sugar", event.target.sugar.value);
-    data.append("protein", event.target.protein.value);
-    data.append("cholesterol", event.target.cholesterol.value);
-    data.append("totalfat", event.target.totalfat.value);
-    data.append("saturatedfat", event.target.saturatedfat.value);
-    data.append("transfat", event.target.transfat.value);
 
-    data.append("dietaryfibre", event.target.dietaryfibre.value);
-    data.append("sodium", event.target.sodium.value);
-    data.append("servingsize", event.target.servingsize.value);
-    data.append("price", event.target.price.value);
-    data.append("description", event.target.description.value);
+    let values = Object.values(this.state);
+    let keys = Object.keys(this.state);
+    keys.forEach((el, i) => {
+      data.append(el, values[i]);
+    });
 
-    data.append("image", event.target.image.files[0]);
-    // console.log(data);
+    this.handleReset(); /// Move Inside Axios
 
     axios({
       method: "post",
@@ -42,19 +52,35 @@ class CreateProduct extends Component {
         console.log(response);
       });
   };
+  inputValues = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  inputFileValue = e => {
+    this.setState({ [e.target.name]: e.target.files[0] });
+  };
   render() {
     return (
       <div className="adin-products">
         <div className="container">
+          <div>{this.state.image ? "YES" : "NO"}</div>
           <form onSubmit={this.hanldeFormSubmit}>
             <ul>
               <li>
                 <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="name" />
+                <input
+                  value={this.state.name}
+                  onChange={e => this.inputValues(e)}
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="name"
+                />
               </li>
               <li>
                 <label htmlFor="category">Category</label>
                 <input
+                  value={this.state.category}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="category"
                   name="category"
@@ -64,6 +90,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="quantity">Quantity</label>
                 <input
+                  value={this.state.quantity}
+                  onChange={e => this.inputValues(e)}
                   type="number"
                   id="quantity"
                   name="quantity"
@@ -72,11 +100,20 @@ class CreateProduct extends Component {
               </li>
               <li>
                 <label htmlFor="size">size</label>
-                <input type="text" id="size" name="size" placeholder="size" />
+                <input
+                  value={this.state.size}
+                  onChange={e => this.inputValues(e)}
+                  type="text"
+                  id="size"
+                  name="size"
+                  placeholder="size"
+                />
               </li>
               <li>
                 <label htmlFor="energy">energy</label>
                 <input
+                  value={this.state.energy}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="energy"
                   name="energy"
@@ -86,16 +123,19 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="sugar">sugar</label>
                 <input
+                  value={this.state.sugar}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="sugar"
                   name="sugar"
                   placeholder="sugar"
                 />
               </li>
-
               <li>
                 <label htmlFor="protein">protein</label>
                 <input
+                  value={this.state.protein}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="protein"
                   name="protein"
@@ -105,6 +145,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="cholesterol">cholesterol</label>
                 <input
+                  value={this.state.cholesterol}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="cholesterol"
                   name="cholesterol"
@@ -114,6 +156,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="totalfat">totalfat</label>
                 <input
+                  value={this.state.totalfat}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="totalfat"
                   name="totalfat"
@@ -123,6 +167,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="saturatedfat">saturatedfat</label>
                 <input
+                  value={this.state.saturatedfat}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="saturatedfat"
                   name="saturatedfat"
@@ -132,6 +178,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="transfat">transfat</label>
                 <input
+                  value={this.state.transfat}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="transfat"
                   name="transfat"
@@ -141,6 +189,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="dietaryfibre">dietaryfibre</label>
                 <input
+                  value={this.state.dietaryfibre}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="dietaryfibre"
                   name="dietaryfibre"
@@ -150,6 +200,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="sodium">sodium</label>
                 <input
+                  value={this.state.sodium}
+                  onChange={e => this.inputValues(e)}
                   type="text"
                   id="sodium"
                   name="sodium"
@@ -159,6 +211,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="servingsize">servingsize</label>
                 <input
+                  value={this.state.servingsize}
+                  onChange={e => this.inputValues(e)}
                   type="number"
                   id="servingsize"
                   name="servingsize"
@@ -168,6 +222,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="price">price</label>
                 <input
+                  value={this.state.price}
+                  onChange={e => this.inputValues(e)}
                   type="number"
                   id="price"
                   name="price"
@@ -177,6 +233,8 @@ class CreateProduct extends Component {
               <li>
                 <label htmlFor="description">description</label>
                 <textarea
+                  value={this.state.description}
+                  onChange={e => this.inputValues(e)}
                   id="description"
                   name="description"
                   placeholder="description"
@@ -184,7 +242,12 @@ class CreateProduct extends Component {
               </li>
               <li>
                 <label htmlFor="image">image</label>
-                <input type="file" id="image" name="image" />
+                <input
+                  onChange={e => this.inputFileValue(e)}
+                  type="file"
+                  id="image"
+                  name="image"
+                />
               </li>
               <li>
                 <button type="submit">Add The Product</button>
