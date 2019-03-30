@@ -38,13 +38,25 @@ class Orders extends Component {
                 {e.quantity}
               </div>
               <ul className="order-sub-list">
+                {/* <li>{e.product.details.cholesterol}</li> */}
+                <li>
+                  <span>Size</span>
+                  {e.product.details.size}
+                </li>
                 <li>{e.product.details.cholesterol}</li>
-                <li>{e.product.details.size}</li>
-                <li>{e.product.details.cholesterol}</li>
-                <li>{e.product.details.dietaryfibre}</li>
-                <li>{e.product.details.energy}</li>
-                <li>{e.product.details.protein}</li>
-                <li>{e.product.details.sugar}</li>
+                {/* <li>{e.product.details.dietaryfibre}</li> */}
+                <li>
+                  <span>Energy</span>
+                  {e.product.details.energy}
+                </li>
+                <li>
+                  <span>Protein</span>
+                  {e.product.details.protein}
+                </li>
+                <li>
+                  <span>Sugar</span>
+                  {e.product.details.sugar}
+                </li>
               </ul>
             </li>
           );
