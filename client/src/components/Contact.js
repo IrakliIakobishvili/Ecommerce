@@ -87,6 +87,7 @@ export default class Contact extends Component {
       console.log("Fill Al Field");
     } else {
       console.log("Send To DB");
+      //
     }
   };
   handleChange = e => {
