@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { saveContact } from "../actions/contact";
+import { saveContact, clearFeedback } from "../actions/contact";
 import "../styles/contact.css";
 
 const initialState = {
@@ -11,8 +11,7 @@ const initialState = {
 };
 class Contact extends Component {
   state = {
-    ...initialState,
-    feedback: ""
+    ...initialState
   };
   handleSubmit = event => {
     event.preventDefault();
@@ -41,6 +40,11 @@ class Contact extends Component {
   resetState = () => {
     this.setState(initialState);
   };
+  componentWillReceiveProps() {
+    setTimeout(() => {
+      this.props.clearFeedback();
+    }, 3000);
+  }
 
   render() {
     return (
@@ -108,6 +112,7 @@ class Contact extends Component {
               <button type="submit" className="contact-btn">
                 Send Your Message
               </button>
+              <div className="contact-feedback">{this.props.feedback}</div>
             </form>
           </div>
         </div>
@@ -119,11 +124,11 @@ class Contact extends Component {
 function mapStateToProps(state) {
   return {
     // products: state.products.products,
-    feedback: ""
+    feedback: state.contact.feedback
   };
 }
 
 export default connect(
   mapStateToProps,
-  { saveContact }
+  { saveContact, clearFeedback }
 )(Contact);

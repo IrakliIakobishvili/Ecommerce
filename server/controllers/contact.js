@@ -7,8 +7,8 @@ module.exports = {
       res.json(isEmpty(req.body));
     } else {
       Contact.create({ ...req.body })
-        .then(() => res.status(201).json("Contact Saved"))
-        .catch(() => res.status(422).json("Contact Saveing Failed!"));
+        .then(() => res.status(201).json("Message has been sent"))
+        .catch(() => res.status(422).json("Message sending Failed!"));
     }
   },
   findAll: (req, res, next) => {

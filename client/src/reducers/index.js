@@ -8,6 +8,7 @@ import cartReducer from "./cart";
 import orderReducer from "./orders";
 import reviewReducer from "./reviews";
 import adminReducer from "./admin";
+import contactReducer from "./contact";
 import activeReducer from "./activeLinks";
 
 export default combineReducers({
@@ -20,5 +21,6 @@ export default combineReducers({
   orders: orderReducer,
   reviews: reviewReducer,
   admin: adminReducer,
+  contact: contactReducer,
   activeLinks: activeReducer
 });

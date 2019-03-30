@@ -1,6 +1,10 @@
 import axios from "axios";
 import { API_URL } from "../config";
-import { CONTACT_FEEDBACK, CONNECTION_ERROR } from "./types";
+import {
+  CONTACT_FEEDBACK,
+  CONTACT_FEEDBACK_CLEAR,
+  CONNECTION_ERROR
+} from "./types";
 
 export const saveContact = message => {
   return async dispatch => {
@@ -23,6 +27,19 @@ export const saveContact = message => {
         type: CONNECTION_ERROR,
         payload: "Network error, API is Unavailable (From contact.js (catch))"
       });
+    }
+  };
+};
+
+export const clearFeedback = id => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: CONTACT_FEEDBACK_CLEAR,
+        payload: ""
+      });
+    } catch (err) {
+      console.error("err", err);
     }
   };
 };
