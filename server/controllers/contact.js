@@ -6,12 +6,7 @@ module.exports = {
     if (isEmpty(req.body)) {
       res.json(isEmpty(req.body));
     } else {
-      Contact.create({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email,
-        message: req.body.message
-      })
+      Contact.create({ ...req.body })
         .then(() => res.status(201).json("Contact Saved"))
         .catch(() => res.status(422).json("Contact Saveing Failed!"));
     }

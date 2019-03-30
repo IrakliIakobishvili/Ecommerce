@@ -1,14 +1,20 @@
 import axios from "axios";
 import { API_URL } from "../config";
-import { SAVE_CONTACT, CONNECTION_ERROR } from "./types";
+import { CONTACT_FEEDBACK, CONNECTION_ERROR } from "./types";
 
 export const saveContact = message => {
   return async dispatch => {
     try {
-      const res = await axios.post(`${API_URL}/api/products`, { message });
+      const res = await axios.post(`${API_URL}/api/contact`, {
+        // ...message
+        firstName: message.firstName,
+        lastName: message.lastName,
+        email: message.email,
+        message: message.message
+      });
       console.log(res.data);
       dispatch({
-        type: SAVE_CONTACT,
+        type: CONTACT_FEEDBACK,
         payload: res.data
       });
     } catch (err) {

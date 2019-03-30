@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { saveContact } from "../actions/contact";
 import "../styles/contact.css";
 
 const initialState = {
@@ -7,69 +9,11 @@ const initialState = {
   email: "",
   message: ""
 };
-export default class Contact extends Component {
+class Contact extends Component {
   state = {
-    ...initialState
+    ...initialState,
+    feedback: ""
   };
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     firstname: "",
-  //     lastname: "",
-  //     email: ""
-  //   };
-  // }
-
-  // handleNameChange = event => {
-  //   this.setState({ firstname: event.target.value }, () => {
-  //     this.validateName();
-  //   });
-  // };
-
-  // handleLastnameChange = event => {
-  //   this.setState({ lastname: event.target.value }, () => {
-  //     this.validateName();
-  //   });
-  // };
-
-  // handleEmailChange = event => {
-  //   this.setState({ email: event.target.value }, () => {
-  //     this.validateEmail();
-  //   });
-  // };
-
-  // validateName = () => {
-  //   const { firstname } = this.state;
-  //   this.setState({
-  //     nameError:
-  //       firstname.length > 1 ? null : " "
-  //   });
-  // };
-
-  // validateLastname = () => {
-  //   const { lastname } = this.state;
-  //   this.setState({
-  //     lastnameError:
-  //       lastname.length > 1 ? null : " "
-  //   });
-  // };
-
-  // validateEmail = () => {
-  //   const { email } = this.state;
-  //   this.setState({
-  //     emailError:
-  //       email.length > 7 ? null : " "
-  //   });
-  // };
-
-  // handleSubmit = event => {
-  //   event.preventDefault();
-  //   const { firstname, lastname, email } = this.state;
-  //   alert(`Your state values: \n
-  //           firstname: ${firstname} \n
-  //           lastname: ${lastname} \n
-  //           email: ${email}`);
-  // };
   handleSubmit = event => {
     event.preventDefault();
     console.log(this.state);
@@ -87,7 +31,8 @@ export default class Contact extends Component {
       console.log("Fill Al Field");
     } else {
       console.log("Send To DB");
-      //
+      this.props.saveContact(this.state);
+      this.setState({ ...initialState });
     }
   };
   handleChange = e => {
@@ -114,15 +59,10 @@ export default class Contact extends Component {
                   className={`contact-input ${
                     this.state.firstName ? "is-valid" : ""
                   }`}
-                  // className={`contact-input ${
-                  //   this.state.nameError ? "is-invalid" : ""
-                  // }`}
                   id="firstName"
                   value={this.state.firstName}
                   onChange={this.handleChange}
-                  // onBlur={this.validateName}
                 />
-                {/* <div className="invalid-feedback">{this.state.nameError}</div> */}
               </div>
 
               <div className="form-group">
@@ -131,21 +71,12 @@ export default class Contact extends Component {
                 </label>
                 <input
                   name="lastName"
-                  // className={`contact-input`}
                   className={`contact-input ${
                     this.state.lastName ? "is-valid" : ""
                   }`}
-                  // className={`contact-input ${
-                  //   this.state.lastnameError ? "is-invalid" : ""
-                  // }`}
-                  // id="lastname"
                   value={this.state.lastName}
                   onChange={this.handleChange}
-                  // onBlur={this.validateLastname}
                 />
-                {/* <div className="invalid-feedback">
-                  {this.state.lastnameError}
-                </div> */}
               </div>
 
               <div className="form-group">
@@ -157,33 +88,17 @@ export default class Contact extends Component {
                   className={`contact-input ${
                     this.state.email ? "is-valid" : ""
                   }`}
-                  // className={`contact-input ${
-                  //   this.state.emailError ? "is-invalid" : ""
-                  // }`}
-                  // id="email"
                   value={this.state.email}
                   onChange={this.handleChange}
-                  // onBlur={this.validateEmail}
                 />
-                {/* <div className="invalid-feedback">{this.state.emailError}</div> */}
               </div>
 
               <label className="contact-label">
-                {/* Input text: */}
-                {/* <input
-                  value={this.state.message}
-                  onChange={this.handleChange}
-                  type="textarea"
-                  name="message"
-                  className="contact-input"
-                /> */}
                 <textarea
                   onChange={this.handleChange}
                   style={{ resize: "none", height: "60px" }}
                   value={this.state.message}
                   placeholder="Message"
-                  // value={}
-                  // onChange={this.handleChange}
                   className={`contact-input ${
                     this.state.message ? "is-valid" : ""
                   }`}
@@ -200,3 +115,15 @@ export default class Contact extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return {
+    // products: state.products.products,
+    feedback: ""
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  { saveContact }
+)(Contact);
