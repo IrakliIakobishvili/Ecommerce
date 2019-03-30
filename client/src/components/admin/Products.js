@@ -21,7 +21,7 @@ const initialState = {
   image: ""
   // empty: ""
 };
-class CreateProduct extends Component {
+class Products extends Component {
   state = { ...initialState };
   handleReset = () => {
     this.setState(initialState);
@@ -260,4 +260,4 @@ class CreateProduct extends Component {
   }
 }
 
-export default CreateProduct;
+export default Products;

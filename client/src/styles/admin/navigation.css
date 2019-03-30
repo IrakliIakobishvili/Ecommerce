@@ -1,0 +1,38 @@
+.admin-page-nav {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 100%;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.admin-page-nav__heading {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    background: #d62231;
+    padding: 10px 0px;
+    color: #fff;
+}
+
+.admin-list__item__link {
+    padding: 10px;
+    border-bottom: none;
+    display: block;
+    text-decoration: none;
+    color: #692f28;
+    border-bottom: 1px solid #cecece;
+    padding-left: 43px;
+    background: url("../../assets/img/categories/settings.svg") no-repeat 10px 50%;
+    transition-duration: 0.3s;
+    background-size: 25px;
+}
+
+.admin-list__item__link:hover {
+    padding-left: 58px;
+    background-position-x: 25px;
+}
+
+.admin-list__item:last-of-type .admin-list__item__link {
+    border-bottom: none;
+}

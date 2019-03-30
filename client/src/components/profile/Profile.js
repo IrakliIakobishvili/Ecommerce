@@ -34,7 +34,6 @@ class Profile extends Component {
             <div className="profile-page-wrapper">
               <div className="profile-page-aside">
                 <Nav />
-                {/* {content} */}
               </div>
               <div className="profile-page-content">
                 <Route exact path="/profile/" component={Details} />

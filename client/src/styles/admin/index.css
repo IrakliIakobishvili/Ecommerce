@@ -5,11 +5,52 @@
     align-items: center;
     justify-content: center;
     margin: 10px;
-    border:1px solid green;
+    border: 1px solid green;
     padding: 10px;
 }
+
+.admin-page {
+    height: calc(100vh - 80px);
+}
+
 .admin-page .container {
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background: red; */
+    height: 100%;
+}
+
+.admin-page-wrapper {
+    width: 100%;
+    /* background: #fff; */
+    display: flex;
+    align-items: flex-start;
+    height: auto;
+    padding: 20px;
+    border-radius: 5px;
+    background: orange;
+}
+
+.admin-page-aside {
+    width: 250px;
+    /* border: 1px solid red; */
+    border-right: 1px solid gray;
+    /* min-height: 500px; */
+    display: flex;
+    justify-content: center;
+}
+
+.admin-page-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    background: #fff;
+    height: 100%;
+    /* max-height: 500px; */
+    height: 450px;
+    /* overflow: auto; */
+    border-radius: 5px;
+    overflow: hidden;
 }
