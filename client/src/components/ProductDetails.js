@@ -13,10 +13,12 @@ import "../styles/productdetails.css";
 
 class Details extends Component {
   state = {
-    disabled: false
+    disabled: false,
+    loaded: false
   };
-  componentDidMount() {
-    this.props.getProductDetails(this.props.match.params.id);
+  async componentDidMount() {
+    await this.props.getProductDetails(this.props.match.params.id);
+    this.setState({ loaded: true });
     // this.props.getProductReviews(this.props.match.params.id);
   }
   loadDetailsAndReviews = () => {
@@ -54,41 +56,45 @@ class Details extends Component {
     const productInCart = cart.filter(el => {
       return el.product._id == this.props.match.params.id;
     });
-    const productDetails = Object.keys(details).length ? (
-      <Fragment>
-        <div className="img-cont">
-          <img src={API_URL + "/" + details.details.photo} alt={details.name} />
-        </div>
-        <ul>
-          <li>Name: {details.name}</li>
-          <li>Category: {details.category}</li>
-          <li>
-            {productInCart.length ? (
-              <button className="cart-btn">
-                <Link to="/cart">View In Cart</Link>
-              </button>
-            ) : (
-              <button
-                disabled={this.state.disabled}
-                className="cart-btn"
-                onClick={() => this.cartBtnHandler(details._id)}
-              >
-                Add to Cart
-              </button>
-            )}
-          </li>
-          {/* <li>{}</li> */}
-        </ul>
-        {/* <div className="reviews">{totalReviews}</div> */}
-      </Fragment>
-    ) : this.props.isLoading ? (
-      <h1>Loading...</h1>
-    ) : this.props.details == "" ? (
-      // <h1>CARIELIA</h1>
-      this.loadDetailsAndReviews()
-    ) : this.props.error ? (
-      <h1>{this.props.error}</h1>
-    ) : null;
+    const productDetails =
+      Object.keys(details).length && this.state.loaded ? (
+        <Fragment>
+          <div className="img-cont">
+            <img
+              src={API_URL + "/" + details.details.photo}
+              alt={details.name}
+            />
+          </div>
+          <ul>
+            <li>Name: {details.name}</li>
+            <li>Category: {details.category}</li>
+            <li>
+              {productInCart.length ? (
+                <button className="cart-btn">
+                  <Link to="/cart">View In Cart</Link>
+                </button>
+              ) : (
+                <button
+                  disabled={this.state.disabled}
+                  className="cart-btn"
+                  onClick={() => this.cartBtnHandler(details._id)}
+                >
+                  Add to Cart
+                </button>
+              )}
+            </li>
+            {/* <li>{}</li> */}
+          </ul>
+          {/* <div className="reviews">{totalReviews}</div> */}
+        </Fragment>
+      ) : this.props.isLoading ? (
+        <h1>Loading...</h1>
+      ) : this.props.details == "" ? (
+        // <h1>CARIELIA</h1>
+        this.loadDetailsAndReviews()
+      ) : this.props.error ? (
+        <h1>{this.props.error}</h1>
+      ) : null;
 
     return (
       <div className="details-page">
