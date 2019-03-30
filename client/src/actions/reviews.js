@@ -1,6 +1,11 @@
 import axios from "axios";
 import { API_URL } from "../config";
-import { GET_REVIEWS, CONNECTION_ERROR } from "./types";
+import {
+  GET_REVIEWS,
+  REVIEW_FEEDBACK,
+  REVIEW_FEEDBACK_CLEAR,
+  CONNECTION_ERROR
+} from "./types";
 
 export const getProductReviews = id => {
   return async dispatch => {
@@ -31,6 +36,11 @@ export const addProductReview = (id, message, rating) => {
           rating: rating
         })
         .then(res => {
+          dispatch({
+            type: REVIEW_FEEDBACK,
+            payload: res.data
+          });
+          console.log(res);
           return axios.get(`${API_URL}/api/review/${id}`);
         })
         .then(res => {
@@ -45,6 +55,19 @@ export const addProductReview = (id, message, rating) => {
         type: CONNECTION_ERROR,
         payload: "Connection error || Wrong URL"
       });
+    }
+  };
+};
+
+export const clearFeedback = id => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: REVIEW_FEEDBACK_CLEAR,
+        payload: ""
+      });
+    } catch (err) {
+      console.error("err", err);
     }
   };
 };

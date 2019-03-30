@@ -67,7 +67,7 @@ module.exports = {
       docs = await Products.find({
         "details.protein": { $gt: gt, $lt: lt }
       });
-    } else if (key == "cholesterol") {
+    } else if (key == "energy") {
       docs = await Products.find({
         "details.cholesterol": { $gt: gt, $lt: lt }
       });

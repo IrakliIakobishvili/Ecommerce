@@ -61,3 +61,8 @@
 .rate>input {
     display: none;
 }
+
+.warning {
+    /* border-color: red; */
+    border: 1px solid red;
+}

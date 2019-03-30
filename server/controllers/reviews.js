@@ -38,7 +38,7 @@ module.exports = {
         }
       });
     } else {
-      res.status(406).json("Buy Product To Leave Review");
+      res.status(200).json("Buy Product To Leave Review");
     }
   },
   getReviews: async (req, res) => {
@@ -72,7 +72,8 @@ module.exports = {
                     review.user[review.user.method].lastName
                 },
                 message: review.message,
-                rating: review.rating
+                rating: review.rating,
+                date: review.date
               };
             });
             let averageRating = totalRating / totalReviews;

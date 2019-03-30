@@ -10,43 +10,59 @@ class Filter extends Component {
   //     // this.props.getCategories();
   //     // this.props.getProducts();
   //   }
+  filterSubmitHandler = e => {
+    e.preventDefault();
+  };
   render() {
     return (
-      <Fragment>
+      <form onSubmit={this.filterSubmitHandler}>
         <h3>Filter</h3>
-        <h4>Operation System</h4>
         <ul className="filter">
+          <h4>Energy</h4>
           <li>
-            <input id="android" type="checkbox" name="android" />
-            <label htmlFor="android">Android</label>
+            <div>
+              <input id="energy1" type="checkbox" name="energy" />
+              <label htmlFor="energy1">From 1000 to 2000</label>
+            </div>
+            <div>
+              <input id="energy2" type="checkbox" name="energy" />
+              <label htmlFor="energy2">Less than 1000</label>
+            </div>
+            <div>
+              <input id="energy3" type="checkbox" name="energy" />
+              <label htmlFor="energy3">More than 2000</label>
+            </div>
           </li>
+          <h4>Protein</h4>
           <li>
-            <input id="ios" type="checkbox" name="ios" />
-            <label htmlFor="ios">IOS</label>
+            <div>
+              <input id="protein1" type="checkbox" name="energy" />
+              <label htmlFor="protein1">From 20 to 30</label>
+            </div>
+            <div>
+              <input id="protein2" type="checkbox" name="energy" />
+              <label htmlFor="protein2">Less than 20</label>
+            </div>
+            <div>
+              <input id="protein3" type="checkbox" name="energy" />
+              <label htmlFor="protein3">More than 30</label>
+            </div>
           </li>
+          <h4>Price</h4>
           <li>
-            <input id="linux" type="checkbox" name="linux" />
-            <label htmlFor="linux">Linux</label>
-          </li>
-        </ul>
-
-        <h4>Processor</h4>
-        <ul className="filter">
-          <li>
-            <input id="i7" type="checkbox" name="i7" />
-            <label htmlFor="i7">Intel Core i7</label>
-          </li>
-          <li>
-            <input id="i5" type="checkbox" name="i5" />
-            <label htmlFor="i5">Intel Core i5</label>
-          </li>
-          <li>
-            <input id="i3" type="checkbox" name="i3" />
-            <label htmlFor="linux">Intel Core i3</label>
+            <div>
+              <input
+                id="priceFrom"
+                type="text"
+                name="priceFrom"
+                placeholder="From"
+              />
+              <input id="priceTo" type="text" name="priceTo" placeholder="To" />
+            </div>
           </li>
         </ul>
         <button>SEARCH</button>
-      </Fragment>
+      </form>
     );
   }
 }

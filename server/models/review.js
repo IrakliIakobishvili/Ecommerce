@@ -18,6 +18,12 @@ const reviewSchema = new Schema(
         },
         rating: {
           type: Number
+        },
+        date: {
+          type: Date,
+          default: () => {
+            return Date.now();
+          }
         }
       }
     ]

@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "../styles/reviews.css";
-import { getProductReviews, addProductReview } from "../actions/reviews";
+import {
+  getProductReviews,
+  addProductReview,
+  clearFeedback
+} from "../actions/reviews";
 // import { clearActiveLinks } from "../actions/activeLinks";
 
 class Review extends Component {
   componentDidMount = () => {
     this.props.getProductReviews(this.props.productID);
+    // console.log("SSS");
   };
 
   state = {
     inputValue: "",
-    rating: ""
+    rating: "",
+    warning: false,
+    feedback: ""
   };
-  setGender = event => {
+  setRating = event => {
     this.setState({ rating: Number(event.target.value) });
     // console.log(this.state.rating);
-    console.log(Number(event.target.value));
+    // console.log(Number(event.target.value));
   };
   updateInputValue(e) {
     this.setState({
@@ -29,26 +36,41 @@ class Review extends Component {
     } else {
       if (this.state.inputValue.trim() !== "" && this.state.rating !== "") {
         this.props.addProductReview(id, message, rating);
-        this.setState({ inputValue: "" });
+        this.setState({ inputValue: "", warning: false });
+        // this.setState({ warning: false });
+        // this.se
       } else {
-        console.log("Fill all Field");
+        this.setState({ warning: true });
+        // console.log("Fill all Field");
       }
     }
   };
+  componentWillReceiveProps() {
+    // this.setState({ feedback: this.props.feedback });
+    setTimeout(() => {
+      this.props.clearFeedback();
+    }, 3000);
+  }
   render() {
     console.log("FROM REVIEW COMP start");
     console.log(this.props.reviews);
     console.log("FROM REVIEW COMP end");
-    const { reviews, rating } = this.props;
+    const { reviews, rating, feedback } = this.props;
     const totalReviews = reviews.length ? (
-      //   reviews = reviews.reverse()
       reviews.map(review => {
+        let date =
+          review.date.split("T")[0] +
+          " " +
+          review.date.split("T")[1].split(".")[0];
         return (
           <li key={review.id} className="review__list__item">
             <div className="review__list__item__name">
               {review.author.fullName}
             </div>
-            <div className="review__list__item__message">{review.message}</div>
+            <div className="review__list__item__message">
+              {review.message}
+              <div className="review__date">{date}</div>
+            </div>
           </li>
         );
       })
@@ -62,7 +84,7 @@ class Review extends Component {
           <div
             // className={"rate" + this.state.rating == "" ? "rate--red" : "rate"}
             className="rate"
-            onChange={this.setGender.bind(this)}
+            onChange={this.setRating.bind(this)}
           >
             <input type="radio" id="star5" name="rate" value="5" />
             <label htmlFor="star5" />
@@ -79,7 +101,8 @@ class Review extends Component {
             value={this.state.inputValue}
             onChange={e => this.updateInputValue(e)}
             placeholder="Leave Review"
-            className="review__input"
+            // className="review__input"
+            className={`review__input ${this.state.warning ? "warning" : null}`}
             type="text"
           />
           <button
@@ -94,6 +117,7 @@ class Review extends Component {
           >
             Submit Review
           </button>
+          <div className="review-feedback">{feedback}</div>
         </div>
         <ul className="review__list">{totalReviews}</ul>
       </div>
@@ -104,6 +128,7 @@ class Review extends Component {
 const mapStateToProps = state => ({
   isAuth: state.auth.isAuthenticated,
   reviews: state.reviews.reviews,
+  feedback: state.reviews.feedback,
   rating: state.reviews.rating,
   error: state.products.error,
   isLoading: state.products.isLoading
@@ -111,5 +136,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProductReviews, addProductReview }
+  { getProductReviews, addProductReview, clearFeedback }
 )(Review);
