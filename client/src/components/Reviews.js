@@ -4,6 +4,7 @@ import "../styles/reviews.css";
 import {
   getProductReviews,
   addProductReview,
+  clearReviews,
   clearFeedback
 } from "../actions/reviews";
 // import { clearActiveLinks } from "../actions/activeLinks";
@@ -13,6 +14,10 @@ class Review extends Component {
     this.props.getProductReviews(this.props.productID);
     // console.log("SSS");
   };
+  componentWillUnmount() {
+    // console.log("OOOOOOOOOOOOOOO");
+    this.props.clearReviews();
+  }
 
   state = {
     inputValue: "",
@@ -136,5 +141,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProductReviews, addProductReview, clearFeedback }
+  { getProductReviews, addProductReview, clearReviews, clearFeedback }
 )(Review);

@@ -23,6 +23,7 @@ export const GET_ORDERS = "GET_ORDERS";
 export const GET_ORDER = "GET_ORDER";
 export const GET_REVIEWS = "GET_REVIEWS";
 export const REVIEW_FEEDBACK_CLEAR = "REVIEW_FEEDBACK_CLEAR";
+export const REVIEWS_CLEAR = "REVIEWS_CLEAR";
 export const REVIEW_FEEDBACK = "REVIEW_FEEDBACK";
 export const ORDER_FINISHED = "ORDER_FINISHED";
 // export const SAVED_ORDER = "SAVED_ORDER";

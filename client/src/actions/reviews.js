@@ -3,6 +3,7 @@ import { API_URL } from "../config";
 import {
   GET_REVIEWS,
   REVIEW_FEEDBACK,
+  REVIEWS_CLEAR,
   REVIEW_FEEDBACK_CLEAR,
   CONNECTION_ERROR
 } from "./types";
@@ -64,6 +65,19 @@ export const clearFeedback = id => {
     try {
       dispatch({
         type: REVIEW_FEEDBACK_CLEAR,
+        payload: ""
+      });
+    } catch (err) {
+      console.error("err", err);
+    }
+  };
+};
+
+export const clearReviews = id => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: REVIEWS_CLEAR,
         payload: ""
       });
     } catch (err) {

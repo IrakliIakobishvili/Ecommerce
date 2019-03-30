@@ -65,13 +65,52 @@ class Details extends Component {
               alt={details.name}
             />
           </div>
-          <ul>
-            <li>Name: {details.name}</li>
-            <li>Category: {details.category}</li>
+          <ul className="details-list">
+            <h3 className="details-list__heading">{details.name}</h3>
+            {/* <li>
+              <span>Name:</span>
+              <span>{details.name}</span>
+            </li> */}
+            {/* <li>
+              <span>Category:</span>
+              <span>{details.category}</span>
+            </li> */}
             <li>
+              <span>Energy:</span>
+              <span>{details.details.energy}</span>
+            </li>
+            <li>
+              <span>Sugar:</span>
+              <span>{details.details.sugar}</span>
+            </li>
+            <li>
+              <span>Protein:</span>
+              <span>{details.details.protein}</span>
+            </li>
+            <li>
+              <span>Cholesterol:</span>
+              <span>{details.details.cholesterol}</span>
+            </li>
+            {/* <li>
+              <span>Price:</span>
+              <span>{details.details.price}</span>
+            </li> */}
+            <li className="x">
+              <span>Size:</span>
+              <span>{details.details.size}</span>
+            </li>
+            <li className="details-list__item details-list__item--description">
+              <span>Description:</span>
+              <span>{details.details.description}</span>
+            </li>
+            <li className="details-list__item details-list__item--last">
+              <div className="details-price">
+                <i className="fas fa-dollar-sign" /> {details.details.price}
+              </div>
               {productInCart.length ? (
                 <button className="cart-btn">
-                  <Link to="/cart">View In Cart</Link>
+                  <i className="fas fa-cart-plus" />
+                  <Link to="/cart">View</Link>
                 </button>
               ) : (
                 <button
@@ -79,13 +118,17 @@ class Details extends Component {
                   className="cart-btn"
                   onClick={() => this.cartBtnHandler(details._id)}
                 >
+                  <i className="fas fa-cart-plus" />
                   Add to Cart
                 </button>
               )}
             </li>
-            {/* <li>{}</li> */}
           </ul>
           {/* <div className="reviews">{totalReviews}</div> */}
+          <Reviews
+            productID={this.props.match.params.id}
+            history={this.props.history}
+          />
         </Fragment>
       ) : this.props.isLoading ? (
         <h1>Loading...</h1>
@@ -104,10 +147,10 @@ class Details extends Component {
             <span className="details-page__heading__hr" />
           </h2>
           <div className="details-cont">{productDetails}</div>
-          <Reviews
+          {/* <Reviews
             productID={this.props.match.params.id}
             history={this.props.history}
-          />
+          /> */}
         </div>
       </div>
     );

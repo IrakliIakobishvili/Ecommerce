@@ -23,12 +23,12 @@ const productSchema = new Schema(
       protein: String,
       cholesterol: String,
       photo: String,
-      totalfat: String,
-      saturatedfat: String,
-      transfat: String,
-      dietaryfibre: String,
-      sodium: String,
-      servingsize: Number,
+      // totalfat: String,
+      // saturatedfat: String,
+      // transfat: String,
+      // dietaryfibre: String,
+      // sodium: String,
+      // servingsize: Number,
       price: Number,
       description: String
     }

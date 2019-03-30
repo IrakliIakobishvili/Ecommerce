@@ -1,6 +1,7 @@
 import {
   GET_REVIEWS,
   REVIEW_FEEDBACK,
+  REVIEWS_CLEAR,
   REVIEW_FEEDBACK_CLEAR,
   CONNECTION_ERROR
 } from "../actions/types";
@@ -25,6 +26,8 @@ export default (state = DEFAULT_STATE, action) => {
       };
     case REVIEW_FEEDBACK:
       return { ...state, feedback: action.payload };
+    case REVIEWS_CLEAR:
+      return { ...state, feedback: action.payload, reviews: action.payload };
     case REVIEW_FEEDBACK_CLEAR:
       return { ...state, feedback: action.payload };
     case CONNECTION_ERROR:
