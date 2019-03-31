@@ -36,3 +36,8 @@
 .admin-list__item:last-of-type .admin-list__item__link {
     border-bottom: none;
 }
+
+.active-admin {
+    padding-left: 58px !important;
+    background-position-x: 25px !important;
+}
