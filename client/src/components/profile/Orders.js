@@ -51,11 +51,17 @@ class Orders extends Component {
         });
       })
     ) : this.props.error ? (
-      <h1>{this.props.error}</h1>
+      <div className="error error--static">
+        <i className="fas fa-plug" />
+      </div>
     ) : this.props.isLoading ? (
-      <h3>Loading...</h3>
+      <div className="loading loading--static">
+        <i className="fas fa-spinner" />
+      </div>
     ) : order.length === 0 ? (
-      <h2>Empty</h2>
+      <div className="empty empty--static">
+        <i className="far fa-meh" />
+      </div>
     ) : null;
 
     return <ul className="order-list">{content}</ul>;

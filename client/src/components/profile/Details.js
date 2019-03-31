@@ -39,9 +39,13 @@ class Details extends Component {
         </li>
       </>
     ) : this.props.isLoading ? (
-      <h1>Loading...</h1>
+      <div className="loading loading--static">
+        <i className="fas fa-spinner" />
+      </div>
     ) : this.props.error ? (
-      <h1>{this.props.error}</h1>
+      <div className="error error--static">
+        <i className="fas fa-plug" />
+      </div>
     ) : null;
 
     return <ul className="profile__list">{content}</ul>;

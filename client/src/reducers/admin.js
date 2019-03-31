@@ -12,7 +12,7 @@ const DEFAULT_STATE = {
   categories: [],
   contacts: [],
   isLoading: true,
-  error: ""
+  error: false
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -21,21 +21,21 @@ export default (state = DEFAULT_STATE, action) => {
       return {
         ...state,
         isLoading: false,
-        error: "",
+        error: false,
         users: action.payload
       };
     case GET_CATEGORIES_ADMIN:
       return {
         ...state,
         isLoading: false,
-        error: "",
+        error: false,
         categories: action.payload
       };
     case GET_CONTACTS_ADMIN:
       return {
         ...state,
         isLoading: false,
-        error: "",
+        error: false,
         contacts: action.payload
       };
     case CONNECTION_ERROR:

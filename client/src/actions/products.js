@@ -35,7 +35,7 @@ export const getCategoryAndProducts = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From product.js (catch))"
+        payload: true
       });
     }
   };
@@ -55,7 +55,7 @@ export const getProducts = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From product.js (catch))"
+        payload: true
       });
     }
   };
@@ -78,7 +78,7 @@ export const getProductsByCat = id => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From product.js (catch))"
+        payload: true
       });
     }
   };
@@ -96,7 +96,7 @@ export const getProductsByTitle = title => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From product.js (catch))"
+        payload: true
       });
     }
   };
@@ -116,7 +116,7 @@ export const getFilteredProducts = params => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From product.js (catch))"
+        payload: true
       });
     }
   };
@@ -169,7 +169,7 @@ export const getProductDetails = id => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Connection error || Wrong URL"
+        payload: true
       });
     }
   };

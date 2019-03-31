@@ -39,7 +39,7 @@ export const saveOrder = (order, totalPrice) => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From order.js (catch))"
+        payload: true
       });
     }
   };
@@ -59,7 +59,7 @@ export const getCartItems = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From cart.js (catch))"
+        payload: true
       });
     }
   };
@@ -81,7 +81,7 @@ export const removeItemFromCart = product => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From cart.js (catch))"
+        payload: true
       });
     }
   };
@@ -100,7 +100,7 @@ export const emptyCart = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From cart.js (catch))"
+        payload: true
       });
     }
   };

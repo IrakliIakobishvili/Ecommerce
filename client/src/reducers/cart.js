@@ -27,7 +27,8 @@ import {
 
 const DEFAULT_STATE = {
   products: [],
-  isLoading: true
+  isLoading: true,
+  error: false
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -40,9 +41,14 @@ export default (state = DEFAULT_STATE, action) => {
           : [...state.products, action.payload]
       };
     case GET_CART_ITEMS:
-      return { ...state, products: action.payload, isLoading: false };
+      return {
+        ...state,
+        error: false,
+        products: action.payload,
+        isLoading: false
+      };
     case EMPTY_CART:
-      return { ...state, products: [], isLoading: false };
+      return { ...state, error: false, products: [], isLoading: false };
     case CONNECTION_ERROR:
       return { ...state, isLoading: false, error: action.payload };
     default:

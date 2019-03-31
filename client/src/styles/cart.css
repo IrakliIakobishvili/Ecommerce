@@ -35,6 +35,7 @@
     box-sizing: border-box;
     margin-right: 15px;
     align-self: flex-start;
+    position: relative;
 }
 
 /*----------------- Real Style ----------------*/

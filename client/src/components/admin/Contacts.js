@@ -32,9 +32,13 @@ class Contacts extends Component {
         );
       })
     ) : !this.state.loaded ? (
-      <h2>Loading...</h2>
+      <div className="loading loading--static">
+        <i className="fas fa-spinner" />
+      </div>
     ) : (
-      <h2>Empty</h2>
+      <div className="empty empty--static">
+        <i className="far fa-meh" />
+      </div>
     );
 
     return (

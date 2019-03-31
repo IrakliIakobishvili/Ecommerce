@@ -208,7 +208,7 @@ ul.movie-box__list {
     height: 100%;
 }
 
-.empty, .loading {
+.empty, .loading, .error {
     font-size: 120px;
     text-align: center;
     color: #b7b7b7;
@@ -217,6 +217,12 @@ ul.movie-box__list {
     left: 0px;
     margin: auto;
 }
+
+.error--static, .loading--static, .empty--static {
+    position: static !important;
+}
+
+.loading--cart {}
 
 .loading {
     -webkit-animation: rotation 2s infinite linear;

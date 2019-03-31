@@ -25,7 +25,7 @@ export const getUsersByTitle = title => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From admin.js (catch))"
+        payload: true
       });
     }
   };
@@ -45,7 +45,7 @@ export const getUsers = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From admin.js (catch))"
+        payload: true
       });
     }
   };
@@ -66,7 +66,7 @@ export const getCategoriesByTitle = title => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From admin.js (catch))"
+        payload: true
       });
     }
   };
@@ -84,7 +84,7 @@ export const addCategory = data => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From admin.js (catch))"
+        payload: true
       });
     }
   };
@@ -105,8 +105,7 @@ export const getCategoriesAdmin = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload:
-          "Network error, API is Unavailable (From categories.js (catch))"
+        payload: true
       });
     }
   };
@@ -129,7 +128,7 @@ export const updateUser = data => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From admin.js (catch))"
+        payload: true
       });
     }
   };
@@ -154,7 +153,7 @@ export const addProduct = data => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From admin.js (catch))"
+        payload: true
       });
     }
   };
@@ -173,7 +172,7 @@ export const getContacts = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From admin.js (catch))"
+        payload: true
       });
     }
   };

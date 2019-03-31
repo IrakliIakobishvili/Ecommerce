@@ -2,70 +2,69 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "./Search";
-import { getUsersByTitle,updateUser } from "../../actions/admin";
+import { getUsersByTitle, updateUser } from "../../actions/admin";
 
 class Users extends Component {
   state = {
-    id:'',
-    firstName:'',
-    lastName:'',
-    email:'',
-    password:'',
-    balance:'',
-    verified: '',
-    method:'',
-    day:'',
-    month:'',
-    year:'',
-    phone:''
-  }
+    id: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    balance: "",
+    verified: "",
+    method: "",
+    day: "",
+    month: "",
+    year: "",
+    phone: ""
+  };
   updateHandler = (e, user) => {
     e.preventDefault();
-    if(user.method !== 'local') {
-      console.log("Can't Update!")
+    if (user.method !== "local") {
+      console.log("Can't Update!");
       this.setState({
-      id:'',
-      firstName:'',
-      lastName:'',
-      email:'',
-      password:'',
-      balance:'',
-      verified: '',
-      method:'',
-      day:'',
-      month:'',
-      year:'',
-      phone:''
-    });
-    }else {
+        id: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        balance: "",
+        verified: "",
+        method: "",
+        day: "",
+        month: "",
+        year: "",
+        phone: ""
+      });
+    } else {
       this.setState({
-        id:user.id,
-        firstName:user.firstName,
-        lastName:user.lastName,
-        email:user.email,
-        password:user.password,
-        balance:user.balance,
-        verified:user.verified,
-        method:user.method,
-        day:user.day,
-        month:user.month,
-        year:user.year
-      })
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        password: user.password,
+        balance: user.balance,
+        verified: user.verified,
+        method: user.method,
+        day: user.day,
+        month: user.month,
+        year: user.year
+      });
     }
-    
   };
-  inputValues = (e) => {
-    this.setState({[e.target.name]:e.target.value});
-    console.log(this.state)
-  }
-  submitHandler = (e) => {
-    e.preventDefault()
-    console.log("STATE START")
-    console.log(this.state)
+  inputValues = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    console.log(this.state);
+  };
+  submitHandler = e => {
+    e.preventDefault();
+    console.log("STATE START");
+    console.log(this.state);
     // console.log(this.state)
-    // const modifiedUser = 
+    // const modifiedUser =
     this.props.updateUser(this.state);
-  }
+  };
   render() {
     const { users } = this.props;
     console.log(users);
@@ -82,7 +81,9 @@ class Users extends Component {
     ) : this.props.isLoading ? (
       <h5>Loading...</h5>
     ) : this.props.error ? (
-      <h1>{this.props.error}</h1>
+      <div className="error error--static">
+        <i className="fas fa-plug" />
+      </div>
     ) : null;
 
     return (
@@ -91,15 +92,40 @@ class Users extends Component {
           <h2>USERS</h2>
           <Search />
           <form onSubmit={this.submitHandler}>
-            <input value={this.state.firstName} onChange={(e)=>this.inputValues(e)} name="firstName" placeholder='First Name' />
+            <input
+              value={this.state.firstName}
+              onChange={e => this.inputValues(e)}
+              name="firstName"
+              placeholder="First Name"
+            />
             <br />
-            <input value={this.state.lastName} onChange={(e)=>this.inputValues(e)} name="lastName" placeholder='Last Name'/>
+            <input
+              value={this.state.lastName}
+              onChange={e => this.inputValues(e)}
+              name="lastName"
+              placeholder="Last Name"
+            />
             <br />
-            <input value={this.state.email} onChange={(e)=>this.inputValues(e)} name="email" placeholder='Email'/>
+            <input
+              value={this.state.email}
+              onChange={e => this.inputValues(e)}
+              name="email"
+              placeholder="Email"
+            />
             <br />
-            <input value={this.state.balance} onChange={(e)=>this.inputValues(e)} name="balance" placeholder='Balance'/>
+            <input
+              value={this.state.balance}
+              onChange={e => this.inputValues(e)}
+              name="balance"
+              placeholder="Balance"
+            />
             <br />
-            <input value={this.state.verified} onChange={(e)=>this.inputValues(e)} name="verified" placeholder='Verified'/>
+            <input
+              value={this.state.verified}
+              onChange={e => this.inputValues(e)}
+              name="verified"
+              placeholder="Verified"
+            />
             <button>Update</button>
           </form>
           <ul className="users-list">{result}</ul>
@@ -119,5 +145,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { getUsersByTitle,updateUser }
+  { getUsersByTitle, updateUser }
 )(Users);

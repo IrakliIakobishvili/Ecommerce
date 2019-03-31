@@ -23,11 +23,17 @@ class Cart extends Component {
         return <CartItem key={product._id} item={product} />;
       })
     ) : isLoading ? (
-      <h1>Loading...</h1>
+      <div className="loading loading--cart">
+        <i className="fas fa-spinner" />
+      </div>
     ) : error ? (
-      <h1>{this.props.error}</h1>
+      <div className="error">
+        <i className="fas fa-plug" />
+      </div>
     ) : (
-      <h1>Empty</h1>
+      <div className="empty">
+        <i className="far fa-meh" />
+      </div>
     );
 
     return (

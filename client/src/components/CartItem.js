@@ -55,10 +55,10 @@ class CartItem extends Component {
             </div>
           </div>
           <div className="cart__item__price">
-            {details.price}
             <span className="currency">
               <i className="fas fa-dollar-sign" />
             </span>
+            {details.price}
           </div>
           {/* <div className="cart__item__quantity">{item.quantity}</div> */}
           <div className="cart__item__btns">

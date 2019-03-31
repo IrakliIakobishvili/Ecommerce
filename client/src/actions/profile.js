@@ -13,7 +13,7 @@ export const getProfile = () => {
     } catch (err) {
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Connection Error (From Profile.js)"
+        payload: true
       });
     }
   };
@@ -34,7 +34,7 @@ export const getOrder = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From order.js (catch))"
+        payload: true
       });
     }
   };

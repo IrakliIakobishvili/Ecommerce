@@ -9,7 +9,7 @@ const DEFAULT_STATE = {
   orders: [],
   response: "",
   isLoading: true,
-  error: ""
+  error: false
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -18,21 +18,21 @@ export default (state = DEFAULT_STATE, action) => {
       return {
         ...state,
         isLoading: false,
-        error: "",
+        error: false,
         orders: action.payload
       };
     case ORDER_FAILED:
       return {
         ...state,
         isLoading: false,
-        error: "",
+        error: false,
         response: action.payload
       };
     case ORDER_FINISHED:
       return {
         ...state,
         isLoading: false,
-        error: "",
+        error: false,
         response: action.payload
       };
     case CONNECTION_ERROR:

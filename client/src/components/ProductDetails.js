@@ -131,12 +131,16 @@ class Details extends Component {
           />
         </Fragment>
       ) : this.props.isLoading ? (
-        <h1>Loading...</h1>
+        <div className="loading">
+          <i className="fas fa-spinner" />
+        </div>
       ) : this.props.details == "" ? (
         // <h1>CARIELIA</h1>
         this.loadDetailsAndReviews()
-      ) : this.props.error ? (
-        <h1>{this.props.error}</h1>
+      ) : this.props.error === true ? (
+        <div className="error">
+          <i className="fas fa-plug" />
+        </div>
       ) : null;
 
     return (

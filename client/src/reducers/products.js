@@ -11,7 +11,7 @@ const DEFAULT_STATE = {
   details: {},
   reviews: [],
   isLoading: true,
-  error: ""
+  error: false
 };
 
 export default (state = DEFAULT_STATE, action) => {
@@ -20,11 +20,16 @@ export default (state = DEFAULT_STATE, action) => {
       return {
         ...state,
         isLoading: false,
-        error: "",
+        error: false,
         products: action.payload
       };
     case PRODUCT_GET_DETAILS:
-      return { ...state, isLoading: false, error: "", details: action.payload };
+      return {
+        ...state,
+        isLoading: false,
+        error: false,
+        details: action.payload
+      };
     // case GET_REVIEWS:
     //   return {
     //     ...state,
@@ -35,7 +40,7 @@ export default (state = DEFAULT_STATE, action) => {
     case LOADING_TRUE:
       return { ...state, isLoading: true };
     case CONNECTION_ERROR:
-      return { ...state, isLoading: false, error: action.payload };
+      return { ...state, isLoading: false, error: true };
     default:
       return state;
   }

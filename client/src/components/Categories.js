@@ -45,9 +45,13 @@ class Categories extends Component {
         );
       })
     ) : this.props.isLoading ? (
-      <h5>Loading...</h5>
-    ) : this.props.error ? (
-      <h1>{this.props.error}</h1>
+      <div className="loading loading--static">
+        <i className="fas fa-spinner" />
+      </div>
+    ) : this.props.error === true ? (
+      <div className="error error--static">
+        <i className="fas fa-plug" />
+      </div>
     ) : null;
 
     return (

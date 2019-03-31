@@ -16,8 +16,7 @@ export const getCategories = () => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload:
-          "Network error, API is Unavailable (From categories.js (catch))"
+        payload: true
       });
     }
   };

@@ -60,7 +60,7 @@ class Review extends Component {
     console.log("FROM REVIEW COMP start");
     console.log(this.props.reviews);
     console.log("FROM REVIEW COMP end");
-    const { reviews, rating, feedback } = this.props;
+    const { reviews, rating, feedback, isLoading } = this.props;
     const totalReviews = reviews.length ? (
       reviews.map(review => {
         let date =
@@ -79,6 +79,10 @@ class Review extends Component {
           </li>
         );
       })
+    ) : this.props.isLoading ? (
+      <div className="loading loading--static">
+        <i className="fas fa-spinner" />
+      </div>
     ) : (
       <div>No Reviews</div>
     );
@@ -135,8 +139,8 @@ const mapStateToProps = state => ({
   reviews: state.reviews.reviews,
   feedback: state.reviews.feedback,
   rating: state.reviews.rating,
-  error: state.products.error,
-  isLoading: state.products.isLoading
+  error: state.reviews.error,
+  isLoading: state.reviews.isLoading
 });
 
 export default connect(

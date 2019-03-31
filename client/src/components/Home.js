@@ -54,10 +54,12 @@ class Home extends Component {
         <i className="fas fa-spinner" />
       </div>
     ) : this.props.error ? (
-      <h1>{this.props.error}</h1>
+      <div className="error">
+        <i className="fas fa-plug" />
+      </div>
     ) : (
       <div className="empty">
-        <i className="far fa-frown" />
+        <i className="far fa-meh" />
       </div>
     );
 
