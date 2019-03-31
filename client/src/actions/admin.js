@@ -111,18 +111,44 @@ export const getCategoriesAdmin = () => {
   };
 };
 
-
-export const updateUser = (data) => {
+export const updateUser = data => {
   return async dispatch => {
     try {
-      const res = await axios.put(`${API_URL}/api/users/${data.id}`,{...data});
+      const res = await axios.put(`${API_URL}/api/users/${data.id}`, {
+        ...data
+      });
       console.log("updateUs;er start");
-      console.log(res.data)
-      console.log("updateUser end")
+      console.log(res.data);
+      console.log("updateUser end");
       // dispatch({
       //   type: GET_CATEGORIES_ADMIN,
       //   payload: res.data
       // });
+    } catch (err) {
+      console.error("err", err);
+      dispatch({
+        type: CONNECTION_ERROR,
+        payload: "Network error, API is Unavailable (From admin.js (catch))"
+      });
+    }
+  };
+};
+
+export const addProduct = data => {
+  return async dispatch => {
+    try {
+      axios({
+        method: "post",
+        url: `${API_URL}/api/products`,
+        data: data,
+        config: { headers: { "Content-Type": "multpart/form-data" } }
+      })
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(response) {
+          console.log(response);
+        });
     } catch (err) {
       console.error("err", err);
       dispatch({

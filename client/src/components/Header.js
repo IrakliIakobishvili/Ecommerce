@@ -79,51 +79,86 @@ class Header extends Component {
             </Link>
           </div>
           <div className="header-list">
-            <ul className="">
+            <ul className="my-account">
               <li className="nav-item">
-                <Link className="" to="/profile">
-                  Profile
+                {/* <i className="fas fa-user" /> */}
+                <Link
+                  // className="profile-link"
+                  // className={`contact-link ${
+                  //   activeLink == "profile-link" ? "active-top" : null
+                  // }`}
+
+                  // {!this.props.isAuth ? (
+                  //   <span>jj</span>
+                  // ): (
+                  //   <span>s</span>
+                  // )
+                  // }
+                  onClick={
+                    this.props.isAuth
+                      ? () => this.detectActiveLink("profile-link")
+                      : () => this.detectActiveLink("")
+                  }
+                  // onClick={() => this.detectActiveLink("profile-link")}
+                  className={`profile-link ${
+                    activeLink == "profile-link" ? "active-top" : null
+                  }`}
+                  to="/profile"
+                >
+                  {/* My Account */}
+                  <i className="fas fa-user-circle" />
+                  {/* <span className="profile-span"> */}
+                  {/* <i className="fas fa-user" /> */}
+                  {/* <i className="far fa-user" /> */}
+                  {/* </span> */}
                 </Link>
               </li>
             </ul>
-
-            <ul className="">
+            <ul className="contact-list">
               <li className="nav-item">
+                {/* <i className="fas fa-envelope" /> */}
                 <Link
                   onClick={() => this.detectActiveLink("contact-link")}
                   className={`contact-link ${
-                    activeLink == "contact-link" ? "red" : null
+                    activeLink == "contact-link" ? "active-top" : null
                   }`}
                   to="/contact"
                 >
-                  Contact
+                  {/* <span className="profile-span"> */}
+                  <i className="fas fa-envelope" />
+                  {/* <i className="far fa-envelope" /> */}
+                  {/* </span> */}
+                  {/* Contact */}
                 </Link>
               </li>
             </ul>
-
+            <span className="separator">|</span>,
             <ul className="auth-list">
+              {/* <i className="fas fa-user" /> */}
+              <i className="fas fa-sign-in-alt" />
               {!this.props.isAuth
                 ? [
-                    <li className="" key="signup">
-                      <Link
-                        onClick={() => this.detectActiveLink("signup-link")}
-                        className={`signup-link ${
-                          activeLink == "signup-link" ? "red" : null
-                        }`}
-                        to="/signup"
-                      >
-                        Sign Up
-                      </Link>
-                    </li>,
                     <li className="nav-item" key="signin">
                       <Link
                         onClick={() => this.detectActiveLink("signin-link")}
                         className={`signin-link ${
-                          activeLink == "signin-link" ? "red" : null
+                          activeLink == "signin-link" ? "active-top" : null
                         }`}
                         to="/signin"
                       >
                         Sign In
+                      </Link>
+                    </li>,
+                    <span key="divider">/</span>,
+                    <li className="" key="signup">
+                      <Link
+                        onClick={() => this.detectActiveLink("signup-link")}
+                        className={`signup-link ${
+                          activeLink == "signup-link" ? "active-top" : null
+                        }`}
+                        to="/signup"
+                      >
+                        Sign Up
                       </Link>
                     </li>
                   ]
@@ -131,17 +166,6 @@ class Header extends Component {
 
               {this.props.isAuth
                 ? [
-                    <li key="cart" style={{ color: "red" }}>
-                      <Link
-                        onClick={() => this.detectActiveLink("cart-link")}
-                        to="/cart"
-                        className={`cart-link ${
-                          activeLink == "cart-link" ? "red" : null
-                        }`}
-                      >
-                        Total: {this.props.cart.length}
-                      </Link>
-                    </li>,
                     <li key="logout" className="nav-item">
                       <Link
                         className="nav-link"
@@ -151,7 +175,22 @@ class Header extends Component {
                           this.props.clearActiveLinks();
                         }}
                       >
-                        Sign Out
+                        {/* Sign Out */}
+                        <span className="sign-out-span" />
+                      </Link>
+                    </li>,
+                    <li key="cart" style={{ color: "active-top" }}>
+                      <Link
+                        onClick={() => this.detectActiveLink("cart-link")}
+                        to="/cart"
+                        className="cart-link"
+                        // className={`cart-link ${
+                        //   activeLink == "cart-link" ? "red" : null
+                        // }`}
+                      >
+                        <span className="cart-count">
+                          {this.props.cart.length}
+                        </span>
                       </Link>
                     </li>
                   ]

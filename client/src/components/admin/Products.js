@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
+
+import { addProduct } from "./../../actions/admin";
 
 const initialState = {
   name: "",
@@ -10,12 +13,12 @@ const initialState = {
   sugar: "",
   protein: "",
   cholesterol: "",
-  totalfat: "",
-  saturatedfat: "",
-  transfat: "",
-  dietaryfibre: "",
-  sodium: "",
-  servingsize: "",
+  // totalfat: "",
+  // saturatedfat: "",
+  // transfat: "",
+  // dietaryfibre: "",
+  // sodium: "",
+  // servingsize: "",
   price: "",
   description: "",
   image: ""
@@ -39,18 +42,7 @@ class Products extends Component {
 
     this.handleReset(); /// Move Inside Axios
 
-    axios({
-      method: "post",
-      url: "http://localhost:5000/api/products/",
-      data: data,
-      config: { headers: { "Content-Type": "multpart/form-data" } }
-    })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(response) {
-        console.log(response);
-      });
+    this.props.addProduct(data);
   };
   inputValues = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -154,72 +146,6 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="totalfat">totalfat</label>
-                <input
-                  value={this.state.totalfat}
-                  onChange={e => this.inputValues(e)}
-                  type="text"
-                  id="totalfat"
-                  name="totalfat"
-                  placeholder="totalfat"
-                />
-              </li>
-              <li>
-                <label htmlFor="saturatedfat">saturatedfat</label>
-                <input
-                  value={this.state.saturatedfat}
-                  onChange={e => this.inputValues(e)}
-                  type="text"
-                  id="saturatedfat"
-                  name="saturatedfat"
-                  placeholder="saturatedfat"
-                />
-              </li>
-              <li>
-                <label htmlFor="transfat">transfat</label>
-                <input
-                  value={this.state.transfat}
-                  onChange={e => this.inputValues(e)}
-                  type="text"
-                  id="transfat"
-                  name="transfat"
-                  placeholder="transfat"
-                />
-              </li>
-              <li>
-                <label htmlFor="dietaryfibre">dietaryfibre</label>
-                <input
-                  value={this.state.dietaryfibre}
-                  onChange={e => this.inputValues(e)}
-                  type="text"
-                  id="dietaryfibre"
-                  name="dietaryfibre"
-                  placeholder="dietaryfibre"
-                />
-              </li>
-              <li>
-                <label htmlFor="sodium">sodium</label>
-                <input
-                  value={this.state.sodium}
-                  onChange={e => this.inputValues(e)}
-                  type="text"
-                  id="sodium"
-                  name="sodium"
-                  placeholder="sodium"
-                />
-              </li>
-              <li>
-                <label htmlFor="servingsize">servingsize</label>
-                <input
-                  value={this.state.servingsize}
-                  onChange={e => this.inputValues(e)}
-                  type="number"
-                  id="servingsize"
-                  name="servingsize"
-                  placeholder="servingsize"
-                />
-              </li>
-              <li>
                 <label htmlFor="price">price</label>
                 <input
                   value={this.state.price}
@@ -260,4 +186,15 @@ class Products extends Component {
   }
 }
 
-export default Products;
+// function mapStateToProps(state) {
+//   return {
+//     users: state.admin.users,
+//     error: state.admin.error,
+//     isLoading: state.admin.isLoading
+//   };
+// }
+
+export default connect(
+  null,
+  { addProduct }
+)(Products);

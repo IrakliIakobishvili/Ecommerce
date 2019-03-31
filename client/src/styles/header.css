@@ -55,3 +55,127 @@ img.logo__img {
     height: 40px;
     top: -10px;
 }
+
+.cart-link {
+    background-image: url(/static/media/cart.4160a983.svg);
+    background-repeat: no-repeat;
+    background-size: 35px;
+    /* border: 1px solid red; */
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    background-position: center center;
+}
+
+.cart-link span {
+    position: absolute;
+    /* left: 0px; */
+    font-weight: bold;
+    color: #d62231;
+    right: 7px;
+    bottom: 16px;
+}
+
+/*-----Top Nav List-------*/
+
+.header-list {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+}
+
+.auth-list {
+    color: #545454;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.auth-list i {
+    margin-right: 7px;
+    font-size: 16px;
+    position: relative;
+    top: 1.5px;
+}
+
+.auth-list span, .separator {
+    /* margin: 0px 5px; */
+    color: #545454;
+    position: relative;
+    top: -1px;
+    margin: 0px 5px;
+}
+
+.auth-list span {
+    top: 1px;
+}
+
+.header-list a, .auth-list a {
+    text-decoration: none;
+    font-size: 14px;
+    /* padding: 5px 10px; */
+    /* border: 1px solid gray; */
+    border-radius: 5px;
+    color: #545454;
+}
+
+.auth-list {
+    display: flex;
+    align-items: center;
+    /* margin-left: 20px; */
+}
+
+.active-top {
+    color: #FFAF00 !important;
+}
+
+.active-top i {
+    color: #FFAF00 !important;
+}
+
+.my-account i, .contact-list i {
+    color: #545454;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.contact-list {
+    margin-left: 10px;
+}
+
+.profile-link i, .contact-link i {
+    /* color: red; */
+    /* border-right: 1px solid; */
+    font-size: 14px;
+}
+
+.profile-link i {
+    /* position: relative;
+    top: 1px; */
+    font-size: 15px;
+}
+
+.separator {
+    /* color: #545454;
+    position: relative;
+    top: -1px;
+    margin: 0px 5px; */
+}
+
+span.cart-count {
+    position: absolute;
+    color: #d62231;
+    top: 3px;
+}
+
+.sign-out-span {
+    width: 20px;
+    height: 18px;
+    display: -webkit-flex;
+    display: flex;
+    /* border: 1px solid red; */
+    left: -8px;
+    position: absolute !important;
+    top: 15px !important;
+}

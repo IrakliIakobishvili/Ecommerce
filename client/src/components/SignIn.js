@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { oauth } from "../config";
 
 import * as actions from "../actions/auth";
+import { ActiveHeaderLink } from "../actions/activeLinks";
 import CustomInput from "./CustomInput";
 import "../styles/auth.css";
 
@@ -40,7 +41,11 @@ class SignIn extends Component {
         <div className="container">
           <div className="auth-form">
             <div className="signin-img auth-form__left">
-              <Link className="member-link" to="/signup">
+              <Link
+                onClick={() => this.props.ActiveHeaderLink("signup-link")}
+                className="member-link"
+                to="/signup"
+              >
                 Create an account
               </Link>
             </div>
@@ -125,7 +130,7 @@ function mapStateToProps(state) {
 export default compose(
   connect(
     mapStateToProps,
-    actions
+    { ...actions, ActiveHeaderLink }
   ),
   reduxForm({ form: "signin" })
 )(SignIn);

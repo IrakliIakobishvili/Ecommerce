@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { BrowserRouter, Route } from "react-router-dom";
 // import { getProfile } from "../../actions/profile";
 // import { getCartItems } from "../../actions/cart";
+import { ActiveHeaderLink } from "../../actions/activeLinks";
 
 import Nav from "./Nav";
 import Reset from "./Reset";
@@ -15,6 +16,11 @@ class Profile extends Component {
   //   this.props.getProfile();
   //   this.props.getCartItems();
   // }
+  componentDidMount() {
+    if (this.props.isAuth) {
+      this.props.ActiveHeaderLink("profile-link");
+    }
+  }
 
   render() {
     // const { profileContent } = this.props;
@@ -55,7 +61,11 @@ class Profile extends Component {
 //   };
 // }
 
+const mapStateToProps = state => ({
+  isAuth: state.auth.isAuthenticated
+});
+
 export default connect(
-  null,
-  null
+  mapStateToProps,
+  { ActiveHeaderLink }
 )(Profile);

@@ -8,6 +8,7 @@ import FacebookLogin from "react-facebook-login";
 import { oauth } from "../config";
 
 import * as actions from "../actions/auth";
+import { ActiveHeaderLink } from "../actions/activeLinks";
 import CustomInput from "./CustomInput";
 import "../styles/auth.css";
 
@@ -160,7 +161,11 @@ class SignUp extends Component {
               </div>
             </div>
             <div className="auth-form__right signup-img">
-              <Link className="member-link" to="/signin">
+              <Link
+                onClick={() => this.props.ActiveHeaderLink("signin-link")}
+                className="member-link"
+                to="/signin"
+              >
                 I am already member
               </Link>
             </div>
@@ -191,8 +196,8 @@ class SignUp extends Component {
   }
 }
 
-function mapStateToProps(state) { 
-  return { 
+function mapStateToProps(state) {
+  return {
     errorMessage: state.auth.registerError,
     successMessage: state.auth.success
   };
@@ -201,7 +206,10 @@ function mapStateToProps(state) {
 export default compose(
   connect(
     mapStateToProps,
-    actions
+    { ...actions, ActiveHeaderLink }
+    // ActiveHeaderLink
+    // { ...actions },
+    // ActiveHeaderLink
   ),
   reduxForm({ form: "signup" })
 )(SignUp);
