@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Search from "./Search";
 import { getUsersByTitle, updateUser } from "../../actions/admin";
+import "../../styles/admin/users.css";
 
 class Users extends Component {
   state = {
@@ -69,18 +70,25 @@ class Users extends Component {
     const { users } = this.props;
     console.log(users);
     const result = users.length ? (
-      users.map(user => {
+      users.map((user, i) => {
         return (
           <li key={user.id} className="user__list__item">
+            {/* <div> */}
+            <span>{++i}</span>
+            {/* </div> */}
             <Link to="/" onClick={e => this.updateHandler(e, user)} user={user}>
               {user.firstName + " " + user.lastName}
             </Link>
+            {user.method === "facebook" ? (
+              <i className="fab fa-facebook-f" />
+            ) : user.method === "google" ? (
+              <i className="fab fa-google" />
+            ) : null}
+            {/* <span>{user.method}</span> */}
           </li>
         );
       })
-    ) : this.props.isLoading ? (
-      <h5>Loading...</h5>
-    ) : this.props.error ? (
+    ) : this.props.isLoading ? null : this.props.error ? ( // </div> //   <i className="fas fa-spinner" /> // <div className="loading">
       <div className="error error--static">
         <i className="fas fa-plug" />
       </div>
@@ -89,37 +97,33 @@ class Users extends Component {
     return (
       <div className="admin-users">
         <div className="container">
-          <h2>USERS</h2>
+          {/* <h2>USERS</h2> */}
           <Search />
-          <form onSubmit={this.submitHandler}>
+          <form className="admin-users__form" onSubmit={this.submitHandler}>
             <input
               value={this.state.firstName}
               onChange={e => this.inputValues(e)}
               name="firstName"
               placeholder="First Name"
             />
-            <br />
             <input
               value={this.state.lastName}
               onChange={e => this.inputValues(e)}
               name="lastName"
               placeholder="Last Name"
             />
-            <br />
             <input
               value={this.state.email}
               onChange={e => this.inputValues(e)}
               name="email"
               placeholder="Email"
             />
-            <br />
             <input
               value={this.state.balance}
               onChange={e => this.inputValues(e)}
               name="balance"
               placeholder="Balance"
             />
-            <br />
             <input
               value={this.state.verified}
               onChange={e => this.inputValues(e)}

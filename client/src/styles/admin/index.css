@@ -19,6 +19,7 @@
     justify-content: center;
     /* background: red; */
     height: 100%;
+    flex-wrap: wrap;
 }
 
 .admin-page-wrapper {
