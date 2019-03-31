@@ -2,6 +2,7 @@ import {
   USERS_GET_DATA,
   LOADING_TRUE,
   GET_CATEGORIES_ADMIN,
+  GET_CONTACTS_ADMIN,
   CONNECTION_ERROR,
   USER_DELETE
 } from "../actions/types";
@@ -9,6 +10,7 @@ import {
 const DEFAULT_STATE = {
   users: [],
   categories: [],
+  contacts: [],
   isLoading: true,
   error: ""
 };
@@ -28,6 +30,13 @@ export default (state = DEFAULT_STATE, action) => {
         isLoading: false,
         error: "",
         categories: action.payload
+      };
+    case GET_CONTACTS_ADMIN:
+      return {
+        ...state,
+        isLoading: false,
+        error: "",
+        contacts: action.payload
       };
     case CONNECTION_ERROR:
       return { ...state, isLoading: false, error: action.payload };

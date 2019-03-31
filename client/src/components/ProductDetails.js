@@ -104,9 +104,6 @@ class Details extends Component {
               <span>{details.details.description}</span>
             </li>
             <li className="details-list__item details-list__item--last">
-              <div className="details-price">
-                <i className="fas fa-dollar-sign" /> {details.details.price}
-              </div>
               {productInCart.length ? (
                 <button className="cart-btn">
                   <i className="fas fa-cart-plus" />
@@ -122,6 +119,9 @@ class Details extends Component {
                   Add to Cart
                 </button>
               )}
+              <div className="details-price">
+                <i className="fas fa-dollar-sign" /> {details.details.price}
+              </div>
             </li>
           </ul>
           {/* <div className="reviews">{totalReviews}</div> */}

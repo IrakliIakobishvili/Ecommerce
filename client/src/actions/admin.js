@@ -4,7 +4,8 @@ import {
   USERS_GET_DATA,
   CONNECTION_ERROR,
   USER_DELETE,
-  GET_CATEGORIES_ADMIN
+  GET_CATEGORIES_ADMIN,
+  GET_CONTACTS_ADMIN
 } from "./types";
 
 export const getUsersByTitle = title => {
@@ -149,6 +150,25 @@ export const addProduct = data => {
         .catch(function(response) {
           console.log(response);
         });
+    } catch (err) {
+      console.error("err", err);
+      dispatch({
+        type: CONNECTION_ERROR,
+        payload: "Network error, API is Unavailable (From admin.js (catch))"
+      });
+    }
+  };
+};
+
+export const getContacts = () => {
+  return async dispatch => {
+    try {
+      const res = await axios.get(`${API_URL}/api/contact/`);
+      // console.log(res.data);
+      dispatch({
+        type: GET_CONTACTS_ADMIN,
+        payload: res.data
+      });
     } catch (err) {
       console.error("err", err);
       dispatch({
