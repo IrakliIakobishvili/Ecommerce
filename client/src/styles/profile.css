@@ -112,8 +112,8 @@
   background-position-x: 25px;
 }
 
-.profile-list {
-}
+.profile-list {}
+
 .profile__list__item {
   padding: 10px;
   border: 1px solid gray;
@@ -121,6 +121,12 @@
   /* background: red; *;
   /* border: 1px solid green; */
 }
+
 .profile__list__item i {
   margin-right: 10px;
+}
+
+.active-profile {
+  padding-left: 58px !important;
+  background-position-x: 25px !important;
 }

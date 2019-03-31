@@ -39,7 +39,7 @@ class Profile extends Component {
           <div className="container">
             <div className="profile-page-wrapper">
               <div className="profile-page-aside">
-                <Nav />
+                <Nav activeClass="active-profile" />
               </div>
               <div className="profile-page-content">
                 <Route exact path="/profile/" component={Details} />

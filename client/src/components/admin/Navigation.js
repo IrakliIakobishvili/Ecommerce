@@ -9,7 +9,7 @@ export default class Navigation extends Component {
 
   activeLinkHandler = async className => {
     await this.setState({ activeLink: className });
-    console.log(this.state.activeLink);
+    // console.log(this.state.activeLink);
   };
   render() {
     return (
