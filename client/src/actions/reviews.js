@@ -21,7 +21,7 @@ export const getProductReviews = id => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Connection error || Wrong URL"
+        payload: true
       });
     }
   };
@@ -54,7 +54,7 @@ export const addProductReview = (id, message, rating) => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Connection error || Wrong URL"
+        payload: true
       });
     }
   };

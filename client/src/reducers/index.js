@@ -10,6 +10,7 @@ import reviewReducer from "./reviews";
 import adminReducer from "./admin";
 import contactReducer from "./contact";
 import activeReducer from "./activeLinks";
+import verifyReducer from "./verify";
 
 export default combineReducers({
   form: formReducer,
@@ -22,5 +23,6 @@ export default combineReducers({
   reviews: reviewReducer,
   admin: adminReducer,
   contact: contactReducer,
-  activeLinks: activeReducer
+  activeLinks: activeReducer,
+  verify: verifyReducer
 });

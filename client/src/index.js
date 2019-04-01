@@ -19,6 +19,7 @@ import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Contact from "./components/Contact";
 import Admin from "./components/admin/Admin";
+import Verify from "./components/Verify";
 // import AdminUsers from "./components/admin/Users";
 
 import My404Component from "./components/My404Component";
@@ -78,6 +79,7 @@ ReactDOM.render(
           <Route exact path="/profile/" component={authGuard(Profile)} />
           <Route exect path="/profile/reset/" component={authGuard(Profile)} />
           <Route exect path="/profile/orders/" component={authGuard(Profile)} />
+          <Route exact path="/verify/:token" component={Verify} />
           <Route path="/404" component={My404Component} />
           <Redirect from="*" to="/404" />
         </Switch>

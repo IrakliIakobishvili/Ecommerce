@@ -37,7 +37,8 @@ module.exports = {
     const token = signToken(newUser);
 
     sendMail(
-      req.protocol + "://" + req.headers.host + req.baseUrl,
+      // req.protocol + "://" + req.headers.host + req.baseUrl,
+      "http://localhost:3000/",
       req.value.body.email,
       req.value.body.firstName,
       token
@@ -201,14 +202,14 @@ module.exports = {
       const decoded = jwtDecode(req.params.token);
       let unverified_user = await User.findOne({ _id: decoded.sub });
       if (!unverified_user) {
-        return res.status(403).json({ message: "Wrong URL" });
+        return res.status(200).json("Wrong URL");
       } else if (unverified_user.local.verified) {
-        return res.status(200).json({ message: "Already Verified" });
+        return res.status(200).json("Your Are Already Verified");
       }
       await User.updateOne({ _id: decoded.sub }, { "local.verified": true });
-      return res.json({ message: "Successfully Verified" }); // Or send Token
+      return res.json("SUCCESS"); // Or send Token
     } catch (err) {
-      return res.status(400).json({ message: "Wrong URL (catch)" });
+      return res.status(200).json("Wrong URL");
     }
   },
   recover: async (req, res, next) => {
