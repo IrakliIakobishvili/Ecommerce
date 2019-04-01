@@ -92,7 +92,7 @@ An online marketplace application with buyer accounts, product search and sugges
 
 ## Technologies & Tools
 
-### Front-end:
+### Front End:
 
 * React
 * React-facebook-login
@@ -103,7 +103,7 @@ An online marketplace application with buyer accounts, product search and sugges
 * Redux-thunk
 * Axios
 
-### Backend:
+### Back End:
 
 * Node/Express
 * MongoDB/Mongoose
