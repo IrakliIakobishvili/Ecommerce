@@ -51,6 +51,17 @@ class Nav extends Component {
               Reset Password
             </Link>
           </li>
+          <li className="profile-list__item">
+            <Link
+              onClick={() => this.activeLinkHandler("chat")}
+              className={`profile-list__item__link ${
+                this.state.activeLink == "chat" ? activeClass : ""
+              }`}
+              to="/profile/chat"
+            >
+              Chat Room
+            </Link>
+          </li>
         </ul>
       </nav>
     );

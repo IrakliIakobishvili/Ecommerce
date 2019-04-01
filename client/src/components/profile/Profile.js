@@ -9,6 +9,7 @@ import Nav from "./Nav";
 import Reset from "./Reset";
 import Orders from "./Orders";
 import Details from "./Details";
+import Chat from "./Chat";
 import "../../styles/profile.css";
 
 class Profile extends Component {
@@ -45,6 +46,7 @@ class Profile extends Component {
                 <Route exact path="/profile/" component={Details} />
                 <Route exact path="/profile/reset" component={Reset} />
                 <Route exact path="/profile/orders" component={Orders} />
+                <Route exact path="/profile/chat" component={Chat} />
               </div>
             </div>
           </div>

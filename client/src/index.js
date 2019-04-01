@@ -79,6 +79,7 @@ ReactDOM.render(
           <Route exact path="/profile/" component={authGuard(Profile)} />
           <Route exect path="/profile/reset/" component={authGuard(Profile)} />
           <Route exect path="/profile/orders/" component={authGuard(Profile)} />
+          <Route exect path="/profile/chat/" component={authGuard(Profile)} />
           <Route exact path="/verify/:token" component={Verify} />
           <Route path="/404" component={My404Component} />
           <Redirect from="*" to="/404" />
