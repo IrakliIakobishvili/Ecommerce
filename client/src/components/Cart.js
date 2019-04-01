@@ -30,11 +30,10 @@ class Cart extends Component {
       <div className="error">
         <i className="fas fa-plug" />
       </div>
-    ) : (
-      <div className="empty">
-        <i className="far fa-meh" />
-      </div>
-    );
+    ) : null;
+    // <div className="empty">
+    //   <i className="far fa-meh" />
+    // </div>
 
     return (
       <div className="cart-page">

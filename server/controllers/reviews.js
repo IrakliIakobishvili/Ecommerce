@@ -29,12 +29,14 @@ module.exports = {
       Review.findOne({ product: productID }).then(foundReview => {
         if (foundReview) {
           foundReview.reviews.push(review);
-          foundReview.save().then(() => res.status(200).json("Review Added"));
+          foundReview
+            .save()
+            .then(() => res.status(200).json("Thanks for Review"));
         } else {
           Review.create({
             product: productID,
             reviews: [review]
-          }).then(() => res.status(200).json("Review Created"));
+          }).then(() => res.status(200).json("Thanks for Review"));
         }
       });
     } else {
