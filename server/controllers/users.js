@@ -53,7 +53,7 @@ module.exports = {
         //   if (err) res.json(err);
         //   else console.log(docs);
         // });
-        res.status(409).json("Email sending failed, try later");
+        res.status(409).json("Email sending failed");
       });
   },
 

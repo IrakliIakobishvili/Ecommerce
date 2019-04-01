@@ -23,20 +23,21 @@
 .admin-users__form {
     align-self: flex-start;
     background: #d62231;
-    padding: 20px;
+    padding: 20px 30px;
     border-radius: 5px;
 }
 
 .admin-users__form input, .admin-users__form button {
     display: block;
-    margin: 5px 0px;
-    padding: 5px 12px;
+    margin: 14px 0px;
+    padding: 9px 10px 9px 35px;
     outline: none;
     /* border-radius: 5px; */
 }
 
 .admin-users__form button {
     width: 100%;
+    padding-left: 0xp;
     cursor: pointer;
 }
 

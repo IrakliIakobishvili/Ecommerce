@@ -166,3 +166,28 @@
     margin-right: 5px;
     font-size: 14px;
 }
+
+.auth_error, .auth_success {
+    font-size: 12px;
+    text-transform: capitalize;
+    position: absolute;
+    bottom: 112px;
+    left: 126px;
+    color: #e72e33;
+    white-space: nowrap;
+}
+
+.auth_error--signup {
+    bottom: 12px;
+    left: 129px;
+}
+
+.auth_success {
+    color: #42801b;
+    bottom: 12px;
+    left: 129px;
+}
+
+.auth_form {
+    position: relative;
+}

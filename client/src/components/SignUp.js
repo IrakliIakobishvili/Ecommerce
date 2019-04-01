@@ -20,7 +20,11 @@ class SignUp extends Component {
       console.log("this.props.errorMessage is empty");
     } else if (this.props.successMessage) {
       console.log(this.props.successMessage); /////////// Please Verify Your Email
+      // this.props.clearFeedback();
     }
+    setTimeout(() => {
+      this.props.clearFeedback();
+    }, 3000);
   };
 
   responseGoogle = async res => {
@@ -37,6 +41,10 @@ class SignUp extends Component {
     }
   };
 
+  componentWillUnmount = () => {
+    this.props.clearFeedback();
+  };
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -46,7 +54,10 @@ class SignUp extends Component {
             <div className="auth-form__left">
               <h2 className="auth-heading">Sign Up</h2>
               <div className="auth-page__local">
-                <form onSubmit={handleSubmit(this.onSubmit)}>
+                <form
+                  className="auth_form"
+                  onSubmit={handleSubmit(this.onSubmit)}
+                >
                   <div className="input-cont">
                     <i className="fas fa-user" />
                     <Field
@@ -140,9 +151,13 @@ class SignUp extends Component {
                     </div>
                   </div>
                   {this.props.errorMessage ? (
-                    <div className="">{this.props.errorMessage}</div>
+                    <div className="auth_error auth_error--signup">
+                      {this.props.errorMessage}
+                    </div>
                   ) : this.props.successMessage ? (
-                    <div className="">{this.props.successMessage}</div>
+                    <div className="auth_success">
+                      {this.props.successMessage}
+                    </div>
                   ) : null}
 
                   <div className="agreement">
