@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { verifyAccount } from "../actions/verify";
+import "../styles/verify.css";
+// import Img1 from "../assets/img/burger_person1.svg";
+// import Img2 from "../assets/img/burger_person2.svg";
 
 class Verify extends Component {
   state = {
@@ -19,7 +22,20 @@ class Verify extends Component {
         this.props.feedback === "SUCCESS" ? (
           this.props.history.push("/signin")
         ) : (
-          <div className="verify-feedback">{this.props.feedback}</div>
+          <div className="verify-feedback">
+            <div className="feedback-text">{this.props.feedback}</div>
+            {this.props.feedback === "Your Are Already Verified" ? (
+              <img
+                src={require("../assets/img/burger_person2.svg")}
+                alt="Burger Man"
+              />
+            ) : (
+              <img
+                src={require("../assets/img/burger_person1.svg")}
+                alt="Burger Man"
+              />
+            )}
+          </div>
         )
       ) : this.props.error ? (
         <div className="error">

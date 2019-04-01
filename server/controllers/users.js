@@ -38,7 +38,7 @@ module.exports = {
 
     sendMail(
       // req.protocol + "://" + req.headers.host + req.baseUrl,
-      "http://localhost:3000/",
+      "http://localhost:3000",
       req.value.body.email,
       req.value.body.firstName,
       token
