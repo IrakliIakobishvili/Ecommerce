@@ -28,9 +28,10 @@ app.use("/api/cart", require("./routes/cart"));
 app.use("/api/order", require("./routes/orders"));
 app.use("/api/review", require("./routes/reviews"));
 app.use("/api/contact", require("./routes/contact"));
+app.use("/api/chat", require("./routes/chat"));
 
 app.get("/", (req, res) => {
-  res.send("Ecommerce Website API");
+  res.redirect("http://localhost:3000/");
 });
 
 // Start the Server
