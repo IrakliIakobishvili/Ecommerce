@@ -57,7 +57,7 @@ img.logo__img {
 }
 
 .cart-link {
-    background-image: url(/static/media/cart.4160a983.svg);
+    background-image: url('../assets/img/cart.svg');
     background-repeat: no-repeat;
     background-size: 35px;
     /* border: 1px solid red; */

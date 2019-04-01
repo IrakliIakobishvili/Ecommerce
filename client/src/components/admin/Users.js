@@ -92,7 +92,11 @@ class Users extends Component {
       <div className="error error--static">
         <i className="fas fa-plug" />
       </div>
-    ) : null;
+    ) : !users.length ? (
+      <div className="empty--static">
+        <i className="far fa-meh" />
+      </div>
+    ) : null
 
     return (
       <div className="admin-users">
@@ -100,36 +104,51 @@ class Users extends Component {
           {/* <h2>USERS</h2> */}
           <Search />
           <form className="admin-users__form" onSubmit={this.submitHandler}>
+            <div>
+            <i className="fas fa-user"></i>
             <input
               value={this.state.firstName}
               onChange={e => this.inputValues(e)}
               name="firstName"
               placeholder="First Name"
             />
+            </div>
+            <div>
+            <i className="fas fa-user"></i>
             <input
               value={this.state.lastName}
               onChange={e => this.inputValues(e)}
               name="lastName"
               placeholder="Last Name"
             />
+            </div>
+            <div>
+            <i className="fas fa-envelope"></i>
             <input
               value={this.state.email}
               onChange={e => this.inputValues(e)}
               name="email"
               placeholder="Email"
             />
+            </div>
+            <div>
+            <i className="fas fa-dollar-sign"></i>
             <input
               value={this.state.balance}
               onChange={e => this.inputValues(e)}
               name="balance"
               placeholder="Balance"
             />
+            </div>
+            <div>
+            <i className="fas fa-check"></i>
             <input
               value={this.state.verified}
               onChange={e => this.inputValues(e)}
               name="verified"
               placeholder="Verified"
             />
+            </div>
             <button>Update</button>
           </form>
           <ul className="users-list">{result}</ul>

@@ -34,6 +34,9 @@
     outline: none;
     /* border-radius: 5px; */
 }
+.admin-users__form input {
+    padding-left: 22px;
+}
 
 .admin-users__form button {
     width: 100%;
@@ -98,5 +101,15 @@
 .user__list__item i {
     position: absolute;
     right: 10px;
+    font-size: 12px;
+}
+.admin-users__form > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.admin-users__form > div i {
+    position: absolute;
+    left: 5px;
     font-size: 12px;
 }
