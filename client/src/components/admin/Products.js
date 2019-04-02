@@ -52,8 +52,16 @@ class Products extends Component {
   };
   render() {
     return (
-      <div className="adin-products">
+      <div className="admin-products">
         <div className="container">
+          {/* <div className="product-search">
+            <input
+              type="text"
+              value={this.state.inputValue}
+              onChange={this.updateInputValue}
+              onKeyUp={this.searchHandler}
+            />
+          </div> */}
           <div>{this.state.image ? "YES" : "NO"}</div>
           <form onSubmit={this.hanldeFormSubmit}>
             <ul>

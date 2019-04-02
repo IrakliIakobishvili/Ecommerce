@@ -240,3 +240,38 @@ ul.movie-box__list {
         -webkit-transform: rotate(359deg);
     }
 }
+
+/*----------- Responsive -----------*/
+
+@media screen and (max-width: 1300px) {
+    .home-page .container {
+        flex-direction: column;
+    }
+    div.left-side {
+        width: 100%;
+    }
+    .categories .categories__list__item a {
+        border-bottom: none;
+        border-right: 1px solid #cecece;
+    }
+    .categories li.categories__list__item {
+        width: 33.33%;
+    }
+    .categories .categories__list__item:nth-child(3n) a {
+        border-right: none;
+        /* background: red; */
+    }
+    ul.categories_list {
+        display: flex;
+        flex-wrap: wrap;
+        /* justify-content: space-evenly; */
+    }
+    /*---------------------------------------------------- Filter Here -------*/
+    .right-side .products {
+        justify-content: space-between;
+    }
+    .right-side .product__item {
+        width: 32%;
+        margin: 10px 0px;
+    }
+}

@@ -19,7 +19,7 @@ class SignUp extends Component {
       // this.props.history.push("/profile");
       console.log("this.props.errorMessage is empty");
     } else if (this.props.successMessage) {
-      console.log(this.props.successMessage); /////////// Please Verify Your Email
+      console.log(this.props.successMessage);
       // this.props.clearFeedback();
     }
     setTimeout(() => {
