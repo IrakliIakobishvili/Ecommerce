@@ -267,6 +267,12 @@ ul.movie-box__list {
         flex-wrap: wrap;
         /* justify-content: space-evenly; */
     }
+    .filter {
+        display: flex;
+    }
+    form.filter_form {
+        margin-bottom: 20px;
+    }
     /*---------------------------------------------------- Filter Here -------*/
     .right-side .products {
         justify-content: space-between;
