@@ -273,13 +273,24 @@ ul.movie-box__list {
     form.filter_form {
         margin-bottom: 20px;
     }
-    /*---------------------------------------------------- Filter Here -------*/
     .right-side .products {
         justify-content: space-between;
     }
     .right-side .product__item {
         width: 32%;
         margin: 10px 0px;
+    }
+    .details-page .details-cont {
+        flex-direction: column;
+    }
+    .details-page .img-cont {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .details-page .details-list {
+        margin-right: 20px;
+        min-height: 400px;
+        background-position: 100% 75px;
     }
 }
 

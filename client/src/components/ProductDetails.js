@@ -91,10 +91,6 @@ class Details extends Component {
               <span>Cholesterol:</span>
               <span>{details.details.cholesterol}</span>
             </li>
-            {/* <li>
-              <span>Price:</span>
-              <span>{details.details.price}</span>
-            </li> */}
             <li className="size">
               <span>Size:</span>
               <span>{details.details.size}</span>
