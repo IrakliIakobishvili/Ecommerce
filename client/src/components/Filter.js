@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import "../styles/filter.css";
 
-import { getFilteredProducts } from "../actions/products";
+import { getFilteredProducts, getProducts } from "../actions/products";
 
 class Filter extends Component {
   //   async componentDidMount() {
@@ -28,7 +28,10 @@ class Filter extends Component {
   inputValues = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
+  filterClearHandler = () => {
+    this.setState({ lt: "", gt: "" });
+    this.props.getProducts();
+  };
   render() {
     return (
       <form className="filter_form" onSubmit={this.filterSubmitHandler}>
@@ -80,5 +83,5 @@ class Filter extends Component {
 
 export default connect(
   null,
-  { getFilteredProducts }
+  { getFilteredProducts, getProducts }
 )(Filter);
