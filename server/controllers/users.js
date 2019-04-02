@@ -181,6 +181,19 @@ module.exports = {
 
   profile: async (req, res, next) => {
     let loggedUser = await User.findOne({ _id: req.user.id });
+
+    // if (Object.getOwnPropertyNames(loggedUser)) { //Object.getOwnPropertyNames(e).
+    //   console.log("ADMIN");
+    // } else {
+    //   console.log("USER");
+    // }
+    // let keys = Object.keys(loggedUser.toJSON());
+    // console.log();
+    let isAdmin = false;
+    if (Object.keys(loggedUser.toJSON()).includes("isAdmin")) {
+      isAdmin = true;
+    }
+
     loggedUser = loggedUser[loggedUser.method];
     filteredUser = {
       firstName: loggedUser.firstName,
@@ -192,7 +205,8 @@ module.exports = {
         month: loggedUser.month,
         year: loggedUser.year
       },
-      balance: loggedUser.balance
+      balance: loggedUser.balance,
+      isAdmin: isAdmin
     };
     res.json(filteredUser);
   },
