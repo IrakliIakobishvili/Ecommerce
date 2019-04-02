@@ -267,6 +267,12 @@ ul.movie-box__list {
         flex-wrap: wrap;
         /* justify-content: space-evenly; */
     }
+    .filter {
+        display: flex;
+    }
+    form.filter_form {
+        margin-bottom: 20px;
+    }
     /*---------------------------------------------------- Filter Here -------*/
     .right-side .products {
         justify-content: space-between;
@@ -301,4 +307,15 @@ ul.movie-box__list {
     .auth_error.auth_error--signup {
         bottom: -24px;
     }
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+    background-color: #d62231;
 }
