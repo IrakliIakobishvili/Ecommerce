@@ -249,82 +249,81 @@ ul.movie-box__list {
 /*----------- Responsive -----------*/
 
 @media screen and (max-width: 1300px) {
-    .home-page .container {
-        flex-direction: column;
-        padding: 0px 20px;
-    }
-    div.left-side {
-        width: 100%;
-    }
-    .categories .categories__list__item a {
-        border-bottom: none;
-        border-right: 1px solid #cecece;
-    }
-    .categories li.categories__list__item {
-        width: 33.33%;
-    }
-    .categories .categories__list__item:nth-child(3n) a {
-        border-right: none;
-        /* background: red; */
-    }
-    ul.categories_list {
-        display: flex;
-        flex-wrap: wrap;
-        /* justify-content: space-evenly; */
-    }
-    .filter {
-        display: flex;
-    }
-    form.filter_form {
-        margin-bottom: 20px;
-    }
-    /*---------------------------------------------------- Filter Here -------*/
-    .right-side .products {
-        justify-content: space-between;
-    }
-    .right-side .product__item {
-        width: 32%;
-        margin: 10px 0px;
-    }
+  .home-page .container {
+    flex-direction: column;
+    padding: 0px 20px;
+  }
+  div.left-side {
+    width: 100%;
+  }
+  .categories .categories__list__item a {
+    border-bottom: none;
+    border-right: 1px solid #cecece;
+  }
+  .categories li.categories__list__item {
+    width: 33.33%;
+  }
+  .categories .categories__list__item:nth-child(3n) a {
+    border-right: none;
+    /* background: red; */
+  }
+  ul.categories_list {
+    display: flex;
+    flex-wrap: wrap;
+    /* justify-content: space-evenly; */
+  }
+  .filter {
+    display: flex;
+  }
+  form.filter_form {
+    margin-bottom: 20px;
+  }
+  /*---------------------------------------------------- Filter Here -------*/
+  .right-side .products {
+    justify-content: space-between;
+  }
+  .right-side .product__item {
+    width: 32%;
+    margin: 10px 0px;
+  }
 }
 
 @media screen and (max-width: 860px) {
-    .signin-img.auth-form__left {
-        display: none;
-    }
-    .auth-page .auth-form {
-        width: 100%;
-        /* padding: 0px 25px; */
-        border-radius: 0px;
-    }
-    .auth-form .auth-btn {
-        width: 260px;
-    }
-    .auth-form .auth_error {
-        bottom: 75px;
-        left: 0px;
-        right: 0px;
-        text-align: center;
-    }
-    .auth-form__right.signup-img {
-        display: none;
-    }
-    .auth_error.auth_error--signup {
-        bottom: -24px;
-    }
+  .signin-img.auth-form__left {
+    display: none;
+  }
+  .auth-page .auth-form {
+    width: 100%;
+    /* padding: 0px 25px; */
+    border-radius: 0px;
+  }
+  .auth-form .auth-btn {
+    width: 260px;
+  }
+  .auth-form .auth_error {
+    bottom: 75px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+  }
+  .auth-form__right.signup-img {
+    display: none;
+  }
+  .auth_error.auth_error--signup {
+    bottom: -24px;
+  }
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    background-color: #F5F5F5;
+  width: 8px;
+  background-color: #f5f5f5;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
-    background-color: #d62231;
+  border-radius: 8px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #d62231;
 }
-
 
 @media screen and (max-width: 594px) {
   .profile-page-wrapper {
@@ -363,32 +362,31 @@ ul.movie-box__list {
   }
 }
 
-
-
-
-
 /* ******************* - profile page res - ******************** */
 
-@media screen and (max-width: 594px) {
-    .profile-page-wrapper {
-      display: flex;
+@media screen and (max-width: 1024px) {
+  .row {
+    width: 700px;
+  }
+  .profile-page-wrapper {
+    /* display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: 130px;
-    }
-  
-    .profile-page-aside {
+      margin-top: 130px; */
+  }
+
+  /* .profile-page-aside {
       margin-bottom: 10px;
       width: 100px;
-    }
-  
-    .profile-page-content {
-      width: 500px;
-    }
-  }
-  
-  @media screen and (max-width: 550px) {
+    } */
+
+  /* .profile-page-content {
+    width: 100px;
+  } */
+}
+
+/* @media screen and (max-width: 550px) {
     .profile-page-content {
       width: 450px;
     }
@@ -404,6 +402,6 @@ ul.movie-box__list {
     .profile-page-content {
       width: 350px;
     }
-  }
+  } */
 
 /* ____________________________________________________________________ */

@@ -1,7 +1,22 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { sendMessage, getMessages } from "../../actions/chat";
 import "../../styles/chat.css";
 
-export default class Chat extends Component {
+class Chat extends Component {
+  state = {
+    inputValue: ""
+  };
+  textareaHandler = e => {
+    this.setState({ inputValue: e.target.value });
+  };
+  submitHandler = () => {
+    console.log(this.state);
+    this.props.sendMessage(this.state.inputValue);
+  };
+  componentDidMount() {
+    this.props.getMessages();
+  }
   render() {
     return (
       <div className="container">
@@ -75,13 +90,19 @@ export default class Chat extends Component {
                 placeholder="Type your message here..."
                 className="form-control input-sm"
               /> */}
-              <input
+              <textarea
+                value={this.setState.inputValue}
+                onChange={this.textareaHandler}
                 type="text"
                 className="form-control input-sm"
                 placeholder="Type your message here..."
               />
               <span className="input-group-btn">
-                <button className="btn btn-warning btn-sm" id="btn-chat">
+                <button
+                  onClick={this.submitHandler}
+                  className="btn btn-warning btn-sm"
+                  id="btn-chat"
+                >
                   Send
                 </button>
               </span>
@@ -92,3 +113,14 @@ export default class Chat extends Component {
     );
   }
 }
+
+// function mapStateToProps(state) {
+//   return {
+//     feedback: state.contact.feedback
+//   };
+// }
+
+export default connect(
+  null,
+  { sendMessage, getMessages }
+)(Chat);
