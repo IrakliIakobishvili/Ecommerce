@@ -246,6 +246,7 @@ ul.movie-box__list {
 @media screen and (max-width: 1300px) {
     .home-page .container {
         flex-direction: column;
+        padding: 0px 20px;
     }
     div.left-side {
         width: 100%;
@@ -273,5 +274,25 @@ ul.movie-box__list {
     .right-side .product__item {
         width: 32%;
         margin: 10px 0px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .signin-img.auth-form__left {
+        display: none;
+    }
+    .auth-page .auth-form {
+        width: 100%;
+        /* padding: 0px 25px; */
+        border-radius: 0px;
+    }
+    .auth-form .auth-btn {
+        width: 260px;
+    }
+    .auth-form .auth_error {
+        bottom: 75px;
+        left: 0px;
+        right: 0px;
+        text-align: center;
     }
 }
