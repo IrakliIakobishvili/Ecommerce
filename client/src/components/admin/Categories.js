@@ -50,40 +50,45 @@ class Categories extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   render() {
-    //   console.log("Tekle")
-    //   console.log(this.props.categories)
 
     const { categories } = this.props;
     const cats = categories.length ? (
-      categories.map(el => {
+      categories.map((el,i) => {
+        console.log(i)
+
         return (
-          <li onClick={() => this.categoryOnclickHandler(el)} key={el._id}>
-            {el.title}
+          <li className="cat__list__item" onClick={() => this.categoryOnclickHandler(el)} key={el._id}>
+             
+            <span className="number">{++i}</span>
+            <span className="title">{el.title}</span>
           </li>
         );
       })
-    ) : (
-      <h3>No Categories</h3>
-    );
+    ) : !categories.length ? (
+      <div className="empty--static">
+        <i className="far fa-meh" />
+      </div>
+    ) : null
 
     return (
       <div className="admin-categories">
         <div className="container">
-          <h3 className="admin-categories__heading">Categories</h3>
-          <div className="admin-categories-aside admin-categories-aside--left">
+          {/* <h3 className="admin-categories__heading">Categories</h3> */}
+          {/* <div className="admin-categories-aside admin-categories-aside--left"> */}
             <div className="cat-search">
               <input
                 type="text"
+                placeholder="Search Categories"
                 value={this.state.inputValue}
                 onChange={this.updateInputValue}
                 onKeyUp={this.searchHandler}
               />
             </div>
-            <ul>{cats}</ul>
-          </div>
-          <div className="admin-categories-aside admin-categories-aside--right">
-            <h3>Edit / Add</h3>
-            <form onSubmit={this.categoryAddHandler}>
+            
+          {/* </div> */}
+          {/* <div className="admin-categories-aside admin-categories-aside--right">
+            <h3>Edit / Add</h3> */}
+            <form className="admin-cat__form" onSubmit={this.categoryAddHandler}>
               <input
                 value={this.state.title}
                 onChange={e => this.inputValues(e)}
@@ -91,8 +96,6 @@ class Categories extends Component {
                 type="text"
                 name="title"
               />
-              <br />
-              <br />
               <input
                 value={this.state.categoryID}
                 onChange={e => this.inputValues(e)}
@@ -100,10 +103,11 @@ class Categories extends Component {
                 type="text"
                 name="categoryID"
               />
-              <br />
               <button>ADD</button>
             </form>
-          </div>
+            <ul className="cats-list">{cats}</ul>
+          {/* </div> */}
+
         </div>
       </div>
     );
