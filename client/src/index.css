@@ -295,4 +295,10 @@ ul.movie-box__list {
         right: 0px;
         text-align: center;
     }
+    .auth-form__right.signup-img {
+        display: none;
+    }
+    .auth_error.auth_error--signup {
+        bottom: -24px;
+    }
 }
