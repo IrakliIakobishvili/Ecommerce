@@ -1,0 +1,58 @@
+.filter_heading {
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    background: #d62231;
+    padding: 10px 0px;
+    color: #fff;
+    margin-top: 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.filter_form {
+    background: #fff;
+}
+
+.filter__price {
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.filter__price i {
+    color: #a76a63;
+}
+
+.filter__price input {
+    width: 80px;
+    margin-right: 10px;
+    padding: 5px;
+    /* background: #e2e2e2; */
+    border: 1px solid #f6a230;
+    border-radius: 3px;
+}
+
+.filter_button {
+    margin: 10px;
+    width: 80px;
+    padding: 7px 0px;
+    text-align: center;
+    font-size: 12px;
+    background: #f6a230;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.filter_button:hover {
+    background: #eb9e3b;
+}
+
+.filter_clear {
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #b7b7b7;
+    cursor: pointer;
+}

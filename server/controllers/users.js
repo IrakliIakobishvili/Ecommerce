@@ -53,7 +53,7 @@ module.exports = {
         //   if (err) res.json(err);
         //   else console.log(docs);
         // });
-        res.status(409).json("Email sending failed, try later");
+        res.status(409).json("Email sending failed");
       });
   },
 
@@ -181,6 +181,11 @@ module.exports = {
 
   profile: async (req, res, next) => {
     let loggedUser = await User.findOne({ _id: req.user.id });
+    let isAdmin = false;
+    if (Object.keys(loggedUser.toJSON()).includes("isAdmin")) {
+      isAdmin = true;
+    }
+
     loggedUser = loggedUser[loggedUser.method];
     filteredUser = {
       firstName: loggedUser.firstName,
@@ -192,7 +197,8 @@ module.exports = {
         month: loggedUser.month,
         year: loggedUser.year
       },
-      balance: loggedUser.balance
+      balance: loggedUser.balance,
+      isAdmin: isAdmin
     };
     res.json(filteredUser);
   },

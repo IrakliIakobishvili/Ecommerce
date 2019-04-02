@@ -5,6 +5,7 @@ import {
   ACTIVE_HEADER_LINK,
   REGISTER_ERROR,
   LOGIN_ERROR,
+  CLEAR_AUTH_FEEDBACK,
   AUTH_SUCCESS
 } from "../actions/types";
 
@@ -18,7 +19,7 @@ const DEFAULT_STATE = {
 
 export default (state = DEFAULT_STATE, action) => {
   switch (action.type) {
-    case AUTH_SIGN_UP: 
+    case AUTH_SIGN_UP:
       return {
         ...state,
         token: action.payload,
@@ -49,6 +50,12 @@ export default (state = DEFAULT_STATE, action) => {
       };
     case REGISTER_ERROR:
       return { ...state, registerError: action.payload };
+    case CLEAR_AUTH_FEEDBACK:
+      return {
+        ...state,
+        loginError: action.payload,
+        registerError: action.payload
+      };
     case ACTIVE_HEADER_LINK:
       return { ...state, activeLink: action.payload };
     case LOGIN_ERROR:

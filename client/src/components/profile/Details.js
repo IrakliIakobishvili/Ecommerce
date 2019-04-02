@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
 
 import { getProfile } from "../../actions/profile";
 import { getCartItems } from "../../actions/cart";
@@ -37,6 +38,11 @@ class Details extends Component {
           <i className="fas fa-dollar-sign" />
           {user.balance.toFixed(2)}
         </li>
+        {user.isAdmin ? (
+          <li className="profile__list__item">
+            <a href="admin">Admin Panel</a>
+          </li>
+        ) : null}
       </>
     ) : this.props.isLoading ? (
       <div className="loading loading--static">

@@ -3,65 +3,70 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import "../styles/filter.css";
 
-import { getFilteredProducts } from "../actions/products";
+import { getFilteredProducts, getProducts } from "../actions/products";
 
 class Filter extends Component {
   //   async componentDidMount() {
   //     // this.props.getCategories();
   //     // this.props.getProducts();
   //   }
+  state = {
+    lt: "",
+    gt: ""
+  };
   filterSubmitHandler = e => {
     e.preventDefault();
+    let params = {
+      lt: Number(this.state.lt),
+      gt: Number(this.state.gt)
+    };
+    if (this.state.lt && this.state.gt) {
+      this.props.getFilteredProducts(params);
+      console.log(params);
+    }
+  };
+  inputValues = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+  filterClearHandler = () => {
+    this.setState({ lt: "", gt: "" });
+    this.props.getProducts();
   };
   render() {
     return (
-      <form onSubmit={this.filterSubmitHandler}>
-        <h3>Filter</h3>
-        <ul className="filter">
-          <h4>Energy</h4>
-          <li>
-            <div>
-              <input id="energy1" type="checkbox" name="energy" />
-              <label htmlFor="energy1">From 1000 to 2000</label>
-            </div>
-            <div>
-              <input id="energy2" type="checkbox" name="energy" />
-              <label htmlFor="energy2">Less than 1000</label>
-            </div>
-            <div>
-              <input id="energy3" type="checkbox" name="energy" />
-              <label htmlFor="energy3">More than 2000</label>
-            </div>
-          </li>
-          <h4>Protein</h4>
-          <li>
-            <div>
-              <input id="protein1" type="checkbox" name="energy" />
-              <label htmlFor="protein1">From 20 to 30</label>
-            </div>
-            <div>
-              <input id="protein2" type="checkbox" name="energy" />
-              <label htmlFor="protein2">Less than 20</label>
-            </div>
-            <div>
-              <input id="protein3" type="checkbox" name="energy" />
-              <label htmlFor="protein3">More than 30</label>
-            </div>
-          </li>
-          <h4>Price</h4>
-          <li>
-            <div>
-              <input
-                id="priceFrom"
-                type="text"
-                name="priceFrom"
-                placeholder="From"
-              />
-              <input id="priceTo" type="text" name="priceTo" placeholder="To" />
-            </div>
-          </li>
-        </ul>
-        <button>SEARCH</button>
+      <form className="filter_form" onSubmit={this.filterSubmitHandler}>
+        <h3 className="filter_heading">Filter</h3>
+        <div className="filter">
+          <div className="filter__price">
+            <input
+              value={this.state.gt}
+              onChange={e => this.inputValues(e)}
+              id="priceFrom"
+              type="number"
+              name="gt"
+              placeholder="From"
+            />
+            <input
+              value={this.state.lt}
+              onChange={e => this.inputValues(e)}
+              id="priceTo"
+              type="number"
+              name="lt"
+              placeholder="To"
+            />
+            <i className="fas fa-dollar-sign" />
+          </div>
+          <div className="filter_button_cont">
+            <button className="filter_button">SEARCH</button>
+            {this.state.lt && this.state.gt ? (
+              <span onClick={this.filterClearHandler} className="filter_clear">
+                clear
+              </span>
+            ) : null}
+            {/* <i className="fas fa-hamburger" /> */}
+            {/* <span>5 </span> */}
+          </div>
+        </div>
       </form>
     );
   }
@@ -78,5 +83,5 @@ class Filter extends Component {
 
 export default connect(
   null,
-  { getFilteredProducts }
+  { getFilteredProducts, getProducts }
 )(Filter);

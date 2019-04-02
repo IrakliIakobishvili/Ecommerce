@@ -40,6 +40,10 @@
   background-size: 25px;
 }
 
+.categories__list__item:last-child a {
+  border-bottom: none;
+}
+
 .categories__list__item a:hover {
   padding-left: 58px;
   background-position-x: 25px;

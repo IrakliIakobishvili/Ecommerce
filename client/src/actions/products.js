@@ -105,7 +105,10 @@ export const getProductsByTitle = title => {
 export const getFilteredProducts = params => {
   return async dispatch => {
     try {
-      const res = await axios.post(`${API_URL}/api/products`, { params });
+      const res = await axios.post(`${API_URL}/api/products/filter`, {
+        ...params
+      });
+      console.log("FILTER ");
       console.log(res.data);
 
       dispatch({

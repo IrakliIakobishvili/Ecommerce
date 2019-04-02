@@ -10,6 +10,7 @@ import Reset from "./Reset";
 import Orders from "./Orders";
 import Details from "./Details";
 import Chat from "./Chat";
+import Admin from "../admin/Admin";
 import "../../styles/profile.css";
 
 class Profile extends Component {

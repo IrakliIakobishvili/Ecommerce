@@ -18,6 +18,9 @@ class SignIn extends Component {
     if (!this.props.errorMessage) {
       this.props.history.push("/profile");
     }
+    setTimeout(() => {
+      this.props.clearFeedback();
+    }, 3000);
   };
 
   responseGoogle = async res => {
@@ -32,6 +35,10 @@ class SignIn extends Component {
     if (!this.props.errorMessage) {
       this.props.history.push("/profile");
     }
+  };
+
+  componentWillUnmount = () => {
+    this.props.clearFeedback();
   };
 
   render() {
@@ -51,7 +58,10 @@ class SignIn extends Component {
             </div>
             <div className="auth-form__left">
               <h2 className="auth-heading">Sign In</h2>
-              <form onSubmit={handleSubmit(this.onSubmit)}>
+              <form
+                className="auth_form"
+                onSubmit={handleSubmit(this.onSubmit)}
+              >
                 <div className="input-cont">
                   <i className="fas fa-envelope" />
                   <Field
@@ -74,7 +84,7 @@ class SignIn extends Component {
                 </div>
 
                 {this.props.errorMessage ? (
-                  <div className="">{this.props.errorMessage}</div>
+                  <div className="auth_error">{this.props.errorMessage}</div>
                 ) : null}
 
                 <div className="agreement">

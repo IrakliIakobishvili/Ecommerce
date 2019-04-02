@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { API_URL } from "../../config";
+import { Link } from "react-router-dom";
 import "../../styles/orders.css";
 
 import { getOrder } from "../../actions/profile";
@@ -16,6 +17,7 @@ class Orders extends Component {
       order.map(el => {
         console.log(el);
         return el.map(e => {
+          console.log("E");
           console.log(e);
           return (
             <li className="order-list__item" key={i++}>
@@ -27,7 +29,9 @@ class Orders extends Component {
               </div>
               <div>
                 <span>Name: </span>
-                {e.product.name}
+                <Link to={`../product/${e.product._id}`} target="_blank">
+                  {e.product.name}
+                </Link>
               </div>
               <div>
                 <span>Price: </span>
@@ -37,24 +41,31 @@ class Orders extends Component {
                 <span>Quantity: </span>
                 {e.quantity}
               </div>
+              <div>
+                <span>Date: </span>
+                {e.product.createdAt.split("T")[0]}
+              </div>
               <ul className="order-sub-list">
                 {/* <li>{e.product.details.cholesterol}</li> */}
                 <li>
-                  <span>Size</span>
+                  <span>Size:</span>
                   {e.product.details.size}
                 </li>
-                <li>{e.product.details.cholesterol}</li>
+                <li>
+                  <span>Cholesterol:</span>
+                  {e.product.details.cholesterol}
+                </li>
                 {/* <li>{e.product.details.dietaryfibre}</li> */}
                 <li>
-                  <span>Energy</span>
+                  <span>Energy:</span>
                   {e.product.details.energy}
                 </li>
                 <li>
-                  <span>Protein</span>
+                  <span>Protein:</span>
                   {e.product.details.protein}
                 </li>
                 <li>
-                  <span>Sugar</span>
+                  <span>Sugar:</span>
                   {e.product.details.sugar}
                 </li>
               </ul>

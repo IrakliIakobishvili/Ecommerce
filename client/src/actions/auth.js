@@ -6,6 +6,7 @@ import {
   ACTIVE_HEADER_LINK,
   CLEAR_ACTIVE_LINKS,
   REGISTER_ERROR,
+  CLEAR_AUTH_FEEDBACK,
   LOGIN_ERROR,
   AUTH_SUCCESS
 } from "./types";
@@ -102,6 +103,19 @@ export const signIn = data => {
           });
         }
       });
+  };
+};
+
+export const clearFeedback = () => {
+  return async dispatch => {
+    try {
+      dispatch({
+        type: CLEAR_AUTH_FEEDBACK,
+        payload: ""
+      });
+    } catch (err) {
+      console.error("err", err);
+    }
   };
 };
 
