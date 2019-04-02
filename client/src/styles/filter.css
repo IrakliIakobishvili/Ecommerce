@@ -49,3 +49,10 @@
 .filter_button:hover {
     background: #eb9e3b;
 }
+
+.filter_clear {
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #b7b7b7;
+    cursor: pointer;
+}

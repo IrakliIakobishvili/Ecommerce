@@ -10,9 +10,25 @@ class Filter extends Component {
   //     // this.props.getCategories();
   //     // this.props.getProducts();
   //   }
+  state = {
+    lt: "",
+    gt: ""
+  };
   filterSubmitHandler = e => {
     e.preventDefault();
+    let params = {
+      lt: Number(this.state.lt),
+      gt: Number(this.state.gt)
+    };
+    if (this.state.lt && this.state.gt) {
+      this.props.getFilteredProducts(params);
+      console.log(params);
+    }
   };
+  inputValues = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
     return (
       <form className="filter_form" onSubmit={this.filterSubmitHandler}>
@@ -20,16 +36,30 @@ class Filter extends Component {
         <div className="filter">
           <div className="filter__price">
             <input
+              value={this.state.gt}
+              onChange={e => this.inputValues(e)}
               id="priceFrom"
-              type="text"
-              name="priceFrom"
+              type="number"
+              name="gt"
               placeholder="From"
             />
-            <input id="priceTo" type="text" name="priceTo" placeholder="To" />
+            <input
+              value={this.state.lt}
+              onChange={e => this.inputValues(e)}
+              id="priceTo"
+              type="number"
+              name="lt"
+              placeholder="To"
+            />
             <i className="fas fa-dollar-sign" />
           </div>
           <div className="filter_button_cont">
             <button className="filter_button">SEARCH</button>
+            {this.state.lt && this.state.gt ? (
+              <span onClick={this.filterClearHandler} className="filter_clear">
+                clear
+              </span>
+            ) : null}
             {/* <i className="fas fa-hamburger" /> */}
             {/* <span>5 </span> */}
           </div>
