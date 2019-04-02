@@ -206,7 +206,7 @@ module.exports = {
           .required(),
         description: Joi.string()
           .min(1)
-          .max(1000)
+          .max(520)
           .required(),
         price: Joi.number().required(),
         photo: Joi.string()

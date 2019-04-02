@@ -18,26 +18,27 @@
     align-self: flex-start;
 }
 
-.admin-users>div {}
 
 .admin-users__form {
     align-self: flex-start;
     background: #d62231;
-    padding: 20px 30px;
+    padding: 20px;
     border-radius: 5px;
 }
 
 .admin-users__form input, .admin-users__form button {
     display: block;
-    margin: 14px 0px;
-    padding: 9px 10px 9px 35px;
+    margin: 5px 0px;
+    padding: 5px 12px;
     outline: none;
     /* border-radius: 5px; */
+}
+.admin-users__form input {
+    padding-left: 22px;
 }
 
 .admin-users__form button {
     width: 100%;
-    padding-left: 0px;
     cursor: pointer;
 }
 
@@ -99,5 +100,15 @@
 .user__list__item i {
     position: absolute;
     right: 10px;
+    font-size: 12px;
+}
+.admin-users__form > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.admin-users__form > div i {
+    position: absolute;
+    left: 5px;
     font-size: 12px;
 }
