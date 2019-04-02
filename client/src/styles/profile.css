@@ -57,6 +57,7 @@
   padding: 20px;
   border-radius: 5px;
   /* background: orange; */
+  background-image: linear-gradient( to left, rgb(194, 34, 34), rgb(233, 119, 12), rgb(214, 183, 9));
   /* justify-content: flex-start; */
   /* justify-content: space-between;/ */
 }
@@ -75,6 +76,10 @@
   overflow: hidden;
   position: relative;
   padding: 10px 0px;
+}
+
+.profile-page-content .container {
+  height: 100%;
 }
 
 /*------------- Nav --------------- */
