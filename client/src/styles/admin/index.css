@@ -53,5 +53,5 @@
     height: 450px;
     /* overflow: auto; */
     border-radius: 5px;
-    overflow: hidden;
+    overflow: auto;
 }
