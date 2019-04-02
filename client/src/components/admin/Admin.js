@@ -54,6 +54,7 @@ class Admin extends Component {
               </div>
               <div className="admin-page-content">
                 {/* <Route exact path="/admin/" component={Details} /> */}
+                <Route exact path="/admin/" component={Users} />
                 <Route exact path="/admin/users" component={Users} />
                 <Route exact path="/admin/products" component={Products} />
                 <Route exact path="/admin/categories" component={Categories} />

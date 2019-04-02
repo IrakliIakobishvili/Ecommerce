@@ -30,13 +30,13 @@
     height: auto;
     padding: 20px;
     border-radius: 5px;
-    background: orange;
+    /* background: orange; */
 }
 
 .admin-page-aside {
     width: 250px;
     /* border: 1px solid red; */
-    border-right: 1px solid gray;
+    /* border-right: 1px solid gray; */
     /* min-height: 500px; */
     display: flex;
     justify-content: center;

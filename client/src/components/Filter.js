@@ -15,53 +15,25 @@ class Filter extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.filterSubmitHandler}>
-        <h3>Filter</h3>
-        <ul className="filter">
-          <h4>Energy</h4>
-          <li>
-            <div>
-              <input id="energy1" type="checkbox" name="energy" />
-              <label htmlFor="energy1">From 1000 to 2000</label>
-            </div>
-            <div>
-              <input id="energy2" type="checkbox" name="energy" />
-              <label htmlFor="energy2">Less than 1000</label>
-            </div>
-            <div>
-              <input id="energy3" type="checkbox" name="energy" />
-              <label htmlFor="energy3">More than 2000</label>
-            </div>
-          </li>
-          <h4>Protein</h4>
-          <li>
-            <div>
-              <input id="protein1" type="checkbox" name="energy" />
-              <label htmlFor="protein1">From 20 to 30</label>
-            </div>
-            <div>
-              <input id="protein2" type="checkbox" name="energy" />
-              <label htmlFor="protein2">Less than 20</label>
-            </div>
-            <div>
-              <input id="protein3" type="checkbox" name="energy" />
-              <label htmlFor="protein3">More than 30</label>
-            </div>
-          </li>
-          <h4>Price</h4>
-          <li>
-            <div>
-              <input
-                id="priceFrom"
-                type="text"
-                name="priceFrom"
-                placeholder="From"
-              />
-              <input id="priceTo" type="text" name="priceTo" placeholder="To" />
-            </div>
-          </li>
-        </ul>
-        <button>SEARCH</button>
+      <form className="filter_form" onSubmit={this.filterSubmitHandler}>
+        <h3 className="filter_heading">Filter</h3>
+        <div className="filter">
+          <div className="filter__price">
+            <input
+              id="priceFrom"
+              type="text"
+              name="priceFrom"
+              placeholder="From"
+            />
+            <input id="priceTo" type="text" name="priceTo" placeholder="To" />
+            <i className="fas fa-dollar-sign" />
+          </div>
+          <div className="filter_button_cont">
+            <button className="filter_button">SEARCH</button>
+            {/* <i className="fas fa-hamburger" /> */}
+            {/* <span>5 </span> */}
+          </div>
+        </div>
       </form>
     );
   }
