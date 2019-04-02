@@ -35,12 +35,12 @@ class Review extends Component {
       inputValue: e.target.value
     });
   }
-  reviewLeavHandler = (id, message, rating) => {
+  reviewLeavHandler = async (id, message, rating) => {
     if (!this.props.isAuth) {
       this.props.history.push("/signin");
     } else {
       if (this.state.inputValue.trim() !== "" && this.state.rating !== "") {
-        this.props.addProductReview(id, message, rating);
+        await this.props.addProductReview(id, message, rating);
         this.setState({ inputValue: "", warning: false });
         // this.setState({ warning: false });
         // this.se
@@ -51,7 +51,6 @@ class Review extends Component {
     }
   };
   componentWillReceiveProps() {
-    // this.setState({ feedback: this.props.feedback });
     setTimeout(() => {
       this.props.clearFeedback();
     }, 3000);
@@ -70,10 +69,24 @@ class Review extends Component {
         return (
           <li key={review.id} className="review__list__item">
             <div className="review__list__item__name">
-              {review.author.fullName}
+              <i className="fas fa-user" />
+              <span>{review.author.fullName}</span>
             </div>
-            <div className="review__list__item__message">
-              {review.message}
+            <div className="review__list__item__message">{review.message}</div>
+            <div className="review-details">
+              <div className="review__star">
+                {review.rating == 1
+                  ? "★"
+                  : review.rating == 2
+                  ? "★★"
+                  : review.rating == 3
+                  ? "★★★"
+                  : review.rating == 4
+                  ? "★★★★"
+                  : review.rating == 5
+                  ? "★★★★★"
+                  : null}
+              </div>
               <div className="review__date">{date}</div>
             </div>
           </li>
@@ -83,13 +96,24 @@ class Review extends Component {
       <div className="loading loading--static">
         <i className="fas fa-spinner" />
       </div>
-    ) : (
-      <div>No Reviews</div>
-    );
+    ) : null;
+    // <div>No Reviews</div>
     return (
       <div className="reviews">
-        <div className="review__rating">Rating: {rating}</div>
+        <div className="review__rating">
+          {/* <i className="fas fa-star" /> */}
+          <i className="far fa-star" />
+          <span>{rating}</span>
+        </div>
         <div className="write-review">
+          <textarea
+            value={this.state.inputValue}
+            onChange={e => this.updateInputValue(e)}
+            placeholder="Leave Review"
+            // className="review__input"
+            className={`review__input ${this.state.warning ? "warning" : ""}`}
+            type="text"
+          />
           <div
             // className={"rate" + this.state.rating == "" ? "rate--red" : "rate"}
             className="rate"
@@ -106,14 +130,6 @@ class Review extends Component {
             <input type="radio" id="star1" name="rate" value="1" />
             <label htmlFor="star1" />
           </div>
-          <input
-            value={this.state.inputValue}
-            onChange={e => this.updateInputValue(e)}
-            placeholder="Leave Review"
-            // className="review__input"
-            className={`review__input ${this.state.warning ? "warning" : null}`}
-            type="text"
-          />
           <button
             onClick={() =>
               this.reviewLeavHandler(
