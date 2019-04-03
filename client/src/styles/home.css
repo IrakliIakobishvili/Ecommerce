@@ -8,6 +8,8 @@
 .left-side {
     width: 250px;
     margin-right: 15px;
+    position: sticky;
+    top: 100px;
 }
 
 .right-side {

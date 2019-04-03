@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import "../../styles/admin/products.css";
 
 import { addProduct } from "./../../actions/admin";
 
@@ -40,7 +41,7 @@ class Products extends Component {
       data.append(el, values[i]);
     });
 
-    this.handleReset(); /// Move Inside Axios
+    // this.handleReset();/////////////////
 
     this.props.addProduct(data);
   };
@@ -62,11 +63,11 @@ class Products extends Component {
               onKeyUp={this.searchHandler}
             />
           </div> */}
-          <div>{this.state.image ? "YES" : "NO"}</div>
-          <form onSubmit={this.hanldeFormSubmit}>
-            <ul>
+          {/* <div>{this.state.image ? "YES" : "NO"}</div> */}
+          <form className="admin-prod__form" onSubmit={this.hanldeFormSubmit}>
+            <ul className="prod-descr-list">
               <li>
-                <label htmlFor="name">Name</label>
+                {/* <label htmlFor="name">Name</label> */}
                 <input
                   value={this.state.name}
                   onChange={e => this.inputValues(e)}
@@ -77,7 +78,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="category">Category</label>
+                {/* <label htmlFor="category">Category</label> */}
                 <input
                   value={this.state.category}
                   onChange={e => this.inputValues(e)}
@@ -88,7 +89,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="quantity">Quantity</label>
+                {/* <label htmlFor="quantity">Quantity</label> */}
                 <input
                   value={this.state.quantity}
                   onChange={e => this.inputValues(e)}
@@ -99,7 +100,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="size">size</label>
+                {/* <label htmlFor="size">size</label> */}
                 <input
                   value={this.state.size}
                   onChange={e => this.inputValues(e)}
@@ -110,7 +111,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="energy">energy</label>
+                {/* <label htmlFor="energy">energy</label> */}
                 <input
                   value={this.state.energy}
                   onChange={e => this.inputValues(e)}
@@ -121,7 +122,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="sugar">sugar</label>
+                {/* <label htmlFor="sugar">sugar</label> */}
                 <input
                   value={this.state.sugar}
                   onChange={e => this.inputValues(e)}
@@ -132,7 +133,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="protein">protein</label>
+                {/* <label htmlFor="protein">protein</label> */}
                 <input
                   value={this.state.protein}
                   onChange={e => this.inputValues(e)}
@@ -143,7 +144,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="cholesterol">cholesterol</label>
+                {/* <label htmlFor="cholesterol">cholesterol</label> */}
                 <input
                   value={this.state.cholesterol}
                   onChange={e => this.inputValues(e)}
@@ -154,7 +155,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="price">price</label>
+                {/* <label htmlFor="price">price</label> */}
                 <input
                   value={this.state.price}
                   onChange={e => this.inputValues(e)}
@@ -165,7 +166,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="description">description</label>
+                {/* <label htmlFor="description">description</label> */}
                 <textarea
                   value={this.state.description}
                   onChange={e => this.inputValues(e)}
@@ -175,7 +176,7 @@ class Products extends Component {
                 />
               </li>
               <li>
-                <label htmlFor="image">image</label>
+                {/* <label htmlFor="image">image</label> */}
                 <input
                   onChange={e => this.inputFileValue(e)}
                   type="file"

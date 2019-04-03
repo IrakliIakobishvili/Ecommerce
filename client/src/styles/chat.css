@@ -40,13 +40,15 @@
   color: #777777;
 }
 
-.panel .slidedown .glyphicon, .chat .glyphicon {
+.panel .slidedown .glyphicon,
+.chat .glyphicon {
   margin-right: 5px;
 }
 
 .panel-body {
   overflow-y: scroll;
   height: 300px;
+  width: 100%;
 }
 
 .panel-footer {
@@ -130,7 +132,8 @@
 }
 
 .input-sm {
-  padding: 20px 300px;
+  /* padding: 20px 300px; */
+  flex: 1;
   border-radius: 10px 0 0 10px;
 }
 
@@ -145,4 +148,6 @@
 
 .input-group {
   padding: 10px;
+  display: flex;
+  width: 100%;
 }

@@ -97,18 +97,17 @@ class Contact extends Component {
                 />
               </div>
 
-              <label className="contact-label">
-                <textarea
-                  onChange={this.handleChange}
-                  style={{ resize: "none", height: "60px" }}
-                  value={this.state.message}
-                  placeholder="Message"
-                  className={`contact-input ${
-                    this.state.message ? "is-valid" : ""
-                  }`}
-                  name="message"
-                />
-              </label>
+              <label className="contact-label">Message</label>
+              <textarea
+                onChange={this.handleChange}
+                style={{ resize: "none", height: "60px" }}
+                value={this.state.message}
+                className={`contact-input ${
+                  this.state.message ? "is-valid" : ""
+                }`}
+                name="message"
+              />
+
               <button type="submit" className="contact-btn">
                 Send Your Message
               </button>
