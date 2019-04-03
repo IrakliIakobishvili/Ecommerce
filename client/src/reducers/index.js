@@ -11,6 +11,7 @@ import adminReducer from "./admin";
 import contactReducer from "./contact";
 import activeReducer from "./activeLinks";
 import verifyReducer from "./verify";
+import chatReducer from "./chat";
 
 export default combineReducers({
   form: formReducer,
@@ -24,5 +25,6 @@ export default combineReducers({
   admin: adminReducer,
   contact: contactReducer,
   activeLinks: activeReducer,
-  verify: verifyReducer
+  verify: verifyReducer,
+  chat: chatReducer
 });

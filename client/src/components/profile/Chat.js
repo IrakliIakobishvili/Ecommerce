@@ -10,14 +10,42 @@ class Chat extends Component {
   textareaHandler = e => {
     this.setState({ inputValue: e.target.value });
   };
-  submitHandler = () => {
+  submitHandler = async () => {
     console.log(this.state);
-    this.props.sendMessage(this.state.inputValue);
+    await this.props.sendMessage(this.state.inputValue);
+    this.props.getMessages();
   };
   componentDidMount() {
-    this.props.getMessages();
+    // this.props.getMessages();
+    setInterval(() => {
+      this.props.getMessages();
+    }, 1000);
   }
   render() {
+    const { messages } = this.props;
+    const result = messages.length ? (
+      messages.map(message => {
+        return (
+          <li key={message._id} className="left clearfix">
+            <span className="chat-img pull-left">
+              <div className="my-profile-photo color-admin">A</div>
+            </span>
+            <div className="chat-body clearfix">
+              <div className="header">
+                <strong className="primary-font">{message.author}</strong>{" "}
+                <small className="pull-right text-muted">
+                  {/* <span className="glyphicon glyphicon-time" /> */}
+                  {message.date}
+                </small>
+              </div>
+              <p>{message.text}</p>
+            </div>
+          </li>
+        );
+      })
+    ) : (
+      <span>Empty</span>
+    );
     return (
       <div className="container">
         <div className="row">
@@ -39,49 +67,7 @@ class Chat extends Component {
           {/* //////////////////////////// */}
 
           <div className="panel-body">
-            <ul className="chat">
-              <li className="left clearfix">
-                <span className="chat-img pull-left">
-                  <div className="my-profile-photo color-admin">A</div>
-                </span>
-                <div className="chat-body clearfix">
-                  <div className="header">
-                    <strong className="primary-font">ADMIN</strong>{" "}
-                    <small className="pull-right text-muted">
-                      {/* <span className="glyphicon glyphicon-time" /> */}
-                      12 mins ago
-                    </small>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur bibendum ornare dolor, quis ullamcorper ligula
-                    sodales.
-                  </p>
-                </div>
-              </li>
-              <li className="right clearfix">
-                <span
-                  className="chat-img 
-                "
-                >
-                  <div className="my-profile-photo color-me">M</div>
-                </span>
-                <div className="chat-body clearfix">
-                  <div className="header">
-                    <strong className="pull-right primary-font">Me</strong>
-                    <small className=" text-muted">
-                      {/* <span className="glyphicon glyphicon-time" /> */}
-                      13 mins ago
-                    </small>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Curabitur bibendum ornare dolor, quis ullamcorper ligula
-                    sodales.
-                  </p>
-                </div>
-              </li>
-            </ul>
+            <ul className="chat">{result}</ul>
           </div>
           <div className="panel-footer">
             <div className="input-group">
@@ -114,13 +100,13 @@ class Chat extends Component {
   }
 }
 
-// function mapStateToProps(state) {
-//   return {
-//     feedback: state.contact.feedback
-//   };
-// }
+function mapStateToProps(state) {
+  return {
+    messages: state.chat.messages
+  };
+}
 
 export default connect(
-  null,
+  mapStateToProps,
   { sendMessage, getMessages }
 )(Chat);

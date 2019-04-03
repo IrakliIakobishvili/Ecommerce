@@ -1,13 +1,11 @@
 /* .container {
   padding: 40px;
 }
-
-.row {
-  padding: 40px;
-} */
+*/
 
 .row {
   height: 100%;
+  width: 100%;
 }
 
 .chat-title {
@@ -19,6 +17,8 @@
   list-style: none;
   margin: 0;
   padding: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat li {

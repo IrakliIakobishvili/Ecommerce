@@ -75,7 +75,7 @@
   border-radius: 5px;
   overflow: hidden;
   position: relative;
-  padding: 10px 0px;
+  /* padding: 10px 0px; */
 }
 
 .profile-page-content .container {

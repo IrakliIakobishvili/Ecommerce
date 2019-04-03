@@ -1,6 +1,6 @@
 import axios from "axios";
 import { API_URL } from "../config";
-import { SEND_MESSAGE, CONNECTION_ERROR } from "./types";
+import { SEND_MESSAGE, GET_MESSAGES, CONNECTION_ERROR } from "./types";
 
 export const sendMessage = message => {
   return async dispatch => {
@@ -29,10 +29,10 @@ export const getMessages = () => {
       const res = await axios.get(`${API_URL}/api/chat/user`);
       // res.data;
       console.log(res.data);
-      //   dispatch({
-      //     type: GET_MESSAGES,
-      //     payload: res.data
-      //   });
+      dispatch({
+        type: GET_MESSAGES,
+        payload: res.data.messages
+      });
     } catch (err) {
       console.error("err", err);
       dispatch({
