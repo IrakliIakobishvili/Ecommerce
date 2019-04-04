@@ -11,7 +11,6 @@ class Product extends Component {
   };
   componentWillReceiveProps() {
     this.setState({ disabled: false });
-    //Works Without this.
   }
   addToCartHandler = product => {
     this.setState({ disabled: true });
@@ -68,10 +67,6 @@ class Product extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => ({
-//   cart: state.cart.products
-// });
 
 export default connect(
   null,

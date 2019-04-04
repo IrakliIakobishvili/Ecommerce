@@ -6,31 +6,19 @@ import { Provider } from "react-redux";
 import reduxThunk from "redux-thunk";
 import axios from "axios";
 import "./index.css";
-
 import registerServiceWorker from "./registerServiceWorker";
 import App from "./components/App";
 import Home from "./components/Home";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
 import Profile from "./components/profile/Profile";
-// import ResetPass from "./components/profile/Reset";
-// import Orders from "./components/profile/Orders";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Contact from "./components/Contact";
 import Admin from "./components/admin/Admin";
 import Verify from "./components/Verify";
-// import AdminUsers from "./components/admin/Users";
-
 import My404Component from "./components/My404Component";
 import reducers from "./reducers";
-
-import Categories from "./components/Categories";
-
-// import AdminCategories from "./components/admin/Categories";
-// import CreateProduct from "./components/admin/CreateProduct";
-// import ContactAdmin from "./components/admin/Contact";
-
 import authGuard from "./components/HOCs/authGuard";
 
 const jwtToken = localStorage.getItem("JWT_TOKEN");
@@ -43,39 +31,24 @@ const initialState = {
   }
 };
 const middleware = [reduxThunk];
-
-/////
-// const { whyDidYouUpdate } = require("why-did-you-update");
-// whyDidYouUpdate(React);
-/////
-
 ReactDOM.render(
   <Provider
     store={createStore(
       reducers,
       initialState,
-      compose(
-        applyMiddleware(...middleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-          window.__REDUX_DEVTOOLS_EXTENSION__()
-      )
+      compose(applyMiddleware(...middleware))
     )}
   >
     <BrowserRouter>
       <App>
         <Switch>
           <Route exact path="/" component={Home} />
-          {/* <Route exact path="/:cat" component={Categories} /> */}
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/cart" component={authGuard(Cart)} />
           <Route exact path="/product/:id" component={ProductDetails} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/admin" component={authGuard(Admin)} />
-          {/* <Route exact path="/admin/users/" component={AdminUsers} /> */}
-          {/* <Route exact path="/admin/categories/" component={AdminCategories} /> */}
-          {/* <Route exact path="/admin/products/" component={CreateProduct} /> */}
-          {/* <Route exact path="/admin/contacts/" component={ContactAdmin} /> */}
           <Route exact path="/profile/" component={authGuard(Profile)} />
           <Route exect path="/profile/reset/" component={authGuard(Profile)} />
           <Route exect path="/profile/orders/" component={authGuard(Profile)} />

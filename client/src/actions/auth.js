@@ -3,8 +3,6 @@ import {
   AUTH_SIGN_UP,
   AUTH_SIGN_OUT,
   AUTH_SIGN_IN,
-  ACTIVE_HEADER_LINK,
-  CLEAR_ACTIVE_LINKS,
   REGISTER_ERROR,
   CLEAR_AUTH_FEEDBACK,
   LOGIN_ERROR,
@@ -70,13 +68,6 @@ export const signUp = data => {
       });
   };
 };
-
-// export const signOut = () => {
-//   return dispatch => {
-//     localStorage.removeItem('JWT_TOKEN');
-//     axios.defaults.headers.common['Authorization'] = '';
-//   };
-// }
 
 export const signIn = data => {
   return async dispatch => {

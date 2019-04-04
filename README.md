@@ -171,6 +171,22 @@ $ npm run start-dev
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
+![](https://raw.githubusercontent.com/IrakliIakobishvili/resources/master/images/register.jpg)
+
+![](https://github.com/IrakliIakobishvili/resources/blob/master/images/login.jpg?raw=true)
+
+![](https://github.com/IrakliIakobishvili/resources/blob/master/images/home.jpg?raw=true)
+
+![](https://github.com/IrakliIakobishvili/resources/blob/master/images/home4.jpg?raw=true)
+
+![](https://github.com/IrakliIakobishvili/resources/blob/master/images/details.jpg?raw=true)
+
+![](https://github.com/IrakliIakobishvili/resources/blob/master/images/details2.jpg?raw=true)
+
+![](https://github.com/IrakliIakobishvili/resources/blob/master/images/cart.jpg?raw=true)
+
+![](https://github.com/IrakliIakobishvili/resources/blob/master/images/404.jpg?raw=true)
+
 ## Built With
 
 * [React](https://reactjs.org/) - JavaScript Library for Building User Interfaces

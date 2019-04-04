@@ -1,15 +1,9 @@
 import React, { Component, Fragment } from "react";
-// import { Link, NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import "../styles/filter.css";
-
 import { getFilteredProducts, getProducts } from "../actions/products";
 
 class Filter extends Component {
-  //   async componentDidMount() {
-  //     // this.props.getCategories();
-  //     // this.props.getProducts();
-  //   }
   state = {
     lt: "",
     gt: ""
@@ -22,7 +16,6 @@ class Filter extends Component {
     };
     if (this.state.lt && this.state.gt) {
       this.props.getFilteredProducts(params);
-      console.log(params);
     }
   };
   inputValues = e => {
@@ -63,23 +56,12 @@ class Filter extends Component {
                 clear
               </span>
             ) : null}
-            {/* <i className="fas fa-hamburger" /> */}
-            {/* <span>5 </span> */}
           </div>
         </div>
       </form>
     );
   }
 }
-
-// function mapStateToProps(state) {
-//   return {
-//     categories: state.categories.categories,
-//     error: state.categories.error,
-//     isLoading: state.categories.isLoading,
-//     active: state.categories.active
-//   };
-// }
 
 export default connect(
   null,

@@ -1,8 +1,4 @@
 .categories {
-  /* width: 250px;
-    margin-right: 5px; */
-  /*border: 1px solid red;
-    margin-right: 5px; */
   background-color: #fff;
   border-radius: 5px;
   overflow: hidden;
@@ -17,18 +13,8 @@
   color: #fff;
 }
 
-/* .categories__list__item {
-    border-bottom: 1px solid #cecece;
-    padding-left: 35px;
-    background: url('../assets/img/categories/burger.svg') no-repeat 10px 50%;
-    background-size: 25px
-} */
-
 .categories__list__item a {
-  /* border-bottom: dashed green 1px; */
   padding: 10px;
-  /* width: 250px; */
-  /* border: 1px solid red; */
   border-bottom: none;
   display: block;
   text-decoration: none;

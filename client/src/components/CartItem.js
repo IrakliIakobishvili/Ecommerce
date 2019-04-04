@@ -3,13 +3,11 @@ import { connect } from "react-redux";
 import { API_URL } from "../config";
 import { addToCart, removeItemFromCart } from "../actions/cart";
 import { Link } from "react-router-dom";
-// import "../styles/productdetails.css";
 
 class CartItem extends Component {
   componentWillReceiveProps() {
     this.setState({ disabled: false });
   }
-
   state = {
     disabled: false
   };
@@ -34,7 +32,6 @@ class CartItem extends Component {
     return (
       <div className="cart__item">
         <div className="cart__item__content">
-          {/* ID: {product._id} | Name: {product.name} */}
           <div className="cart__item__product">
             <div className="cart__item__product-img-cont">
               <img src={API_URL + "/" + details.photo} alt={product.name} />
@@ -60,7 +57,6 @@ class CartItem extends Component {
             </span>
             {details.price}
           </div>
-          {/* <div className="cart__item__quantity">{item.quantity}</div> */}
           <div className="cart__item__btns">
             <div className="quantity-btns">
               <button
@@ -97,16 +93,7 @@ class CartItem extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   isAuth: state.auth.isAuthenticated,
-//   details: state.products.details,
-//   error: state.products.error,
-//   isLoading: state.products.isLoading
-// });
-
 export default connect(
   null,
   { addToCart, removeItemFromCart }
 )(CartItem);
-
-// export default connect()(CartItem);

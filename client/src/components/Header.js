@@ -10,23 +10,6 @@ import { getCartItems } from "../actions/cart";
 import "../styles/header.css";
 
 class Header extends Component {
-  // checkAuth() {
-  //   if (!this.props.isAuth) {
-  //     this.props.history.push("/");
-  //   }
-  // }
-
-  // componentDidUpdate() {
-  //   this.checkAuth();
-  // }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   return false;
-  // }
-  // async componentDidMount() {
-  //   this.props.getCategories();
-  //   this.props.getProducts();
-  //   // console.log(this.props);
-  // }
   componentDidMount() {
     if (this.props.isAuth) {
       console.log("Logged");
@@ -36,38 +19,20 @@ class Header extends Component {
     }
   }
   reloadCatAndProds = async className => {
-    // this.props.getCategories();
-    // this.props.getProducts();
     this.props.clearActiveLinks();
     this.detectActiveLink(className);
-    // console.log("ss");
   };
-
   signOut = () => {
     this.props.signOut();
-    // console.log(this.props);
   };
-
   detectActiveLink = className => {
-    // console.log(className);
     this.props.ActiveHeaderLink(className);
   };
-
   render() {
     const { activeLink } = this.props;
     return (
       <header className="main-header">
         <div className="container">
-          {/* <div className="logo">
-            <Link
-              // className={`logo-link ${activeLink == "logo-link" ? null : null}`}
-              onClick={() => this.reloadCatAndProds("logo-link")}
-              to="/"
-            >
-              <img src={require("../assets/img/logo.svg")} height="62px" />
-              <h1 className="logo__heading">BURGER HUB</h1>
-            </Link>
-          </div> */}
           <div className="logo">
             <Link onClick={() => this.reloadCatAndProds("logo-link")} to="/">
               <img
@@ -81,42 +46,23 @@ class Header extends Component {
           <div className="header-list">
             <ul className="my-account">
               <li className="nav-item">
-                {/* <i className="fas fa-user" /> */}
                 <Link
-                  // className="profile-link"
-                  // className={`contact-link ${
-                  //   activeLink == "profile-link" ? "active-top" : null
-                  // }`}
-
-                  // {!this.props.isAuth ? (
-                  //   <span>jj</span>
-                  // ): (
-                  //   <span>s</span>
-                  // )
-                  // }
                   onClick={
                     this.props.isAuth
                       ? () => this.detectActiveLink("profile-link")
                       : () => this.detectActiveLink("")
                   }
-                  // onClick={() => this.detectActiveLink("profile-link")}
                   className={`profile-link ${
                     activeLink == "profile-link" ? "active-top" : null
                   }`}
                   to="/profile"
                 >
-                  {/* My Account */}
                   <i className="fas fa-user-circle" />
-                  {/* <span className="profile-span"> */}
-                  {/* <i className="fas fa-user" /> */}
-                  {/* <i className="far fa-user" /> */}
-                  {/* </span> */}
                 </Link>
               </li>
             </ul>
             <ul className="contact-list">
               <li className="nav-item">
-                {/* <i className="fas fa-envelope" /> */}
                 <Link
                   onClick={() => this.detectActiveLink("contact-link")}
                   className={`contact-link ${
@@ -124,17 +70,12 @@ class Header extends Component {
                   }`}
                   to="/contact"
                 >
-                  {/* <span className="profile-span"> */}
                   <i className="fas fa-envelope" />
-                  {/* <i className="far fa-envelope" /> */}
-                  {/* </span> */}
-                  {/* Contact */}
                 </Link>
               </li>
             </ul>
             <span className="separator">|</span>,
             <ul className="auth-list">
-              {/* <i className="fas fa-user" /> */}
               <i className="fas fa-sign-in-alt" />
               {!this.props.isAuth
                 ? [
@@ -163,7 +104,6 @@ class Header extends Component {
                     </li>
                   ]
                 : null}
-
               {this.props.isAuth
                 ? [
                     <li key="logout" className="nav-item">
@@ -175,7 +115,6 @@ class Header extends Component {
                           this.props.clearActiveLinks();
                         }}
                       >
-                        {/* Sign Out */}
                         <span className="sign-out-span" />
                       </Link>
                     </li>,
@@ -184,9 +123,6 @@ class Header extends Component {
                         onClick={() => this.detectActiveLink("cart-link")}
                         to="/cart"
                         className="cart-link"
-                        // className={`cart-link ${
-                        //   activeLink == "cart-link" ? "red" : null
-                        // }`}
                       >
                         <span className="cart-count">
                           {this.props.cart.length}

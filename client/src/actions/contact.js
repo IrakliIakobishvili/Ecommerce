@@ -10,7 +10,6 @@ export const saveContact = message => {
   return async dispatch => {
     try {
       const res = await axios.post(`${API_URL}/api/contact`, {
-        // ...message
         firstName: message.firstName,
         lastName: message.lastName,
         email: message.email,
@@ -25,7 +24,7 @@ export const saveContact = message => {
       console.error("err", err);
       dispatch({
         type: CONNECTION_ERROR,
-        payload: "Network error, API is Unavailable (From contact.js (catch))"
+        payload: true
       });
     }
   };

@@ -7,18 +7,6 @@ module.exports = {
       product: req.body.product,
       quantity: req.body.quantity
     };
-    ///////////// Start//////////////
-    // const getCartItems = id => {
-    //   Cart.findOne({ user: id })
-    //     .populate("items.product")
-    //     .exec((err, cart) => {
-    //       if (!cart) {
-    //         return res.json({ items: [] });
-    //       }
-    //       res.send(cart);
-    //     });
-    // };
-    ///////////// End /////////////
     Cart.findOne({ user: user }).then(foundCart => {
       if (foundCart) {
         let products = foundCart.items.map(item => item.product + "");
@@ -36,22 +24,15 @@ module.exports = {
           )
             .exec()
             .then(() => res.status(200).json("Quantity Increased"));
-          // getCartItems(req.user.id);
         } else {
           foundCart.items.push(item);
-          foundCart.save().then(
-            () => res.status(200).json("Item Added")
-            // getCartItems(req.user.id)
-          );
+          foundCart.save().then(() => res.status(200).json("Item Added"));
         }
       } else {
         Cart.create({
           user: user,
           items: [item]
-        }).then(
-          () => res.status(200).json("Cart Created")
-          // getCartItems(req.user.id)
-        );
+        }).then(() => res.status(200).json("Cart Created"));
       }
     });
   },

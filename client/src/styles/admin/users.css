@@ -18,7 +18,6 @@
     align-self: flex-start;
 }
 
-
 .admin-users__form {
     align-self: flex-start;
     background: #d62231;
@@ -31,8 +30,8 @@
     margin: 5px 0px;
     padding: 5px 12px;
     outline: none;
-    /* border-radius: 5px; */
 }
+
 .admin-users__form input {
     padding-left: 22px;
 }
@@ -43,7 +42,6 @@
 }
 
 .users-list {
-    /* background: tomato; */
     height: 360px;
     overflow: auto;
     margin-bottom: 20px;
@@ -58,12 +56,9 @@
 }
 
 .user__list__item a {
-    /* padding: 5px 8px; */
     height: 30px;
     background: #e6e6e6;
     margin: 4px 0px;
-    /* display: block; */
-    /* line-height: 15px; */
     display: flex;
     align-items: center;
     width: 100%;
@@ -72,9 +67,6 @@
     color: #692f28;
     font-size: 14px;
 }
-/* a:hover {
-    background: #cccbcb;
-} */
 
 .user__list__item div {
     border: 3px solid #fff;
@@ -85,9 +77,6 @@
 .user__list__item span {
     background: #d62231;
     color: #fff;
-    /* padding: 5px 8px; */
-    /* padding: 5px 0px; */
-    /* width: 35px; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,12 +94,14 @@
     right: 10px;
     font-size: 12px;
 }
-.admin-users__form > div {
+
+.admin-users__form>div {
     position: relative;
     display: flex;
     align-items: center;
 }
-.admin-users__form > div i {
+
+.admin-users__form>div i {
     position: absolute;
     left: 5px;
     font-size: 12px;

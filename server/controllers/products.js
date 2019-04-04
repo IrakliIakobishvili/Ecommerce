@@ -36,7 +36,7 @@ module.exports = {
       .catch(() => res.status(422).json({ message: "Can't Find Product" }));
   },
   update: (req, res, next) => {
-    Products.findOneAndUpdate({ _id: req.params.id }, req.body) //req.value.body
+    Products.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(product => res.json(product))
       .catch(() => res.status(422).json({ message: "Can't Update Product" }));
   },
@@ -55,30 +55,8 @@ module.exports = {
       }
     );
   },
-  // findByFilter: async (req, res, next) => {
-  //   let key = req.body.key;
-  //   let lt = req.body.lt;
-  //   let gt = req.body.gt;
-  //   let docs = [];
-  //   if (key == "price") {
-  //     docs = await Products.find({ "details.price": { $gt: gt, $lt: lt } });
-  //   } else if (key == "protein") {
-  //     docs = await Products.find({
-  //       "details.protein": { $gt: gt, $lt: lt }
-  //     });
-  //   } else if (key == "energy") {
-  //     docs = await Products.find({
-  //       "details.cholesterol": { $gt: gt, $lt: lt }
-  //     });
-  //   } else {
-  //     docs = ["Empty"];
-  //   }
-  //   res.json(docs);
-  // }
   findByFilter: async (req, res, next) => {
     console.log(req.body);
-    // res.end();
-
     let lt = req.body.lt;
     let gt = req.body.gt;
     let docs = [];

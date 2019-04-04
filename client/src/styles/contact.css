@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-/* body {
-  font-family: Arial, Helvetica, sans-serif;
-} */
-
 .contact-page {
   background-image: url("../assets/img/Burger-Steak-Fire.jpg");
   -webkit-background-size: cover;
@@ -15,7 +11,6 @@
   -o-background-size: cover;
   background-size: cover;
   height: calc(100vh - 80px);
-  /* opacity: 0.5; */
 }
 
 .contact-container {
@@ -43,7 +38,6 @@
   background: transparent;
   border-bottom: 1px solid rgb(151, 151, 151);
   margin-bottom: 20px;
-  /* padding: 15px 130px; */
   height: 15px;
   width: 360px;
 }
@@ -61,12 +55,7 @@
 }
 
 .contact-btn {
-  background-image: linear-gradient(
-    to right,
-    rgb(194, 34, 34),
-    rgb(233, 119, 12),
-    rgb(214, 183, 9)
-  );
+  background-image: linear-gradient( to right, rgb(194, 34, 34), rgb(233, 119, 12), rgb(214, 183, 9));
   border: 0;
   padding: 15px 35px;
   margin-top: 5px;
@@ -77,17 +66,13 @@
 }
 
 .contact-btn:hover {
-  background-image: linear-gradient(
-    to left,
-    rgb(194, 34, 34),
-    rgb(233, 119, 12),
-    rgb(214, 183, 9)
-  );
+  background-image: linear-gradient( to left, rgb(194, 34, 34), rgb(233, 119, 12), rgb(214, 183, 9));
 }
 
 .is-invalid {
   border-bottom: 1px solid red;
 }
+
 .is-valid {
   border-bottom: 1px solid green;
 }

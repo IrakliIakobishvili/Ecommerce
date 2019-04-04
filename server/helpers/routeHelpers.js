@@ -52,9 +52,7 @@ module.exports = {
     return (req, res, next) => {
       const result = Joi.validate(req.body, schema);
       if (result.error) {
-        // console.log(result);
         return res.status(409).json(result.error.details[0].message);
-        // return res.status(400).json({error: result.error.details[0].message});
       }
 
       if (!req.value) {
@@ -82,7 +80,7 @@ module.exports = {
           errors.forEach(err => {
             switch (err.type) {
               case "any.empty":
-                err.message = "Day should not be empty!"; // Remove this case
+                err.message = "Day should not be empty!";
                 break;
               case "number.base":
                 err.message = "Day should be valid!";

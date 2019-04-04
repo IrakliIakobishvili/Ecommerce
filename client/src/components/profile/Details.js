@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link, Redirect } from "react-router-dom";
-
 import { getProfile } from "../../actions/profile";
 import { getCartItems } from "../../actions/cart";
 
@@ -13,7 +11,6 @@ class Details extends Component {
 
   render() {
     const { user } = this.props;
-    console.log(user);
     const content = Object.keys(user).length ? (
       <>
         <li className="profile__list__item">

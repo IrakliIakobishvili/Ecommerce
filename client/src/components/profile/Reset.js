@@ -19,7 +19,6 @@ export default class ChangePassword extends Component {
               required="required"
               className="chform-control"
             />
-
             <input
               name="newPassword"
               type="password"
@@ -27,7 +26,6 @@ export default class ChangePassword extends Component {
               required="required"
               className="chform-control"
             />
-
             <input
               name="newPasswordRepeated"
               type="password"
@@ -35,7 +33,6 @@ export default class ChangePassword extends Component {
               required="required"
               className="chform-control"
             />
-
             <button type="submit" className="chBTN">
               Save Changes
             </button>

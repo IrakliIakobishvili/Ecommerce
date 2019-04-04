@@ -15,10 +15,8 @@ class Contact extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state);
     const keys = Object.keys(this.state);
     const values = Object.values(this.state);
-
     let emptyFields = 0;
     keys.forEach((el, i) => {
       if (values[i] === "") {
@@ -29,7 +27,6 @@ class Contact extends Component {
     if (emptyFields) {
       console.log("Fill Al Field");
     } else {
-      console.log("Send To DB");
       this.props.saveContact(this.state);
       this.setState({ ...initialState });
     }
@@ -52,7 +49,6 @@ class Contact extends Component {
         <div className="contact-container">
           <div className="contact-content">
             <h2 className="contact-us">Contact Us</h2>
-
             <form onSubmit={this.handleSubmit}>
               <div className="form-group">
                 <label htmlFor="firstName" className="contact-label">
@@ -68,7 +64,6 @@ class Contact extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-
               <div className="form-group">
                 <label htmlFor="lastName" className="contact-label">
                   Lastname
@@ -82,7 +77,6 @@ class Contact extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-
               <div className="form-group">
                 <label htmlFor="email" className="contact-label">
                   Email
@@ -96,7 +90,6 @@ class Contact extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-
               <label className="contact-label">Message</label>
               <textarea
                 onChange={this.handleChange}
@@ -107,7 +100,6 @@ class Contact extends Component {
                 }`}
                 name="message"
               />
-
               <button type="submit" className="contact-btn">
                 Send Your Message
               </button>
@@ -122,7 +114,6 @@ class Contact extends Component {
 
 function mapStateToProps(state) {
   return {
-    // products: state.products.products,
     feedback: state.contact.feedback
   };
 }

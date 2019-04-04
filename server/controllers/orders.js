@@ -9,8 +9,6 @@ module.exports = {
     const { totalPrice, order } = req.body;
     let loggedUser = await User.findOne({ _id: user });
     let loggedUserDetails = loggedUser[loggedUser.method];
-    console.log("totalPrice", totalPrice);
-    console.log("loggedUserDetails.balance", loggedUserDetails.balance);
     if (loggedUserDetails.balance >= totalPrice) {
       for (let i = 0; i < order.length; i++) {
         let currentProduct = await Product.findOne({
@@ -43,21 +41,18 @@ module.exports = {
       function clearCart(user) {
         Cart.findOne({ user: user }).then(foundCart => {
           Cart.findByIdAndRemove(foundCart._id)
-            .then(
-              () =>
-                res
-                  .status(200)
-                  .json({ message: "Thank's for your purchase", success: true }) ///Transaction Saved and Cart Removed
+            .then(() =>
+              res
+                .status(200)
+                .json({ message: "Thank's for your purchase", success: true })
             )
             .catch(err => res.send(err));
         });
       }
-      /////
       Order.findOne({ user: user }).then(foundDoc => {
         if (foundDoc) {
           foundDoc.orders.push(order);
           foundDoc.save().then(() => {
-            //   res.status(200).json("Order Saved")
             clearCart(user);
           });
         } else {
@@ -65,7 +60,6 @@ module.exports = {
             user: user,
             orders: [order]
           }).then(() => {
-            //   res.status(200).json("Order Created")
             clearCart(user);
           });
         }
@@ -83,36 +77,4 @@ module.exports = {
       }
     });
   }
-  //////////////////////////////////////////////////////////
-  //   getCartItems: (req, res) => {
-  //     Cart.findOne({ user: req.user.id })
-  //       .populate("items.product")
-  //       .exec((err, cart) => {
-  //         if (!cart) {
-  //           return res.json({ items: [] });
-  //         }
-  //         res.send(cart);
-  //       });
-  //   },
-  //   removeItemFromCart: (req, res) => {
-  //     Cart.findOne({ user: req.user.id }).then(foundCart => {
-  //       if (foundCart) {
-  //         foundCart.items = foundCart.items.filter(
-  //           item => item._id != req.body.itemId
-  //         );
-  //         foundCart.save(() =>
-  //           res
-  //             .status(200)
-  //             .json({ message: "Item Removed", data: foundCart.items })
-  //         );
-  //       }
-  //     });
-  //   },
-  //   emptyCart: (req, res) => {
-  //     Cart.findOne({ user: req.user.id }).then(foundCart => {
-  //       Cart.findByIdAndRemove(foundCart._id)
-  //         .then(() => res.status(200).json("Empty Cart"))
-  //         .catch(err => res.send(err));
-  //     });
-  //   }
 };

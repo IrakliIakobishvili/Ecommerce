@@ -49,10 +49,6 @@ module.exports = {
       })
       .catch(function(error) {
         console.info(error);
-        // User.findByIdAndRemove({ _id: newUser_id }, function(err, docs) {
-        //   if (err) res.json(err);
-        //   else console.log(docs);
-        // });
         res.status(409).json("Email sending failed");
       });
   },
@@ -163,12 +159,7 @@ module.exports = {
   },
   update: function(req, res) {
     let method = req.body.method;
-    // console.log(method);
-    User.findOneAndUpdate(
-      { _id: req.params.id },
-      { local: req.body }
-      // { [req.body.method]: req.body.user }
-    )
+    User.findOneAndUpdate({ _id: req.params.id }, { local: req.body })
       .then(user => res.json(user))
       .catch(err => res.status(422).json("Can't find User"));
   },
@@ -216,21 +207,6 @@ module.exports = {
       return res.json("SUCCESS"); // Or send Token
     } catch (err) {
       return res.status(200).json("Wrong URL");
-    }
-  },
-  recover: async (req, res, next) => {
-    try {
-      // const decoded = jwtDecode(req.params.token);
-      // let unverified_user = await User.findOne({ _id: decoded.sub });
-      // if (!unverified_user) {
-      //   return res.status(403).json({ message: "Wrong URL" });
-      // } else if (unverified_user.local.verified) {
-      //   return res.status(200).json({ message: "Already Verified" });
-      // }
-      // await User.updateOne({ _id: decoded.sub }, { "local.verified": true });
-      // return res.json({ message: "Successfully Verified" }); // Or send Token
-    } catch (err) {
-      // return res.status(400).json({ message: "Wrong URL (catch)" });
     }
   }
 };

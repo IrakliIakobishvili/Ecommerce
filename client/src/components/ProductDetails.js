@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-// import _ from "lodash";
 import { Link } from "react-router-dom";
 import { API_URL } from "../config";
 import { addToCart } from "../actions/cart";
@@ -8,8 +7,6 @@ import { getProductDetails } from "../actions/products";
 import { getProductReviews } from "../actions/reviews";
 import Reviews from "./Reviews";
 import "../styles/productdetails.css";
-
-// import Categories from "./Categories";
 
 class Details extends Component {
   state = {
@@ -19,22 +16,12 @@ class Details extends Component {
   async componentDidMount() {
     await this.props.getProductDetails(this.props.match.params.id);
     this.setState({ loaded: true });
-    // this.props.getProductReviews(this.props.match.params.id);
   }
   loadDetailsAndReviews = () => {
     this.props.getProductDetails(this.props.match.params.id);
-    // this.props.getProductReviews(this.props.match.params.id);
     console.log("loadDetailsAndReviews Run");
   };
-  // componentWillReceiveProps() {
-  //   this.props.getProductDetails(this.props.match.params.id);
-  //   this.props.getProductReviews(this.props.match.params.id);
-  // }
-
   cartBtnHandler = productId => {
-    // this.props.isAuth
-    //   ? this.props.addToCart(productId, 1)
-    //   : this.props.history.push("/signin");
     if (this.props.isAuth) {
       this.setState({ disabled: true });
       this.props.addToCart(productId, 1);
@@ -44,14 +31,6 @@ class Details extends Component {
   };
 
   render() {
-    // const totalReviews = this.props.reviews.length ? (
-    //   <h2>Are Reviews</h2>
-    // ) : (
-    //   <h2>No Reviews</h2>
-    // );
-    // console.log("REVIEW FROM PROD ST");
-    // console.log(this.props.reviews);
-    // console.log("REVIEW FROM PROD EN");
     const { details, cart, reviews } = this.props;
     const productInCart = cart.filter(el => {
       return el.product._id == this.props.match.params.id;
@@ -67,14 +46,6 @@ class Details extends Component {
           </div>
           <ul className="details-list">
             <h3 className="details-list__heading">{details.name}</h3>
-            {/* <li>
-              <span>Name:</span>
-              <span>{details.name}</span>
-            </li> */}
-            {/* <li>
-              <span>Category:</span>
-              <span>{details.category}</span>
-            </li> */}
             <li>
               <span>Energy:</span>
               <span>{details.details.energy}</span>
@@ -121,7 +92,6 @@ class Details extends Component {
               )}
             </li>
           </ul>
-          {/* <div className="reviews">{totalReviews}</div> */}
           <Reviews
             productID={this.props.match.params.id}
             history={this.props.history}
@@ -132,7 +102,6 @@ class Details extends Component {
           <i className="fas fa-spinner" />
         </div>
       ) : this.props.details == "" ? (
-        // <h1>CARIELIA</h1>
         this.loadDetailsAndReviews()
       ) : this.props.error === true ? (
         <div className="error">
@@ -148,10 +117,6 @@ class Details extends Component {
             <span className="details-page__heading__hr" />
           </h2>
           <div className="details-cont">{productDetails}</div>
-          {/* <Reviews
-            productID={this.props.match.params.id}
-            history={this.props.history}
-          /> */}
         </div>
       </div>
     );
@@ -161,7 +126,6 @@ class Details extends Component {
 const mapStateToProps = state => ({
   isAuth: state.auth.isAuthenticated,
   details: state.products.details,
-  // reviews: state.products.reviews,
   error: state.products.error,
   isLoading: state.products.isLoading,
   cart: state.cart.products

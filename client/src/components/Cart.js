@@ -16,8 +16,6 @@ class Cart extends Component {
   };
   render() {
     const { cart, isLoading, error, response } = this.props;
-    console.log("response", response);
-
     const items = cart.length ? (
       cart.map(product => {
         return <CartItem key={product._id} item={product} />;
@@ -31,15 +29,9 @@ class Cart extends Component {
         <i className="fas fa-plug" />
       </div>
     ) : null;
-    // <div className="empty">
-    //   <i className="far fa-meh" />
-    // </div>
-
     return (
       <div className="cart-page">
         <div className="container">
-          {/* Total item: {this.props.cart.length} */}
-          {/* <br /> */}
           <div className="items-cont">
             <header className="cart-page__header">
               <div>Product</div>

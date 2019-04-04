@@ -16,10 +16,6 @@ export const saveOrder = (order, totalPrice) => {
         totalPrice
       });
       const { message, success } = res.data;
-      console.log("start");
-      console.log(message);
-      console.log(success);
-      console.log("end");
       if (success) {
         dispatch({
           type: ORDER_FINISHED,
@@ -49,8 +45,6 @@ export const getCartItems = () => {
   return async dispatch => {
     try {
       const res = await axios.get(`${API_URL}/api/cart`);
-      // res.data;
-      // console.log(res.data);
       dispatch({
         type: GET_CART_ITEMS,
         payload: res.data.items
@@ -91,7 +85,6 @@ export const emptyCart = () => {
   return async dispatch => {
     try {
       const res = await axios.delete(`${API_URL}/api/cart`);
-      // console.log(res);
       dispatch({
         type: EMPTY_CART,
         payload: []
@@ -105,23 +98,3 @@ export const emptyCart = () => {
     }
   };
 };
-
-// switch (res.data) {
-//     case "Success":
-//       dispatch({
-//         type: EMPTY_CART,
-//         payload: []
-//       });
-//       break;
-//     case "Order Saved":
-//       dispatch({
-//         type: EMPTY_CART,
-//         payload: []
-//       });
-//       break;
-//     default:
-//       dispatch({
-//         type: SAVED_ORDER,
-//         payload: res.data
-//       });
-//   }

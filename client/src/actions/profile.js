@@ -23,9 +23,6 @@ export const getOrder = () => {
   return async dispatch => {
     try {
       const res = await axios.get(`${API_URL}/api/order`);
-      console.log("GET ORDER START");
-      console.log(res.data);
-      console.log("GET ORDER END");
       dispatch({
         type: GET_ORDER,
         payload: res.data

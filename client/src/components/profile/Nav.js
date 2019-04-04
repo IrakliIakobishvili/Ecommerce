@@ -9,7 +9,6 @@ class Nav extends Component {
 
   activeLinkHandler = async className => {
     await this.setState({ activeLink: className });
-    // console.log(this.state.activeLink);
   };
 
   render() {

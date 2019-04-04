@@ -7,15 +7,12 @@ import {
   clearReviews,
   clearFeedback
 } from "../actions/reviews";
-// import { clearActiveLinks } from "../actions/activeLinks";
 
 class Review extends Component {
   componentDidMount = () => {
     this.props.getProductReviews(this.props.productID);
-    // console.log("SSS");
   };
   componentWillUnmount() {
-    // console.log("OOOOOOOOOOOOOOO");
     this.props.clearReviews();
   }
 
@@ -27,8 +24,6 @@ class Review extends Component {
   };
   setRating = event => {
     this.setState({ rating: Number(event.target.value) });
-    // console.log(this.state.rating);
-    // console.log(Number(event.target.value));
   };
   updateInputValue(e) {
     this.setState({
@@ -42,11 +37,8 @@ class Review extends Component {
       if (this.state.inputValue.trim() !== "" && this.state.rating !== "") {
         await this.props.addProductReview(id, message, rating);
         this.setState({ inputValue: "", warning: false });
-        // this.setState({ warning: false });
-        // this.se
       } else {
         this.setState({ warning: true });
-        // console.log("Fill all Field");
       }
     }
   };
@@ -56,9 +48,6 @@ class Review extends Component {
     }, 3000);
   }
   render() {
-    console.log("FROM REVIEW COMP start");
-    console.log(this.props.reviews);
-    console.log("FROM REVIEW COMP end");
     const { reviews, rating, feedback, isLoading } = this.props;
     const totalReviews = reviews.length ? (
       reviews.map(review => {
@@ -97,11 +86,9 @@ class Review extends Component {
         <i className="fas fa-spinner" />
       </div>
     ) : null;
-    // <div>No Reviews</div>
     return (
       <div className="reviews">
         <div className="review__rating">
-          {/* <i className="fas fa-star" /> */}
           <i className="far fa-star" />
           <span>{rating}</span>
         </div>
@@ -110,15 +97,10 @@ class Review extends Component {
             value={this.state.inputValue}
             onChange={e => this.updateInputValue(e)}
             placeholder="Leave Review"
-            // className="review__input"
             className={`review__input ${this.state.warning ? "warning" : ""}`}
             type="text"
           />
-          <div
-            // className={"rate" + this.state.rating == "" ? "rate--red" : "rate"}
-            className="rate"
-            onChange={this.setRating.bind(this)}
-          >
+          <div className="rate" onChange={this.setRating.bind(this)}>
             <input type="radio" id="star5" name="rate" value="5" />
             <label htmlFor="star5" />
             <input type="radio" id="star4" name="rate" value="4" />

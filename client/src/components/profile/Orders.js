@@ -15,10 +15,7 @@ class Orders extends Component {
     let i = 0;
     const content = order.length ? (
       order.map(el => {
-        console.log(el);
         return el.map(e => {
-          console.log("E");
-          console.log(e);
           return (
             <li className="order-list__item" key={i++}>
               <div className="order-list__item__img-cont">
@@ -46,7 +43,6 @@ class Orders extends Component {
                 {e.product.createdAt.split("T")[0]}
               </div>
               <ul className="order-sub-list">
-                {/* <li>{e.product.details.cholesterol}</li> */}
                 <li>
                   <span>Size:</span>
                   {e.product.details.size}
@@ -55,7 +51,6 @@ class Orders extends Component {
                   <span>Cholesterol:</span>
                   {e.product.details.cholesterol}
                 </li>
-                {/* <li>{e.product.details.dietaryfibre}</li> */}
                 <li>
                   <span>Energy:</span>
                   {e.product.details.energy}

@@ -12,7 +12,6 @@ export const getProductReviews = id => {
   return async dispatch => {
     try {
       const res = await axios.get(`${API_URL}/api/review/${id}`);
-      //   console.log(res.data.reviews);
       dispatch({
         type: GET_REVIEWS,
         payload: res.data

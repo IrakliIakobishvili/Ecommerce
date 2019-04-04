@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUsersByTitle, getUsers } from "../../actions/admin";
+
+import { getProductsByTitle } from "../../actions/admin";
 
 class Search extends Component {
   state = {
@@ -11,11 +12,10 @@ class Search extends Component {
       inputValue: e.target.value
     });
   };
-  usersSearchHandler = () => {
+  productsSearchHandler = () => {
     if (this.state.inputValue) {
-      this.props.getUsersByTitle(this.state.inputValue);
+      this.props.getProductsByTitle(this.state.inputValue);
     } else {
-      this.props.getUsers();
     }
   };
   render() {
@@ -25,8 +25,8 @@ class Search extends Component {
           value={this.state.inputValue}
           onKeyDown={this.props.clearActiveLinks}
           onChange={e => this.updateInputValue(e)}
-          onKeyUp={() => this.usersSearchHandler()}
-          placeholder="Search User"
+          onKeyUp={() => this.productsSearchHandler()}
+          placeholder="Search Product"
           className="search__input"
           type="text"
         />
@@ -37,5 +37,5 @@ class Search extends Component {
 
 export default connect(
   null,
-  { getUsersByTitle, getUsers }
+  { getProductsByTitle }
 )(Search);

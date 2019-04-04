@@ -15,13 +15,6 @@ import "../styles/auth.css";
 class SignUp extends Component {
   onSubmit = async formData => {
     await this.props.signUp(formData);
-    if (!this.props.errorMessage) {
-      // this.props.history.push("/profile");
-      console.log("this.props.errorMessage is empty");
-    } else if (this.props.successMessage) {
-      console.log(this.props.successMessage);
-      // this.props.clearFeedback();
-    }
     setTimeout(() => {
       this.props.clearFeedback();
     }, 3000);
@@ -98,16 +91,6 @@ class SignUp extends Component {
                       component={CustomInput}
                     />
                   </div>
-                  {/* <div className="input-cont">
-                    <i className="fas fa-lock" />
-                    <Field
-                      name="password"
-                      type="password"
-                      id="password"
-                      placeholder="Confirm Password"
-                      component={CustomInput}
-                    />
-                  </div> */}
                   <div className="input-cont">
                     <i className="fas fa-phone" />
                     <Field
@@ -185,26 +168,6 @@ class SignUp extends Component {
               </Link>
             </div>
           </div>
-
-          {/* <div className="signup-page__social">
-            <div className="">
-              <div className="">Or sign up using third-party services</div>
-              <FacebookLogin
-                appId={oauth.facebook.clientID}
-                textButton="Facebook"
-                fields="name,email,picture"
-                callback={this.responseFacebook}
-                cssClass=""
-              />
-              <GoogleLogin
-                clientId={oauth.google.clientID}
-                buttonText="Google"
-                onSuccess={this.responseGoogle}
-                onFailure={this.responseGoogle}
-                className="xx"
-              />
-            </div>
-          </div> */}
         </div>
       </div>
     );
@@ -222,9 +185,6 @@ export default compose(
   connect(
     mapStateToProps,
     { ...actions, ActiveHeaderLink }
-    // ActiveHeaderLink
-    // { ...actions },
-    // ActiveHeaderLink
   ),
   reduxForm({ form: "signup" })
 )(SignUp);

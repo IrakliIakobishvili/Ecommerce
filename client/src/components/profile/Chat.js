@@ -16,7 +16,7 @@ class Chat extends Component {
     this.props.getMessages();
   };
   componentDidMount() {
-    // this.props.getMessages();
+    this.props.getMessages();
     setInterval(() => {
       this.props.getMessages();
     }, 1000);
@@ -33,10 +33,7 @@ class Chat extends Component {
             <div className="chat-body clearfix">
               <div className="header">
                 <strong className="primary-font">{message.author}</strong>{" "}
-                <small className="pull-right text-muted">
-                  {/* <span className="glyphicon glyphicon-time" /> */}
-                  {message.date}
-                </small>
+                <small className="pull-right text-muted">{message.date}</small>
               </div>
               <p>{message.text}</p>
             </div>
@@ -51,31 +48,12 @@ class Chat extends Component {
         <div className="row">
           <div className="chat-header">
             <span className="chat-title" /> Welcome to LiveChat
-            {/* <div className="btn-group pull-right">
-              <a
-                type="button"
-                className="btn btn-default btn-xs"
-                data-toggle="collapse"
-                data-parent="#accordion"
-                href="#collapseOne"
-              >
-                <span className="glyphicon glyphicon-chevron-down" />
-              </a>
-            </div> */}
           </div>
-
-          {/* //////////////////////////// */}
-
           <div className="panel-body">
             <ul className="chat">{result}</ul>
           </div>
           <div className="panel-footer">
             <div className="input-group">
-              {/* <textarea
-                // style={{ resize: "none" }}
-                placeholder="Type your message here..."
-                className="form-control input-sm"
-              /> */}
               <textarea
                 value={this.setState.inputValue}
                 onChange={this.textareaHandler}

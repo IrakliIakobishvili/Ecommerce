@@ -6,7 +6,6 @@ import GoogleLogin from "react-google-login";
 import FacebookLogin from "react-facebook-login";
 import { Link } from "react-router-dom";
 import { oauth } from "../config";
-
 import * as actions from "../actions/auth";
 import { ActiveHeaderLink } from "../actions/activeLinks";
 import CustomInput from "./CustomInput";

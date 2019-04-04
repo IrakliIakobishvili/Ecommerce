@@ -2,7 +2,6 @@ import {
   PRODUCTS_GET_DATA,
   PRODUCT_GET_DETAILS,
   LOADING_TRUE,
-  // GET_REVIEWS,
   CONNECTION_ERROR
 } from "../actions/types";
 
@@ -30,13 +29,6 @@ export default (state = DEFAULT_STATE, action) => {
         error: false,
         details: action.payload
       };
-    // case GET_REVIEWS:
-    //   return {
-    //     ...state,
-    //     isLoading: false,
-    //     error: "",
-    //     reviews: action.payload.reviews
-    //   };
     case LOADING_TRUE:
       return { ...state, isLoading: true };
     case CONNECTION_ERROR:
@@ -45,5 +37,3 @@ export default (state = DEFAULT_STATE, action) => {
       return state;
   }
 };
-
-//GET_FILTERED_PRODUCT

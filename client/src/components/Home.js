@@ -6,7 +6,6 @@ import Categories from "./Categories";
 import Filter from "./Filter";
 import Search from "./Search";
 import "../styles/home.css";
-
 import { getProducts } from "../actions/products";
 import { getCartItems, addToCart } from "../actions/cart";
 
@@ -23,16 +22,12 @@ class Home extends Component {
 
   render() {
     const { products, cart, isAuth } = this.props;
-
     const IDsOfProductsInCart = cart.map(el => {
       return el.product._id;
     });
-    // console.log(IDsOfProductsInCart);
     let inCart = "AddToCart";
     let result = products.length ? (
       products.map(product => {
-        // return <Product key={product._id} product={product} />;
-
         if (isAuth == false) {
           inCart = "Unauthorized";
         } else if (IDsOfProductsInCart.includes(product._id)) {

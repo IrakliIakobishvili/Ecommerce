@@ -1,10 +1,8 @@
 import {
   USERS_GET_DATA,
-  LOADING_TRUE,
   GET_CATEGORIES_ADMIN,
   GET_CONTACTS_ADMIN,
-  CONNECTION_ERROR,
-  USER_DELETE
+  CONNECTION_ERROR
 } from "../actions/types";
 
 const DEFAULT_STATE = {
@@ -40,8 +38,6 @@ export default (state = DEFAULT_STATE, action) => {
       };
     case CONNECTION_ERROR:
       return { ...state, isLoading: false, error: action.payload };
-    // case USER_DELETE:
-    //   return state.filter((user)=>user.id !== action.id);
     default:
       return state;
   }

@@ -9,7 +9,6 @@ export default class Navigation extends Component {
 
   activeLinkHandler = async className => {
     await this.setState({ activeLink: className });
-    // console.log(this.state.activeLink);
   };
   render() {
     return (
@@ -33,7 +32,6 @@ export default class Navigation extends Component {
               className={`admin-list__item__link ${
                 this.state.activeLink == "products" ? "active-admin" : ""
               }`}
-              // className="admin-list__item__link"
               to="/admin/products"
             >
               Products

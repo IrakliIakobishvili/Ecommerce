@@ -3,50 +3,21 @@ import { connect } from "react-redux";
 import { addToCart, emptyCart } from "../actions/cart";
 import { saveOrder } from "../actions/orders";
 import PayPalButton from "./PayPalButton";
-// import "../styles/productdetails.css";
 
 class Checkout extends Component {
-  //   async componentDidMount() {
-  //     this.props.getProductDetails(this.props.match.params.id);
-  //   }
-
-  //   cartBtnHandler = productId => {
-  //     this.props.isAuth
-  //       ? this.props.addToCart(productId, 1)
-  //       : this.props.history.push("/signin");
-  //   };
-  // componentWillReceiveProps() {
-  //   this.setState({ disabled: false });
-  // }
   state = {
     disabled: false
   };
   makeOrderHandler = totalPrice => {
     console.log(this.props.cart);
-    // this.setState({ disabled: true });
     this.props.saveOrder(this.props.cart, totalPrice);
   };
-  // componentWillReceiveProps() {
-  //   console.log("RECEIVED PROPS");
-  // }
-
   render() {
-    // console.log("FROM checkout page start");
-    // console.log(this.props.response);
-    // console.log("FROM checkout page end");
     const lengthLimiter = num => {
       return Number(num.toFixed(2));
     };
-    // const { item } = this.props;
-    // const { product } = item;
-    console.log("Checkout Start");
-    // console.log(this.props.items);
     const { cart, saveOrder } = this.props;
-    console.log(cart);
-    console.log("Checkout End");
-    // let price = 0;
     let subtotal = 0;
-    // let quantity = 0;
     cart.forEach(el => {
       subtotal += el.quantity * el.product.details.price;
     });
@@ -89,8 +60,6 @@ class Checkout extends Component {
               <span>Checkout With</span>
             </div>
             <button
-              // disabled={this.state.disabled}
-              // disabled={this.props.isLoading}
               onClick={() => this.makeOrderHandler(total)}
               className="checkout-btn checkout-btn--burger"
             >
@@ -111,13 +80,6 @@ class Checkout extends Component {
   }
 }
 
-// const mapStateToProps = state => ({
-//   isAuth: state.auth.isAuthenticated,
-//   details: state.products.details,
-//   error: state.products.error,
-//   isLoading: state.products.isLoading
-// });
-
 function mapStateToProps(state) {
   return {
     cart: state.cart.products,
@@ -129,5 +91,3 @@ export default connect(
   mapStateToProps,
   { addToCart, emptyCart, saveOrder }
 )(Checkout);
-
-// export default connect()(Checkout);

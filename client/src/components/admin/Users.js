@@ -23,7 +23,6 @@ class Users extends Component {
   updateHandler = (e, user) => {
     e.preventDefault();
     if (user.method !== "local") {
-      console.log("Can't Update!");
       this.setState({
         id: "",
         firstName: "",
@@ -56,26 +55,18 @@ class Users extends Component {
   };
   inputValues = e => {
     this.setState({ [e.target.name]: e.target.value });
-    console.log(this.state);
   };
   submitHandler = e => {
     e.preventDefault();
-    console.log("STATE START");
-    console.log(this.state);
-    // console.log(this.state)
-    // const modifiedUser =
     this.props.updateUser(this.state);
   };
   render() {
     const { users } = this.props;
-    console.log(users);
     const result = users.length ? (
       users.map((user, i) => {
         return (
           <li key={user.id} className="user__list__item">
-            {/* <div> */}
             <span>{++i}</span>
-            {/* </div> */}
             <Link to="/" onClick={e => this.updateHandler(e, user)} user={user}>
               {user.firstName + " " + user.lastName}
             </Link>
@@ -84,11 +75,10 @@ class Users extends Component {
             ) : user.method === "google" ? (
               <i className="fab fa-google" />
             ) : null}
-            {/* <span>{user.method}</span> */}
           </li>
         );
       })
-    ) : this.props.isLoading ? null : this.props.error ? ( // </div> //   <i className="fas fa-spinner" /> // <div className="loading">
+    ) : this.props.isLoading ? null : this.props.error ? (
       <div className="error error--static">
         <i className="fas fa-plug" />
       </div>
@@ -96,58 +86,57 @@ class Users extends Component {
       <div className="empty--static">
         <i className="far fa-meh" />
       </div>
-    ) : null
+    ) : null;
 
     return (
       <div className="admin-users">
         <div className="container">
-          {/* <h2>USERS</h2> */}
           <Search />
           <form className="admin-users__form" onSubmit={this.submitHandler}>
             <div>
-            <i className="fas fa-user"></i>
-            <input
-              value={this.state.firstName}
-              onChange={e => this.inputValues(e)}
-              name="firstName"
-              placeholder="First Name"
-            />
+              <i className="fas fa-user" />
+              <input
+                value={this.state.firstName}
+                onChange={e => this.inputValues(e)}
+                name="firstName"
+                placeholder="First Name"
+              />
             </div>
             <div>
-            <i className="fas fa-user"></i>
-            <input
-              value={this.state.lastName}
-              onChange={e => this.inputValues(e)}
-              name="lastName"
-              placeholder="Last Name"
-            />
+              <i className="fas fa-user" />
+              <input
+                value={this.state.lastName}
+                onChange={e => this.inputValues(e)}
+                name="lastName"
+                placeholder="Last Name"
+              />
             </div>
             <div>
-            <i className="fas fa-envelope"></i>
-            <input
-              value={this.state.email}
-              onChange={e => this.inputValues(e)}
-              name="email"
-              placeholder="Email"
-            />
+              <i className="fas fa-envelope" />
+              <input
+                value={this.state.email}
+                onChange={e => this.inputValues(e)}
+                name="email"
+                placeholder="Email"
+              />
             </div>
             <div>
-            <i className="fas fa-dollar-sign"></i>
-            <input
-              value={this.state.balance}
-              onChange={e => this.inputValues(e)}
-              name="balance"
-              placeholder="Balance"
-            />
+              <i className="fas fa-dollar-sign" />
+              <input
+                value={this.state.balance}
+                onChange={e => this.inputValues(e)}
+                name="balance"
+                placeholder="Balance"
+              />
             </div>
             <div>
-            <i className="fas fa-check"></i>
-            <input
-              value={this.state.verified}
-              onChange={e => this.inputValues(e)}
-              name="verified"
-              placeholder="Verified"
-            />
+              <i className="fas fa-check" />
+              <input
+                value={this.state.verified}
+                onChange={e => this.inputValues(e)}
+                name="verified"
+                placeholder="Verified"
+              />
             </div>
             <button>Update</button>
           </form>

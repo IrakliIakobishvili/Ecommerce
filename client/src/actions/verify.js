@@ -6,7 +6,6 @@ export const verifyAccount = token => {
   return async dispatch => {
     try {
       const res = await axios.get(`${API_URL}/api/users/verify/${token}`);
-      //   console.log(res.data);
       dispatch({
         type: VERIFY_ACCOUNT,
         payload: res.data

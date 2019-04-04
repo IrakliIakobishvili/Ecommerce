@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* height: calc(100vh - 80px); */
 }
 
 .chform-change-password {
@@ -35,12 +34,7 @@
 }
 
 .chBTN {
-  background-image: linear-gradient(
-    to right,
-    rgb(177, 26, 26),
-    rgb(197, 103, 14),
-    rgb(192, 164, 3)
-  );
+  background-image: linear-gradient( to right, rgb(177, 26, 26), rgb(197, 103, 14), rgb(192, 164, 3));
   border: 0;
   padding: 12px 30px;
   margin-top: 5px;
@@ -51,10 +45,5 @@
 }
 
 .chBTN:hover {
-  background-image: linear-gradient(
-    to right,
-    rgb(192, 164, 3),
-    rgb(197, 103, 14),
-    rgb(177, 26, 26)
-  );
+  background-image: linear-gradient( to right, rgb(192, 164, 3), rgb(197, 103, 14), rgb(177, 26, 26));
 }

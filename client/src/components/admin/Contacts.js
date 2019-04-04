@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getContacts } from "../../actions/admin";
 import "../../styles/admin/contacts.css";
 
-
 class Contacts extends Component {
   state = {
     loaded: false
@@ -15,7 +14,6 @@ class Contacts extends Component {
   componentWillReceiveProps() {}
   render() {
     const { contacts } = this.props;
-
     const result = contacts.length ? (
       contacts.map(contact => {
         let date =
@@ -24,13 +22,12 @@ class Contacts extends Component {
           contact.createdAt.split("T")[1].split(".")[0];
         return (
           <li key={contact._id} className="contact-list-admin admin-item">
-            <span className="admin-item__userNames">{contact.firstName} {contact.lastName}</span>
-            {/* <div className="admin-item__firsName">{contact.firstName}</div>
-            <div className="admin-item__lastName">{contact.lastName}</div> */}
+            <span className="admin-item__userNames">
+              {contact.firstName} {contact.lastName}
+            </span>
             <span className="admin-item__email">{contact.email}</span>
-            <p className="admin-item__message">ppppppppppppppppppppppppppp ppppppppppp ppppppppppppp pppppppppppppp pppppppppppppppppp ppppppppppp ppppppppppppp pppppppppppppp pppppppppppppp pppppppppppppppp ppppppppppppppppppppp pppppppppppppppppppp ppppppppppppppppppp ppppppppppp{contact.message}</p>
+            <p className="admin-item__message">{contact.message}</p>
             <span className="admin-item__date">{date}</span>
-            
           </li>
         );
       })

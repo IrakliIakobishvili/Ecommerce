@@ -1,7 +1,5 @@
 const Review = require("../models/review");
 const Order = require("../models/order");
-// const User = require("../models/user");
-// const Product = require("../models/product");
 
 module.exports = {
   addReview: async (req, res) => {
@@ -15,8 +13,6 @@ module.exports = {
         }
       });
     });
-    console.log("bought ", bought);
-
     if (bought) {
       const user = req.user.id;
       const { productID, message, rating } = req.body;
@@ -51,7 +47,6 @@ module.exports = {
       if (!result) {
         return res.send({ reviews: [], rating: 0 });
       } else {
-        ////////////////
         Review.find({ product: req.params.id })
           .populate("reviews.user")
           .exec((err, reviewsDoc) => {
@@ -60,7 +55,6 @@ module.exports = {
             }
             let totalRating = 0;
             let totalReviews = 0;
-            // averageRating = averageRating.toFixed(2);
             let reducedInfo = reviewsDoc[0].reviews.map(review => {
               totalRating += review.rating;
               totalReviews++;
@@ -83,7 +77,6 @@ module.exports = {
             reducedInfo = reducedInfo.reverse();
             res.json({ reviews: reducedInfo, rating: averageRating });
           });
-        ///////////////
       }
     });
   }

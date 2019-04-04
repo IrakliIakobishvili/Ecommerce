@@ -16,9 +16,6 @@ export default class My404Component extends Component {
               <p className="not-found-page__desc">
                 The page you requested could not be found.
               </p>
-              {/* <Link className="not-found-page__link" to="/">
-                go back
-              </Link> */}
               <button className="not-found-page__link" onClick={this.goBack}>
                 go back
               </button>
